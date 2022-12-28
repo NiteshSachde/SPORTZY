@@ -12,8 +12,10 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
+        height: size.height,
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -25,170 +27,183 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
         ),
-        child: ListView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            SizedBox(
+              height: 70,
+            ),
             Padding(
-              padding: EdgeInsets.only(
-                top: 30,
-                bottom: 50,
-                left: 20,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Text(
-                    "Login",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Welcome Back To Sportzy",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+              child: Text(
+                "Login",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+              child: Text(
+                "Welcome To Sportzy",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(
+              height: 60,
+            ),
             Expanded(
-              child: Container(
-                constraints: BoxConstraints(
-                    maxHeight: MediaQuery.of(context).size.height),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(50),
-                    topRight: Radius.circular(50),
+              child: SingleChildScrollView(
+                physics: NeverScrollableScrollPhysics(),
+                child: Container(
+                  height: size.height,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50),
+                    ),
                   ),
-                ),
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(
-                          top: 20, left: 25, right: 25, bottom: 30),
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 65,
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(25),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color.fromRGBO(38, 102, 176, 0.988),
-                                  blurRadius: 30,
-                                  offset: Offset(0, 10),
-                                ),
-                              ],
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: 20, left: 25, right: 25, bottom: 30),
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 65,
                             ),
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    border: Border(
-                                      bottom: BorderSide(
-                                        color: Color.fromRGBO(238, 238, 238, 1),
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(25),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color.fromRGBO(38, 102, 176, 0.988),
+                                    blurRadius: 30,
+                                    offset: Offset(0, 10),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                children: <Widget>[
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color:
+                                              Color.fromRGBO(238, 238, 238, 1),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                        hintText: "Enter Email or Phone Number",
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey),
-                                        border: InputBorder.none),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    border: Border(
-                                      bottom: BorderSide(
-                                        color: Color.fromRGBO(238, 238, 238, 1),
-                                      ),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          icon: Icon(
+                                            Icons.person,
+                                            color: Color.fromARGB(149, 0, 0, 0),
+                                          ),
+                                          hintText: "Email or Phone Number",
+                                          hintStyle:
+                                              TextStyle(color: Colors.grey),
+                                          border: InputBorder.none),
                                     ),
                                   ),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                        hintText: "Password",
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey),
-                                        border: InputBorder.none),
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color:
+                                              Color.fromRGBO(238, 238, 238, 1),
+                                        ),
+                                      ),
+                                    ),
+                                    child: TextField(
+                                      obscureText: true,
+                                      decoration: InputDecoration(
+                                          icon: Icon(
+                                            Icons.lock,
+                                            color: Color.fromARGB(149, 0, 0, 0),
+                                          ),
+                                          hintText: "Password",
+                                          hintStyle:
+                                              TextStyle(color: Colors.grey),
+                                          suffixIcon: Icon(
+                                            Icons.visibility,
+                                            color: Color.fromARGB(149, 0, 0, 0),
+                                          ),
+                                          border: InputBorder.none),
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 50,
-                          ),
-                          Text(
-                            "Forgot Password ?",
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 2, 54, 133),
-                                fontSize: 15),
-                          ),
-                          SizedBox(
-                            height: 50,
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(left: 20, right: 20),
-                            height: 50,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40),
-                              color: Color.fromARGB(255, 68, 167, 248),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Login",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                                ],
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Don't have account ? ",
-                                style: TextStyle(
+                            SizedBox(
+                              height: 50,
+                            ),
+                            Text(
+                              "Forgot Password ?",
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 2, 54, 133),
+                                  fontSize: 15),
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 20, right: 20),
+                              height: 50,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(40),
+                                color: Color.fromARGB(255, 68, 167, 248),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Login",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Don't have account ? ",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 99, 98, 98)),
+                                ),
+                                Text(
+                                  "Create an account now",
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 99, 98, 98)),
-                              ),
-                              Text(
-                                "Create an account now",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 2, 54, 133),
-                                ),
-                              )
-                            ],
-                          )
-                        ],
+                                    color: Color.fromARGB(255, 2, 54, 133),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

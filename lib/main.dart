@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sportzy/loginPage.dart';
 import './SelectOption.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SelectOption(),
+      home: LoginPage(),
     );
   }
 }

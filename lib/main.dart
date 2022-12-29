@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sportzy/loginPage.dart';
-import './SelectOption.dart';
+// import './SelectOption.dart';
 
 void main() {
   runApp(const MyApp());

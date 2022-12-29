@@ -126,6 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                           ),
                           child: TextField(
+                            obscureText: true,
                             decoration: InputDecoration(
                                 icon: Padding(
                                   padding: const EdgeInsets.only(left: 20),

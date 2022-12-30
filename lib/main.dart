@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sportzy/Heet/HomePage.dart';
 import 'package:sportzy/Nitesh/loginPage.dart';
 import 'package:sportzy/Nitesh/signUpPage.dart';
 // import './SelectOption.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'loginPage': (context) => LoginPage(),
         'signUpPage': (context) => SignUpPage(),
+        'HomePage': (context) => HomePage(),
       },
     );
   }

@@ -23,9 +23,9 @@ class _LoginPageState extends State<LoginPage> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              Color.fromARGB(255, 2, 54, 133),
-              Color.fromARGB(255, 23, 107, 204),
-              Color.fromARGB(255, 68, 167, 248),
+              Color.fromARGB(255, 253, 254, 254),
+              Color.fromARGB(255, 248, 250, 251),
+              Color.fromARGB(255, 250, 251, 252),
             ],
           ),
         ),
@@ -36,13 +36,35 @@ class _LoginPageState extends State<LoginPage> {
               height: MediaQuery.of(context).size.height * 0.15,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
-              child: Text(
-                "Login",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold),
+              padding: EdgeInsets.only(
+                top: 30,
+                bottom: 50,
+                left: 20,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Text(
+                    "Login",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 21, 63, 249),
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Welcome Back To Sportzy",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
             ),
             Padding(

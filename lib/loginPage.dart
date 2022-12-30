@@ -19,9 +19,9 @@ class _LoginPageState extends State<LoginPage> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              Color.fromARGB(255, 2, 54, 133),
-              Color.fromARGB(255, 23, 107, 204),
-              Color.fromARGB(255, 68, 167, 248),
+              Color.fromARGB(255, 253, 254, 254),
+              Color.fromARGB(255, 248, 250, 251),
+              Color.fromARGB(255, 250, 251, 252),
             ],
           ),
         ),
@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                   Text(
                     "Login",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 21, 63, 249),
                         fontSize: 40,
                         fontWeight: FontWeight.bold),
                   ),

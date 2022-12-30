@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:sportzy/Heet/HomePage.dart';
 import './signUpPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -23,52 +24,36 @@ class _LoginPageState extends State<LoginPage> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              Color.fromARGB(255, 253, 254, 254),
-              Color.fromARGB(255, 248, 250, 251),
-              Color.fromARGB(255, 250, 251, 252),
+              Color.fromARGB(255, 17, 71, 234),
+              Color.fromARGB(255, 50, 115, 228),
+              Color.fromARGB(255, 88, 192, 233),
             ],
           ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.15,
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: 30,
-                bottom: 50,
-                left: 20,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Text(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.15,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                  child: Text(
                     "Login",
                     style: TextStyle(
-                        color: Color.fromARGB(255, 21, 63, 249),
+                        color: Colors.white,
                         fontSize: 40,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Welcome Back To Sportzy",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
               child: Text(
                 "Welcome To Sportzy",
                 style: TextStyle(
@@ -205,22 +190,30 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04,
                         ),
-                        Container(
-                          height: 50,
-                          width: size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 68, 167, 248),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Login",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                        GestureDetector(
+                          child: Container(
+                            height: 50,
+                            width: size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Color.fromARGB(255, 68, 167, 248),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Login",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
+                          onTap: (() {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        HomePage()));
+                          }),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.03,

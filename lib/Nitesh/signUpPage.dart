@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sportzy/Nitesh/verifyOtp.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -21,9 +22,9 @@ class _SignUpPageState extends State<SignUpPage> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              Color.fromARGB(255, 2, 54, 133),
-              Color.fromARGB(255, 23, 107, 204),
-              Color.fromARGB(255, 68, 167, 248),
+              Color.fromARGB(255, 17, 71, 234),
+              Color.fromARGB(255, 50, 115, 228),
+              Color.fromARGB(255, 88, 192, 233),
             ],
           ),
         ),
@@ -31,7 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.11,
+              height: MediaQuery.of(context).size.height * 0.15,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
@@ -44,7 +45,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
+              height: MediaQuery.of(context).size.height * 0.06,
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -252,22 +253,30 @@ class _SignUpPageState extends State<SignUpPage> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.08,
                         ),
-                        Container(
-                          height: 50,
-                          width: size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 68, 167, 248),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Send OTP",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                        GestureDetector(
+                          child: Container(
+                            height: 50,
+                            width: size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Color.fromARGB(255, 68, 167, 248),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Send OTP",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
+                          onTap: (() {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        VerifyOtp()));
+                          }),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.03,

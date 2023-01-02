@@ -1,40 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:pinput/pinput.dart';
 
-class VerifyOtp extends StatefulWidget {
-  const VerifyOtp({Key? key}) : super(key: key);
+class SelectSport extends StatefulWidget {
+  const SelectSport({Key? key}) : super(key: key);
 
   @override
-  State<VerifyOtp> createState() => _VerifyOtp();
+  State<SelectSport> createState() => _SelectSport();
 }
 
-class _VerifyOtp extends State<VerifyOtp> {
+class _SelectSport extends State<SelectSport> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: TextStyle(
-          fontSize: 20,
-          color: Color.fromRGBO(30, 60, 87, 1),
-          fontWeight: FontWeight.w600),
-      decoration: BoxDecoration(
-        border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
-        borderRadius: BorderRadius.circular(20),
-      ),
-    );
-
-    final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: Color.fromRGBO(114, 178, 238, 1)),
-      borderRadius: BorderRadius.circular(8),
-    );
-
-    final submittedPinTheme = defaultPinTheme.copyWith(
-      decoration: defaultPinTheme.decoration!.copyWith(
-        color: Color.fromRGBO(234, 239, 243, 1),
-      ),
-    );
     return Scaffold(
       body: Container(
         height: size.height,
@@ -53,12 +29,12 @@ class _VerifyOtp extends State<VerifyOtp> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.15,
+              height: MediaQuery.of(context).size.height * 0.11,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
-                "Phone Verification",
+                "Sport Selection",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 34,
@@ -66,7 +42,7 @@ class _VerifyOtp extends State<VerifyOtp> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.06,
+              height: MediaQuery.of(context).size.height * 0.05,
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -85,47 +61,19 @@ class _VerifyOtp extends State<VerifyOtp> {
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.11,
+                          height: MediaQuery.of(context).size.height * 0.10,
                         ),
                         Container(
-                          margin: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.0,
-                              right: MediaQuery.of(context).size.width * 0.44),
                           child: Text(
-                            "Enter OTP Below",
+                            "Select Sport To Continue",
                             style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 20,
+                                fontSize: 26,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.06,
-                        ),
-                        Pinput(
-                          length: 6,
-                          pinputAutovalidateMode:
-                              PinputAutovalidateMode.onSubmit,
-                          showCursor: true,
-                          onCompleted: (pin) => print(pin),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.64,
-                              right: MediaQuery.of(context).size.width * 0.0),
-                          child: Text(
-                            "Resend OTP",
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 2, 54, 133),
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.07,
+                          height: MediaQuery.of(context).size.height * 0.11,
                         ),
                         Container(
                           height: 50,
@@ -136,7 +84,47 @@ class _VerifyOtp extends State<VerifyOtp> {
                           ),
                           child: Center(
                             child: Text(
-                              "Register",
+                              "Badminton",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.04,
+                        ),
+                        Container(
+                          height: 50,
+                          width: size.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Color.fromARGB(255, 68, 167, 248),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Cricket",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.04,
+                        ),
+                        Container(
+                          height: 50,
+                          width: size.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Color.fromARGB(255, 68, 167, 248),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Table - Tennis",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sportzy/Nitesh/selectSport.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,7 +28,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Expanded(
               child: Container(
-                height: 600,
+                height: double.infinity,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -39,19 +40,19 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.03,
+              height: MediaQuery.of(context).size.height * 0.01,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Container(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 60),
                   child: Text(
-                    "As Users",
+                    "As User",
                     style: TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold),
                   ),
                   height: MediaQuery.of(context).size.height * 0.08,
@@ -71,32 +72,38 @@ class _HomePageState extends State<HomePage> {
                   height: MediaQuery.of(context).size.height * 0.08,
                   decoration: BoxDecoration(color: null),
                 ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 36),
-                  child: Text(
-                    "As Organizer",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 10),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  height: MediaQuery.of(context).size.height * 0.08,
-                  width: MediaQuery.of(context).size.width * 0.495,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(50),
-                      bottomRight: Radius.circular(50),
-                      topLeft: Radius.circular(50),
-                      bottomLeft: Radius.circular(50),
+                GestureDetector(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 39),
+                    child: Text(
+                      "As Organizer",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
                     ),
-                    color: Colors.white,
+                    height: MediaQuery.of(context).size.height * 0.08,
+                    width: MediaQuery.of(context).size.width * 0.48,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(50),
+                        bottomRight: Radius.circular(50),
+                        topLeft: Radius.circular(50),
+                        bottomLeft: Radius.circular(50),
+                      ),
+                      color: Colors.white,
+                    ),
                   ),
+                  onTap: (() {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (BuildContext context) => SelectSport()));
+                  }),
                 ),
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.03,
+              height: MediaQuery.of(context).size.height * 0.01,
             )
           ],
         ),

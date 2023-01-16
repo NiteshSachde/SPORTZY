@@ -209,10 +209,8 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           onTap: (() {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        HomePage()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) => HomePage()));
                           }),
                         ),
                         SizedBox(
@@ -238,10 +236,10 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               onTap: (() {
-                                Navigator.of(context).pushReplacement(
+                                Navigator.push(
+                                    context,
                                     MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            SignUpPage()));
+                                        builder: (context) => SignUpPage()));
                               }),
                             )
                           ],

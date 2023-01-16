@@ -36,122 +36,147 @@ class _VerifyOtp extends State<VerifyOtp> {
       ),
     );
     return Scaffold(
-      body: Container(
-        height: size.height,
-        width: size.width,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            colors: [
-              Color.fromARGB(255, 17, 71, 234),
-              Color.fromARGB(255, 50, 115, 228),
-              Color.fromARGB(255, 88, 192, 233),
-            ],
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.15,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
-              child: Text(
-                "Phone Verification",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 34,
-                    fontWeight: FontWeight.bold),
+      body: Stack(
+        children: <Widget>[
+          Container(
+            height: size.height,
+            width: size.width,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                colors: [
+                  Color.fromARGB(255, 17, 71, 234),
+                  Color.fromARGB(255, 50, 115, 228),
+                  Color.fromARGB(255, 88, 192, 233),
+                ],
               ),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.06,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                physics: NeverScrollableScrollPhysics(),
-                child: Container(
-                  height: size.height,
-                  width: size.width,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.15,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
+                  child: Text(
+                    "Phone Verification",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 34,
+                        fontWeight: FontWeight.bold),
                   ),
-                  child: Container(
-                    margin: EdgeInsets.only(left: 25, right: 25),
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.11,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.0,
-                              right: MediaQuery.of(context).size.width * 0.44),
-                          child: Text(
-                            "Enter OTP Below",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.06,
-                        ),
-                        Pinput(
-                          length: 6,
-                          pinputAutovalidateMode:
-                              PinputAutovalidateMode.onSubmit,
-                          showCursor: true,
-                          onCompleted: (pin) => print(pin),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.64,
-                              right: MediaQuery.of(context).size.width * 0.0),
-                          child: Text(
-                            "Resend OTP",
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 2, 54, 133),
-                              fontSize: 14,
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.06,
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: NeverScrollableScrollPhysics(),
+                    child: Container(
+                      height: size.height,
+                      width: size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(50),
+                            topRight: Radius.circular(50)),
+                      ),
+                      child: Container(
+                        margin: EdgeInsets.only(left: 25, right: 25),
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.11,
                             ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.07,
-                        ),
-                        Container(
-                          height: 50,
-                          width: size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 68, 167, 248),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Register",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left: MediaQuery.of(context).size.width * 0.0,
+                                  right:
+                                      MediaQuery.of(context).size.width * 0.44),
+                              child: Text(
+                                "Enter OTP Below",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
-                          ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.06,
+                            ),
+                            Pinput(
+                              length: 6,
+                              pinputAutovalidateMode:
+                                  PinputAutovalidateMode.onSubmit,
+                              showCursor: true,
+                              onCompleted: (pin) => print(pin),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.04,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * 0.64,
+                                  right:
+                                      MediaQuery.of(context).size.width * 0.0),
+                              child: Text(
+                                "Resend OTP",
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 2, 54, 133),
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.07,
+                            ),
+                            Container(
+                              height: 50,
+                              width: size.width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: Color.fromARGB(255, 68, 167, 248),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Register",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          ),
+          new Positioned(
+            top: 0.0,
+            left: 0.0,
+            right: 0.0,
+            child: AppBar(
+              leading: new IconButton(
+                icon: new Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.white,
+                ),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              backgroundColor: Colors.transparent
+                  .withOpacity(0.0), //You can make this transparent
+              elevation: 0.0, //No shadow
+            ),
+          ),
+        ],
       ),
     );
   }

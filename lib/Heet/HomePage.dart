@@ -19,26 +19,9 @@ class _HomePageState extends State<HomePage> {
       'Viewer',
       style: optionStyle,
     ),
-    Column(
-      children: <Widget>[
-        Container(
-          height: 50,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            color: Color.fromARGB(255, 68, 167, 248),
-          ),
-          child: Center(
-            child: Text(
-              "Badminton",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-        ),
-      ],
+    Text(
+      'Organizer',
+      style: optionStyle,
     ),
   ];
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sportzy/Heet/organizerScreen.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:sportzy/Heet/viewerScreen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,10 +16,7 @@ class _HomePageState extends State<HomePage> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Viewer',
-      style: optionStyle,
-    ),
+    viewerScreen(),
     OrganizerScreen(),
   ];
 

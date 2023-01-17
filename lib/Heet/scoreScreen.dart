@@ -1,13 +1,20 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
-class scoreScreen extends StatefulWidget {
-  const scoreScreen({super.key});
+class ScoreScreen extends StatefulWidget {
+  var p1, p2;
+  ScoreScreen({
+    Key? mykey,
+    required this.p1,
+    required this.p2,
+  }) : super(key: mykey);
 
   @override
-  State<scoreScreen> createState() => _scoreScreenState();
+  State<ScoreScreen> createState() => _ScoreScreenState();
 }
 
-class _scoreScreenState extends State<scoreScreen> {
+class _ScoreScreenState extends State<ScoreScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +39,7 @@ class _scoreScreenState extends State<scoreScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      "Player-1",
+                      '${widget.p1}',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -52,7 +59,7 @@ class _scoreScreenState extends State<scoreScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      "Player-2",
+                      '${widget.p2}',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -110,7 +117,7 @@ class _scoreScreenState extends State<scoreScreen> {
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.03,
+              height: MediaQuery.of(context).size.height * 0.001,
             ),
             Row(
               children: <Widget>[
@@ -153,7 +160,7 @@ class _scoreScreenState extends State<scoreScreen> {
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.03,
+              height: MediaQuery.of(context).size.height * 0.06,
             ),
             Row(
               children: <Widget>[

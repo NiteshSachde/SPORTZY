@@ -9,6 +9,8 @@ class SinglesBadminton extends StatefulWidget {
 }
 
 class _SinglesBadminton extends State<SinglesBadminton> {
+  TextEditingController _p1 = new TextEditingController();
+  TextEditingController _p2 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -90,6 +92,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                             ],
                           ),
                           child: TextField(
+                            controller: _p1,
                             decoration: InputDecoration(
                                 icon: Padding(
                                   padding: const EdgeInsets.only(left: 20),
@@ -140,6 +143,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                             ],
                           ),
                           child: TextField(
+                            controller: _p2,
                             decoration: InputDecoration(
                                 icon: Padding(
                                   padding: const EdgeInsets.only(left: 20),
@@ -185,8 +189,10 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                           ),
                           onTap: (() {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    scoreScreen()));
+                                builder: (BuildContext context) => ScoreScreen(
+                                      p1: _p1.text,
+                                      p2: _p2.text,
+                                    )));
                           }),
                         ),
                       ],

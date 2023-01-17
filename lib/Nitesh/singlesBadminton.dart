@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sportzy/Heet/scoreScreen.dart';
 
 class SinglesBadminton extends StatefulWidget {
   const SinglesBadminton({Key? key}) : super(key: key);
@@ -164,22 +165,29 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.09,
                         ),
-                        Container(
-                          height: 50,
-                          width: size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 68, 167, 248),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Add Players",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                        GestureDetector(
+                          child: Container(
+                            height: 50,
+                            width: size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Color.fromARGB(255, 68, 167, 248),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Add Players",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
+                          onTap: (() {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    scoreScreen()));
+                          }),
                         ),
                       ],
                     ),

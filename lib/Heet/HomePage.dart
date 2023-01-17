@@ -14,21 +14,16 @@ class _HomePageState extends State<HomePage> {
 
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
-  static List<Widget> _widgetOptions = <Widget>[
+  List<Widget> _widgetOptions = <Widget>[
     Text(
       'Viewer',
       style: optionStyle,
     ),
-    Text(
-      'Organizer',
-      style: optionStyle,
-    ),
+    SelectSport(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -37,14 +32,14 @@ class _HomePageState extends State<HomePage> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40), topRight: Radius.circular(40)),
-          color: Color.fromARGB(255, 25, 100, 231),
+          color: Color.fromARGB(255, 69, 137, 254),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 12),
           child: GNav(
-            backgroundColor: Color.fromARGB(255, 25, 100, 231),
+            backgroundColor: Color.fromARGB(255, 69, 137, 254),
             color: Colors.white,
-            activeColor: Color.fromARGB(255, 25, 100, 231),
+            activeColor: Color.fromARGB(255, 69, 137, 254),
             tabBackgroundColor: Colors.white,
             gap: 6,
             padding: EdgeInsets.all(16),

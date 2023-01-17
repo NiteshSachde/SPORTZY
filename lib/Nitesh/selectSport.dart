@@ -61,26 +61,14 @@ class _SelectSport extends State<SelectSport> {
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.10,
-                        ),
-                        Container(
-                          child: Text(
-                            "Select Sport To Continue",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 26,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.11,
+                          height: MediaQuery.of(context).size.height * 0.17,
                         ),
                         Container(
                           height: 50,
                           width: size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 68, 167, 248),
+                            color: Color.fromARGB(255, 15, 136, 236),
                           ),
                           child: Center(
                             child: Text(
@@ -100,7 +88,7 @@ class _SelectSport extends State<SelectSport> {
                           width: size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 68, 167, 248),
+                            color: Color.fromARGB(255, 15, 136, 236),
                           ),
                           child: Center(
                             child: Text(
@@ -120,7 +108,7 @@ class _SelectSport extends State<SelectSport> {
                           width: size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 68, 167, 248),
+                            color: Color.fromARGB(255, 15, 136, 236),
                           ),
                           child: Center(
                             child: Text(

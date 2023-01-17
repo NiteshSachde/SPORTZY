@@ -1,27 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:sportzy/Heet/organizerScreen.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:sportzy/Nitesh/doublesBadminton.dart';
+import 'package:sportzy/Nitesh/singlesBadminton.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Badminton extends StatefulWidget {
+  const Badminton({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Badminton> createState() => _Badminton();
 }
 
-class _HomePageState extends State<HomePage> {
+class _Badminton extends State<Badminton> {
   int _selectedIndex = 0;
 
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Viewer',
-      style: optionStyle,
-    ),
-    OrganizerScreen(),
+    SinglesBadminton(),
+    DoublesBadminton(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,16 +43,16 @@ class _HomePageState extends State<HomePage> {
             iconSize: 32,
             tabs: const [
               GButton(
-                icon: Icons.search,
-                text: "Viewer",
+                icon: Icons.person,
+                text: "Singles",
                 textStyle: TextStyle(
                   fontSize: 18,
                   color: Color.fromARGB(255, 25, 100, 231),
                 ),
               ),
               GButton(
-                icon: Icons.create,
-                text: "Organizer",
+                icon: Icons.people,
+                text: "Doubles",
                 textStyle: TextStyle(
                   fontSize: 18,
                   color: Color.fromARGB(255, 25, 100, 231),

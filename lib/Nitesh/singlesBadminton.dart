@@ -1,18 +1,13 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
-import 'package:sportzy/Heet/HomePage.dart';
-import './signUpPage.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SinglesBadminton extends StatefulWidget {
+  const SinglesBadminton({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SinglesBadminton> createState() => _SinglesBadminton();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  bool passwordObscured = true;
+class _SinglesBadminton extends State<SinglesBadminton> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -31,39 +26,23 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.15,
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.07,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+              padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
-                "Welcome To Sportzy",
+                "Team Details",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 24,
+                    fontSize: 34,
                     fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.07,
+              height: MediaQuery.of(context).size.height * 0.04,
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -80,9 +59,22 @@ class _LoginPageState extends State<LoginPage> {
                   child: Container(
                     margin: EdgeInsets.only(left: 25, right: 25),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.12,
+                          height: MediaQuery.of(context).size.height * 0.06,
+                        ),
+                        Text(
+                          "Team A",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -105,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                                     color: Color.fromARGB(149, 0, 0, 0),
                                   ),
                                 ),
-                                hintText: "Email or Phone Number",
+                                hintText: "Player 1 Name",
                                 hintStyle: TextStyle(color: Colors.grey),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(30),
@@ -120,7 +112,19 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03,
+                          height: MediaQuery.of(context).size.height * 0.04,
+                        ),
+                        Text(
+                          "Team B",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -135,32 +139,15 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                           ),
                           child: TextField(
-                            obscureText: passwordObscured,
                             decoration: InputDecoration(
                                 icon: Padding(
                                   padding: const EdgeInsets.only(left: 20),
                                   child: Icon(
-                                    Icons.lock,
+                                    Icons.person,
                                     color: Color.fromARGB(149, 0, 0, 0),
                                   ),
                                 ),
-                                suffixIcon: Padding(
-                                  padding: const EdgeInsets.only(right: 25),
-                                  child: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        passwordObscured = !passwordObscured;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      passwordObscured
-                                          ? Icons.visibility_off
-                                          : Icons.visibility,
-                                    ),
-                                    color: Color.fromARGB(149, 0, 0, 0),
-                                  ),
-                                ),
-                                hintText: "Password",
+                                hintText: "Player 2 Name",
                                 hintStyle: TextStyle(color: Colors.grey),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(30),
@@ -175,74 +162,24 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.09,
                         ),
                         Container(
-                          margin: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.5),
-                          child: Text(
-                            "Forgot Password ?",
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 2, 54, 133),
-                                fontSize: 13),
+                          height: 50,
+                          width: size.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Color.fromARGB(255, 68, 167, 248),
                           ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
-                        ),
-                        GestureDetector(
-                          child: Container(
-                            height: 50,
-                            width: size.width,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: Color.fromARGB(255, 68, 167, 248),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Login",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                          onTap: (() {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (BuildContext context) => HomePage()));
-                          }),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Don't have account ? ",
+                          child: Center(
+                            child: Text(
+                              "Add Players",
                               style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 99, 98, 98)),
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            GestureDetector(
-                              child: Text(
-                                "Create an account now",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 2, 54, 133),
-                                ),
-                              ),
-                              onTap: (() {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SignUpPage()));
-                              }),
-                            )
-                          ],
+                          ),
                         ),
                       ],
                     ),

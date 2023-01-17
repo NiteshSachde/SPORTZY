@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:sportzy/Nitesh/badminton.dart';
 
-class SelectSport extends StatefulWidget {
-  const SelectSport({Key? key}) : super(key: key);
+class OrganizerScreen extends StatefulWidget {
+  const OrganizerScreen({Key? key}) : super(key: key);
 
   @override
-  State<SelectSport> createState() => _SelectSport();
+  State<OrganizerScreen> createState() => _OrganizerScreen();
 }
 
-class _SelectSport extends State<SelectSport> {
+class _OrganizerScreen extends State<OrganizerScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -63,22 +64,29 @@ class _SelectSport extends State<SelectSport> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.17,
                         ),
-                        Container(
-                          height: 50,
-                          width: size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 15, 136, 236),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Badminton",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                        GestureDetector(
+                          child: Container(
+                            height: 50,
+                            width: size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Color.fromARGB(255, 15, 136, 236),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Badminton",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
+                          onTap: (() {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    Badminton()));
+                          }),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04,

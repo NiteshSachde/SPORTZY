@@ -31,8 +31,8 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   width: MediaQuery.of(context).size.width * 0.033,
                 ),
                 Container(
-                  height: 50,
-                  width: 150,
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery.of(context).size.width * 0.45,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: Color.fromARGB(255, 15, 136, 236),
@@ -48,11 +48,11 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.15,
+                  width: MediaQuery.of(context).size.width * 0.03,
                 ),
                 Container(
-                  height: 50,
-                  width: 150,
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery.of(context).size.width * 0.45,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: Color.fromARGB(255, 15, 136, 236),
@@ -122,11 +122,11 @@ class _ScoreScreenState extends State<ScoreScreen> {
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.06,
+                  width: MediaQuery.of(context).size.width * 0.033,
                 ),
                 Container(
-                  height: 50,
-                  width: 150,
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery.of(context).size.width * 0.45,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: null,
@@ -140,11 +140,11 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.11,
+                  width: MediaQuery.of(context).size.width * 0.04,
                 ),
                 Container(
-                  height: 50,
-                  width: 150,
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery.of(context).size.width * 0.45,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: null,
@@ -168,8 +168,8 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   width: MediaQuery.of(context).size.width * 0.27,
                 ),
                 Container(
-                  height: 70,
-                  width: 80,
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  width: MediaQuery.of(context).size.width * 0.21,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: Color.fromARGB(255, 15, 136, 236),
@@ -188,8 +188,8 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   width: MediaQuery.of(context).size.width * 0.04,
                 ),
                 Container(
-                  height: 70,
-                  width: 80,
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  width: MediaQuery.of(context).size.width * 0.21,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: Color.fromARGB(255, 15, 136, 236),
@@ -215,8 +215,8 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   width: MediaQuery.of(context).size.width * 0.06,
                 ),
                 Container(
-                  height: 50,
-                  width: 150,
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery.of(context).size.width * 0.45,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: null,
@@ -230,11 +230,11 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.11,
+                  width: MediaQuery.of(context).size.width * 0.02,
                 ),
                 Container(
-                  height: 50,
-                  width: 150,
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery.of(context).size.width * 0.45,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: null,

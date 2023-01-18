@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sportzy/Heet/scoreScreen.dart';
+import 'package:sportzy/Heet/singleScoreScreen.dart';
 
 class SinglesBadminton extends StatefulWidget {
   const SinglesBadminton({Key? key}) : super(key: key);

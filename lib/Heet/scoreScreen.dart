@@ -207,7 +207,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.2,
+              height: MediaQuery.of(context).size.height * 0.15,
             ),
             Row(
               children: <Widget>[

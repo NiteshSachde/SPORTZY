@@ -96,13 +96,13 @@ class _OrganizerScreen extends State<OrganizerScreen> {
                           width: size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 15, 136, 236),
+                            color: Colors.white,
                           ),
                           child: Center(
                             child: Text(
                               "Cricket",
                               style: TextStyle(
-                                  color: Colors.white,
+                                  color: Color.fromARGB(255, 15, 136, 236),
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -116,13 +116,13 @@ class _OrganizerScreen extends State<OrganizerScreen> {
                           width: size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 15, 136, 236),
+                            color: Colors.white,
                           ),
                           child: Center(
                             child: Text(
                               "Table - Tennis",
                               style: TextStyle(
-                                  color: Colors.white,
+                                  color: Color.fromARGB(255, 15, 136, 236),
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),

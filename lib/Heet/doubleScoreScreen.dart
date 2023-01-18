@@ -18,6 +18,61 @@ class doubleScoreScreen extends StatefulWidget {
 }
 
 class _doubleScoreScreenState extends State<doubleScoreScreen> {
+  int _counterp1 = 0;
+  int _counterp2 = 0;
+  int _setCountp1 = 0;
+  int _setCountp2 = 0;
+  int _setNumber = 1;
+  late int _swap1;
+  late var _swapName;
+  void _decrementCountP1() {
+    setState(() {
+      if (_counterp1 < 1) {
+        return;
+      }
+      _counterp1--;
+    });
+  }
+
+  void _decrementCountP2() {
+    setState(() {
+      if (_counterp2 < 1) {
+        return;
+      }
+      _counterp2--;
+    });
+  }
+
+  void _resetAll() {
+    setState(() {
+      _counterp1 = 0;
+      _counterp2 = 0;
+      _setCountp1 = 0;
+      _setCountp2 = 0;
+      _setNumber = 1;
+    });
+  }
+
+  void _swapCourt() {
+    setState(() {
+      _swap1 = _counterp1;
+      _counterp1 = _counterp2;
+      _counterp2 = _swap1;
+
+      _swap1 = _setCountp1;
+      _setCountp1 = _setCountp2;
+      _setCountp2 = _swap1;
+
+      _swapName = widget.p1;
+      widget.p1 = widget.p3;
+      widget.p3 = _swapName;
+
+      _swapName = widget.p2;
+      widget.p2 = widget.p4;
+      widget.p4 = _swapName;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,49 +175,87 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.03,
+              height: MediaQuery.of(context).size.height * 0.02,
             ),
             Row(
               children: <Widget>[
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.025,
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.27,
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Color.fromARGB(255, 15, 136, 236),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "0",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 70,
-                          fontWeight: FontWeight.bold),
+                GestureDetector(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.27,
+                    width: MediaQuery.of(context).size.width * 0.45,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color.fromARGB(255, 15, 136, 236),
+                    ),
+                    child: Center(
+                      child: Text(
+                        ("${_counterp1}"),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 70,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
+                  onTap: () {
+                    setState(() {
+                      _counterp1++;
+
+                      if (_counterp1 == 21) {
+                        _counterp1 = 0;
+                        _counterp2 = 0;
+                        _setCountp1++;
+                        _setNumber++;
+                      }
+                      if (_setCountp1 == 2 || _setCountp2 == 2) {
+                        _setCountp1 = 0;
+                        _setCountp2 = 0;
+                        _setNumber = 1;
+                      }
+                    });
+                  },
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.05,
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.27,
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Color.fromARGB(255, 15, 136, 236),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "0",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 70,
-                          fontWeight: FontWeight.bold),
+                GestureDetector(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.27,
+                    width: MediaQuery.of(context).size.width * 0.45,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color.fromARGB(255, 15, 136, 236),
+                    ),
+                    child: Center(
+                      child: Text(
+                        ("${_counterp2}"),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 70,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
+                  onTap: (() {
+                    setState(() {
+                      _counterp2++;
+
+                      if (_counterp2 == 21) {
+                        _counterp1 = 0;
+                        _counterp2 = 0;
+                        _setCountp2++;
+                        _setNumber++;
+                      }
+                      if (_setCountp1 == 2 || _setCountp2 == 2) {
+                        _setCountp1 = 0;
+                        _setCountp2 = 0;
+                        _setNumber = 1;
+                      }
+                    });
+                  }),
                 ),
               ],
             ),
@@ -172,45 +265,45 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.033,
+                  width: MediaQuery.of(context).size.width * 0.15,
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: null,
-                  ),
-                  child: Center(
-                    child: Icon(
+                Center(
+                  child: IconButton(
+                    icon: Icon(
                       Icons.arrow_drop_down,
-                      color: Color.fromARGB(255, 15, 136, 236),
                       size: 65,
                     ),
+                    onPressed: _decrementCountP1,
+                    color: Color.fromARGB(255, 15, 136, 236),
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.04,
+                  width: MediaQuery.of(context).size.width * 0.15,
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: null,
-                  ),
-                  child: Center(
-                    child: Icon(
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.001,
+                ),
+                Text(
+                  "Set " + "${_setNumber}",
+                  style: TextStyle(fontSize: 26),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.05,
+                ),
+                Center(
+                  child: IconButton(
+                    icon: Icon(
                       Icons.arrow_drop_down,
-                      color: Color.fromARGB(255, 15, 136, 236),
                       size: 65,
                     ),
+                    color: Color.fromARGB(255, 15, 136, 236),
+                    onPressed: _decrementCountP2,
                   ),
                 ),
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.06,
+              height: MediaQuery.of(context).size.height * 0.04,
             ),
             Row(
               children: <Widget>[
@@ -226,7 +319,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      "0",
+                      ("${_setCountp1}"),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -246,7 +339,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      "0",
+                      ("${_setCountp2}"),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -257,7 +350,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
+              height: MediaQuery.of(context).size.height * 0.1,
             ),
             Row(
               children: <Widget>[
@@ -272,10 +365,13 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                     color: null,
                   ),
                   child: Center(
-                    child: Icon(
-                      Icons.swap_horiz_sharp,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.swap_horiz_sharp,
+                        size: 40,
+                      ),
                       color: Color.fromARGB(255, 15, 136, 236),
-                      size: 40,
+                      onPressed: _swapCourt,
                     ),
                   ),
                 ),
@@ -290,10 +386,13 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                     color: null,
                   ),
                   child: Center(
-                    child: Icon(
-                      Icons.replay,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.replay,
+                        size: 40,
+                      ),
+                      onPressed: _resetAll,
                       color: Color.fromARGB(255, 15, 136, 236),
-                      size: 40,
                     ),
                   ),
                 ),

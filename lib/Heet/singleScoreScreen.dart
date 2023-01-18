@@ -46,6 +46,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
       _counterp2 = 0;
       _setCountp1 = 0;
       _setCountp2 = 0;
+      _setNumber = 1;
     });
   }
 

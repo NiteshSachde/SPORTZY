@@ -15,6 +15,27 @@ class ScoreScreen extends StatefulWidget {
 }
 
 class _ScoreScreenState extends State<ScoreScreen> {
+  int _counterp1 = 0;
+  int _counterp2 = 0;
+
+  void _decrementCountP1() {
+    setState(() {
+      if (_counterp1 < 1) {
+        return;
+      }
+      _counterp1--;
+    });
+  }
+
+  void _decrementCountP2() {
+    setState(() {
+      if (_counterp2 < 1) {
+        return;
+      }
+      _counterp2--;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,42 +98,56 @@ class _ScoreScreenState extends State<ScoreScreen> {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.025,
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.27,
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Color.fromARGB(255, 15, 136, 236),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "0",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 70,
-                          fontWeight: FontWeight.bold),
+                GestureDetector(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.27,
+                    width: MediaQuery.of(context).size.width * 0.45,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color.fromARGB(255, 15, 136, 236),
+                    ),
+                    child: Center(
+                      child: Text(
+                        ("${_counterp1}"),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 70,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
+                  onTap: () {
+                    setState(() {
+                      _counterp1++;
+                    });
+                  },
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.05,
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.27,
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Color.fromARGB(255, 15, 136, 236),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "0",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 70,
-                          fontWeight: FontWeight.bold),
+                GestureDetector(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.27,
+                    width: MediaQuery.of(context).size.width * 0.45,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color.fromARGB(255, 15, 136, 236),
+                    ),
+                    child: Center(
+                      child: Text(
+                        ("${_counterp2}"),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 70,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
+                  onTap: (() {
+                    setState(() {
+                      _counterp2++;
+                    });
+                  }),
                 ),
               ],
             ),
@@ -122,39 +157,29 @@ class _ScoreScreenState extends State<ScoreScreen> {
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.033,
+                  width: MediaQuery.of(context).size.width * 0.15,
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: null,
-                  ),
-                  child: Center(
-                    child: Icon(
+                Center(
+                  child: IconButton(
+                    icon: Icon(
                       Icons.arrow_drop_down,
-                      color: Color.fromARGB(255, 15, 136, 236),
                       size: 65,
                     ),
+                    onPressed: _decrementCountP1,
+                    color: Color.fromARGB(255, 15, 136, 236),
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.04,
+                  width: MediaQuery.of(context).size.width * 0.36,
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: null,
-                  ),
-                  child: Center(
-                    child: Icon(
+                Center(
+                  child: IconButton(
+                    icon: Icon(
                       Icons.arrow_drop_down,
-                      color: Color.fromARGB(255, 15, 136, 236),
                       size: 65,
                     ),
+                    color: Color.fromARGB(255, 15, 136, 236),
+                    onPressed: _decrementCountP2,
                   ),
                 ),
               ],

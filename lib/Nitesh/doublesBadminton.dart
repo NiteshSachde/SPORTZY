@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sportzy/Heet/doubleScoreScreen.dart';
 
 class DoublesBadminton extends StatefulWidget {
   const DoublesBadminton({Key? key}) : super(key: key);
@@ -8,6 +9,10 @@ class DoublesBadminton extends StatefulWidget {
 }
 
 class _DoublesBadminton extends State<DoublesBadminton> {
+  TextEditingController _t1p1 = new TextEditingController();
+  TextEditingController _t1p2 = new TextEditingController();
+  TextEditingController _t2p1 = new TextEditingController();
+  TextEditingController _t2p2 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -89,6 +94,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
                             ],
                           ),
                           child: TextField(
+                            controller: _t1p1,
                             decoration: InputDecoration(
                                 icon: Padding(
                                   padding: const EdgeInsets.only(left: 20),
@@ -127,6 +133,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
                             ],
                           ),
                           child: TextField(
+                            controller: _t1p2,
                             decoration: InputDecoration(
                                 icon: Padding(
                                   padding: const EdgeInsets.only(left: 20),
@@ -177,6 +184,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
                             ],
                           ),
                           child: TextField(
+                            controller: _t2p1,
                             decoration: InputDecoration(
                                 icon: Padding(
                                   padding: const EdgeInsets.only(left: 20),
@@ -215,6 +223,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
                             ],
                           ),
                           child: TextField(
+                            controller: _t2p2,
                             decoration: InputDecoration(
                                 icon: Padding(
                                   padding: const EdgeInsets.only(left: 20),
@@ -240,22 +249,34 @@ class _DoublesBadminton extends State<DoublesBadminton> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.05,
                         ),
-                        Container(
-                          height: 50,
-                          width: size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 68, 167, 248),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Add Players",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                        GestureDetector(
+                          child: Container(
+                            height: 50,
+                            width: size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Color.fromARGB(255, 68, 167, 248),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Add Players",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
+                          onTap: (() {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    doubleScoreScreen(
+                                      p1: _t1p1.text,
+                                      p2: _t1p2.text,
+                                      p3: _t2p1.text,
+                                      p4: _t2p2.text,
+                                    )));
+                          }),
                         ),
                       ],
                     ),

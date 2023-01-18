@@ -17,7 +17,11 @@ class ScoreScreen extends StatefulWidget {
 class _ScoreScreenState extends State<ScoreScreen> {
   int _counterp1 = 0;
   int _counterp2 = 0;
-
+  int _setCountp1 = 0;
+  int _setCountp2 = 0;
+  int _setNumber = 1;
+  late int _swap1;
+  late var _swapName;
   void _decrementCountP1() {
     setState(() {
       if (_counterp1 < 1) {
@@ -33,6 +37,31 @@ class _ScoreScreenState extends State<ScoreScreen> {
         return;
       }
       _counterp2--;
+    });
+  }
+
+  void _resetAll() {
+    setState(() {
+      _counterp1 = 0;
+      _counterp2 = 0;
+      _setCountp1 = 0;
+      _setCountp2 = 0;
+    });
+  }
+
+  void _swapCourt() {
+    setState(() {
+      _swap1 = _counterp1;
+      _counterp1 = _counterp2;
+      _counterp2 = _swap1;
+
+      _swap1 = _setCountp1;
+      _setCountp1 = _setCountp2;
+      _setCountp2 = _swap1;
+
+      _swapName = widget.p1;
+      widget.p1 = widget.p2;
+      widget.p2 = _swapName;
     });
   }
 
@@ -119,6 +148,18 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   onTap: () {
                     setState(() {
                       _counterp1++;
+
+                      if (_counterp1 == 21) {
+                        _counterp1 = 0;
+                        _counterp2 = 0;
+                        _setCountp1++;
+                        _setNumber++;
+                      }
+                      if (_setCountp1 == 2 || _setCountp2 == 2) {
+                        _setCountp1 = 0;
+                        _setCountp2 = 0;
+                        _setNumber = 1;
+                      }
                     });
                   },
                 ),
@@ -146,6 +187,18 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   onTap: (() {
                     setState(() {
                       _counterp2++;
+
+                      if (_counterp2 == 21) {
+                        _counterp1 = 0;
+                        _counterp2 = 0;
+                        _setCountp2++;
+                        _setNumber++;
+                      }
+                      if (_setCountp1 == 2 || _setCountp2 == 2) {
+                        _setCountp1 = 0;
+                        _setCountp2 = 0;
+                        _setNumber = 1;
+                      }
                     });
                   }),
                 ),
@@ -170,7 +223,17 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.36,
+                  width: MediaQuery.of(context).size.width * 0.15,
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.001,
+                ),
+                Text(
+                  "Set " + "${_setNumber}",
+                  style: TextStyle(fontSize: 26),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.05,
                 ),
                 Center(
                   child: IconButton(
@@ -185,7 +248,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.06,
+              height: MediaQuery.of(context).size.height * 0.04,
             ),
             Row(
               children: <Widget>[
@@ -201,7 +264,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      "0",
+                      ("${_setCountp1}"),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -221,7 +284,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      "0",
+                      ("${_setCountp2}"),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -232,7 +295,10 @@ class _ScoreScreenState extends State<ScoreScreen> {
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.15,
+              height: MediaQuery.of(context).size.height * 0.03,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.19,
             ),
             Row(
               children: <Widget>[
@@ -247,10 +313,13 @@ class _ScoreScreenState extends State<ScoreScreen> {
                     color: null,
                   ),
                   child: Center(
-                    child: Icon(
-                      Icons.swap_horiz_sharp,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.swap_horiz_sharp,
+                        size: 40,
+                      ),
                       color: Color.fromARGB(255, 15, 136, 236),
-                      size: 40,
+                      onPressed: _swapCourt,
                     ),
                   ),
                 ),
@@ -265,10 +334,13 @@ class _ScoreScreenState extends State<ScoreScreen> {
                     color: null,
                   ),
                   child: Center(
-                    child: Icon(
-                      Icons.replay,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.replay,
+                        size: 40,
+                      ),
+                      onPressed: _resetAll,
                       color: Color.fromARGB(255, 15, 136, 236),
-                      size: 40,
                     ),
                   ),
                 ),

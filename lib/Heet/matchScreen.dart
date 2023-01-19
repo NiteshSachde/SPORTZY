@@ -241,7 +241,7 @@ class _matchScreenState extends State<matchScreen> {
                           onTap: (() {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    SinglesBadminton()));
+                                    Badminton()));
                           }),
                         ),
                       ],

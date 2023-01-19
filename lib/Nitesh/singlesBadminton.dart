@@ -189,7 +189,8 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                           ),
                           onTap: (() {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (BuildContext context) => ScoreScreen(
+                                builder: (BuildContext context) =>
+                                    SingleScoreScreen(
                                       p1: _p1.text,
                                       p2: _p2.text,
                                     )));

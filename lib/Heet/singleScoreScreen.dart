@@ -2,19 +2,19 @@
 
 import 'package:flutter/material.dart';
 
-class ScoreScreen extends StatefulWidget {
+class SingleScoreScreen extends StatefulWidget {
   var p1, p2;
-  ScoreScreen({
+  SingleScoreScreen({
     Key? mykey,
     required this.p1,
     required this.p2,
   }) : super(key: mykey);
 
   @override
-  State<ScoreScreen> createState() => _ScoreScreenState();
+  State<SingleScoreScreen> createState() => _SingleScoreScreen();
 }
 
-class _ScoreScreenState extends State<ScoreScreen> {
+class _SingleScoreScreen extends State<SingleScoreScreen> {
   int _counterp1 = 0;
   int _counterp2 = 0;
   int _setCountp1 = 0;

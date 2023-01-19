@@ -179,7 +179,7 @@ class _matchScreenState extends State<matchScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.03,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -218,23 +218,23 @@ class _matchScreenState extends State<matchScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.08,
                         ),
                         GestureDetector(
                           child: Container(
-                            margin: EdgeInsets.only(
-                                left: MediaQuery.of(context).size.width * 0.7),
                             height: 50,
                             width: size.width,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
-                              color: Color.fromARGB(255, 3, 140, 252),
+                              color: Color.fromARGB(255, 68, 167, 248),
                             ),
                             child: Center(
-                              child: Icon(
-                                Icons.keyboard_arrow_right_sharp,
-                                color: Colors.white,
-                                size: 35,
+                              child: Text(
+                                "Add Teams",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),

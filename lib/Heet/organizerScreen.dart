@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sportzy/Nitesh/badminton.dart';
+import 'package:sportzy/Heet/matchScreen.dart';
 
 class OrganizerScreen extends StatefulWidget {
   const OrganizerScreen({Key? key}) : super(key: key);
@@ -85,7 +86,7 @@ class _OrganizerScreen extends State<OrganizerScreen> {
                           onTap: (() {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    Badminton()));
+                                    matchScreen()));
                           }),
                         ),
                         SizedBox(

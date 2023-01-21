@@ -50,7 +50,7 @@ class _matchScreenState extends State<matchScreen> {
                     "Match Details",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 40,
+                        fontSize: 34,
                         fontWeight: FontWeight.bold),
                   ),
                 ),

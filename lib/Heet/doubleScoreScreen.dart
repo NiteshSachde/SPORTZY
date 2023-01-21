@@ -128,7 +128,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.005,
+              height: MediaQuery.of(context).size.height * 0.01,
             ),
             Row(
               children: <Widget>[
@@ -355,7 +355,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.06,
+                  width: MediaQuery.of(context).size.width * 0.04,
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.07,
@@ -374,9 +374,6 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                       onPressed: _swapCourt,
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.02,
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.07,

@@ -101,11 +101,11 @@ class _LoginPageState extends State<LoginPage> {
                                 icon: Padding(
                                   padding: const EdgeInsets.only(left: 20),
                                   child: Icon(
-                                    Icons.person,
+                                    Icons.phone,
                                     color: Color.fromARGB(149, 0, 0, 0),
                                   ),
                                 ),
-                                hintText: "Email or Phone Number",
+                                hintText: "Phone Number",
                                 hintStyle: TextStyle(color: Colors.grey),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(30),

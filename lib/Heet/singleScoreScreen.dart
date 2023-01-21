@@ -304,7 +304,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.06,
+                  width: MediaQuery.of(context).size.width * 0.04,
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.07,
@@ -323,9 +323,6 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                       onPressed: _swapCourt,
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.02,
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.07,

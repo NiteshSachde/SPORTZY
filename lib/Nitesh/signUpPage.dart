@@ -126,7 +126,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     icon: Padding(
                                       padding: const EdgeInsets.only(left: 20),
                                       child: Icon(
-                                        Icons.dialpad,
+                                        Icons.phone,
                                         color: Color.fromARGB(149, 0, 0, 0),
                                       ),
                                     ),

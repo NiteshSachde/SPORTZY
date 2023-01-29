@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sportzy/Heet/organizerScreen.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:sportzy/Heet/viewerScreen.dart';
+//import 'package:sportzy/Heet/viewerScreen.dart';
+
+import '../Nitesh/matchtabbar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,10 +15,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
+  // ignore: unused_field
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   List<Widget> _widgetOptions = <Widget>[
-    viewerScreen(),
+    MatchTabBar(),
     OrganizerScreen(),
   ];
 

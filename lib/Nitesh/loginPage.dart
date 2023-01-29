@@ -66,17 +66,16 @@ class _LoginPageState extends State<LoginPage> {
               height: MediaQuery.of(context).size.height * 0.07,
             ),
             Expanded(
-              child: SingleChildScrollView(
-                physics: NeverScrollableScrollPhysics(),
-                child: Container(
-                  height: size.height,
-                  width: size.width,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50)),
-                  ),
+              child: Container(
+                height: size.height,
+                width: size.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50)),
+                ),
+                child: SingleChildScrollView(
                   child: Container(
                     margin: EdgeInsets.only(left: 25, right: 25),
                     child: Column(

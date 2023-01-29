@@ -13,6 +13,7 @@ class Badminton extends StatefulWidget {
 class _Badminton extends State<Badminton> {
   int _selectedIndex = 0;
 
+  // ignore: unused_field
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   List<Widget> _widgetOptions = <Widget>[

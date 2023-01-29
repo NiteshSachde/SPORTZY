@@ -1,10 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:sportzy/Heet/HomePage.dart';
+
 import 'package:sportzy/Nitesh/badminton.dart';
-import 'package:sportzy/Heet/singleScoreScreen.dart';
-import 'package:sportzy/Nitesh/singlesBadminton.dart';
 
 class matchScreen extends StatefulWidget {
   const matchScreen({Key? key}) : super(key: key);

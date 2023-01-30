@@ -1,7 +1,10 @@
 // ignore_for_file: unused_local_variable
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'package:sportzy/Nitesh/loginPage.dart';
+import 'package:sportzy/Nitesh/signUpPage.dart';
 
 class VerifyOtp extends StatefulWidget {
   const VerifyOtp({Key? key}) : super(key: key);
@@ -11,6 +14,8 @@ class VerifyOtp extends StatefulWidget {
 }
 
 class _VerifyOtp extends State<VerifyOtp> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  var code = "";
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -110,10 +115,10 @@ class _VerifyOtp extends State<VerifyOtp> {
                             ),
                             Pinput(
                               length: 6,
-                              pinputAutovalidateMode:
-                                  PinputAutovalidateMode.onSubmit,
                               showCursor: true,
-                              onCompleted: (pin) => print(pin),
+                              onChanged: (value) {
+                                code = value;
+                              },
                             ),
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.04,
@@ -135,22 +140,41 @@ class _VerifyOtp extends State<VerifyOtp> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.07,
                             ),
-                            Container(
-                              height: 50,
-                              width: size.width,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                color: Color.fromARGB(255, 68, 167, 248),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Register",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
+                            GestureDetector(
+                              child: Container(
+                                height: 50,
+                                width: size.width,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: Color.fromARGB(255, 68, 167, 248),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "Register",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
                               ),
+                              onTap: () async {
+                                try {
+                                  PhoneAuthCredential credential =
+                                      PhoneAuthProvider.credential(
+                                          verificationId: SignUpPage.verify,
+                                          smsCode: code);
+
+                                  // Sign the user in (or link) with the credential
+                                  await auth.signInWithCredential(credential);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginPage()));
+                                } catch (e) {
+                                  print("Wrong OTP!");
+                                }
+                              },
                             ),
                           ],
                         ),

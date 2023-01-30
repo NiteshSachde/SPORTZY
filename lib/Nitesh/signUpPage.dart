@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sportzy/Nitesh/verifyOtp.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
-
+  static String verify = "";
   @override
   State<SignUpPage> createState() => _SignUpPageState();
 }
@@ -11,6 +12,8 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   bool passObscured = true;
   bool conpassObscured = true;
+  var phone = "";
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -121,7 +124,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ],
                               ),
                               child: TextField(
-                                keyboardType: TextInputType.number,
+                                onChanged: (value) {
+                                  phone = value;
+                                },
+                                keyboardType: TextInputType.phone,
                                 decoration: InputDecoration(
                                     icon: Padding(
                                       padding: const EdgeInsets.only(left: 20),
@@ -278,11 +284,24 @@ class _SignUpPageState extends State<SignUpPage> {
                                   ),
                                 ),
                               ),
-                              onTap: (() {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => VerifyOtp()));
+                              onTap: (() async {
+                                await FirebaseAuth.instance.verifyPhoneNumber(
+                                  phoneNumber: '${phone}',
+                                  verificationCompleted:
+                                      (PhoneAuthCredential credential) {},
+                                  verificationFailed:
+                                      (FirebaseAuthException e) {},
+                                  codeSent: (String verificationId,
+                                      int? resendToken) {
+                                    SignUpPage.verify = verificationId;
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => VerifyOtp()));
+                                  },
+                                  codeAutoRetrievalTimeout:
+                                      (String verificationId) {},
+                                );
                               }),
                             ),
                             SizedBox(

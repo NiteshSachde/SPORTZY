@@ -13,6 +13,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool passwordObscured = true;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -207,7 +208,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          onTap: (() {
+                          onTap: (() async {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (BuildContext context) => HomePage()));
                           }),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gender_picker/source/enums.dart';
+import 'package:sportzy/Heet/HomePage.dart';
 import '../Nitesh/badminton.dart';
+import 'package:gender_picker/source/gender_picker.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -42,7 +45,7 @@ class _ProfileState extends State<Profile> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
                   child: Text(
-                    "Register To Sportzy",
+                    "Create Profile",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 34,
@@ -123,19 +126,16 @@ class _ProfileState extends State<Profile> {
                                 ],
                               ),
                               child: TextField(
-                                onChanged: (value) {
-                                  phone = value;
-                                },
-                                keyboardType: TextInputType.phone,
+                                keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                     icon: Padding(
                                       padding: const EdgeInsets.only(left: 20),
                                       child: Icon(
-                                        Icons.phone,
+                                        Icons.email,
                                         color: Color.fromARGB(149, 0, 0, 0),
                                       ),
                                     ),
-                                    hintText: "Phone Number",
+                                    hintText: "Enter Email",
                                     hintStyle: TextStyle(color: Colors.grey),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(30),
@@ -166,32 +166,17 @@ class _ProfileState extends State<Profile> {
                                 ],
                               ),
                               child: TextField(
-                                obscureText: passObscured,
+                                //keyboardType: TextInputType.phone,
+                                keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     icon: Padding(
                                       padding: const EdgeInsets.only(left: 20),
                                       child: Icon(
-                                        Icons.lock,
+                                        Icons.calendar_month,
                                         color: Color.fromARGB(149, 0, 0, 0),
                                       ),
                                     ),
-                                    suffixIcon: Padding(
-                                      padding: const EdgeInsets.only(right: 25),
-                                      child: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            passObscured = !passObscured;
-                                          });
-                                        },
-                                        icon: Icon(
-                                          passObscured
-                                              ? Icons.visibility_off
-                                              : Icons.visibility,
-                                        ),
-                                        color: Color.fromARGB(149, 0, 0, 0),
-                                      ),
-                                    ),
-                                    hintText: "Enter Password",
+                                    hintText: "Enter Age",
                                     hintStyle: TextStyle(color: Colors.grey),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(30),
@@ -207,61 +192,9 @@ class _ProfileState extends State<Profile> {
                               ),
                             ),
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.03,
+                              height: MediaQuery.of(context).size.height * 0.02,
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      blurRadius: 10,
-                                      spreadRadius: 7,
-                                      offset: Offset(1, 1),
-                                      color: Colors.grey.withOpacity(0.3)),
-                                ],
-                              ),
-                              child: TextField(
-                                obscureText: conpassObscured,
-                                decoration: InputDecoration(
-                                    icon: Padding(
-                                      padding: const EdgeInsets.only(left: 20),
-                                      child: Icon(
-                                        Icons.lock,
-                                        color: Color.fromARGB(149, 0, 0, 0),
-                                      ),
-                                    ),
-                                    suffixIcon: Padding(
-                                      padding: const EdgeInsets.only(right: 25),
-                                      child: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            conpassObscured = !conpassObscured;
-                                          });
-                                        },
-                                        icon: Icon(
-                                          conpassObscured
-                                              ? Icons.visibility_off
-                                              : Icons.visibility,
-                                        ),
-                                        color: Color.fromARGB(149, 0, 0, 0),
-                                      ),
-                                    ),
-                                    hintText: "Confirm Password",
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                        borderSide: BorderSide(
-                                            color: Colors.white, width: 1.0)),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                        borderSide: BorderSide(
-                                            color: Colors.white, width: 1.0)),
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(30))),
-                              ),
-                            ),
+                            _genderWidget(true, true),
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.08,
                             ),
@@ -275,7 +208,7 @@ class _ProfileState extends State<Profile> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "Send OTP",
+                                    "Add Profile",
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 20,
@@ -286,7 +219,7 @@ class _ProfileState extends State<Profile> {
                               onTap: (() {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                        Badminton()));
+                                        HomePage()));
                               }),
                             ),
                             SizedBox(
@@ -316,6 +249,29 @@ class _ProfileState extends State<Profile> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _genderWidget(bool _showOther, bool _alignment) {
+    return Container(
+      margin: EdgeInsets.all(10),
+      alignment: Alignment.center,
+      child: GenderPickerWithImage(
+        showOtherGender: _showOther,
+        verticalAlignedText: _alignment,
+        onChanged: (Gender? gender) {
+          print(gender);
+        },
+        selectedGender: Gender.Male,
+        selectedGenderTextStyle: TextStyle(fontWeight: FontWeight.bold),
+        unSelectedGenderTextStyle: TextStyle(fontWeight: FontWeight.normal),
+        equallyAligned: true,
+        size: 65,
+        animationDuration: Duration(seconds: 1),
+        isCircular: true,
+        opacityOfGradient: 0.3,
+        padding: EdgeInsets.all(10),
       ),
     );
   }

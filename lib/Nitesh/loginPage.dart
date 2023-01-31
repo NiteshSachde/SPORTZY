@@ -1,7 +1,8 @@
 // ignore_for_file: file_names
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Heet/HomePage.dart';
+import 'package:sportzy/Nitesh/verifyOtp.dart';
 import './signUpPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,8 +13,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool passwordObscured = true;
-
+  var phone = "";
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
                   child: Text(
-                    "Login",
+                    "Get Started !",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 40,
@@ -82,7 +82,32 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.12,
+                          height: MediaQuery.of(context).size.height * 0.04,
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              'assets/images/Sportzy_Blue_Final_Transparent.png',
+                              width: 150,
+                              height: 150,
+                            ),
+                            Text(
+                              " Sportzy",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 36,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.04,
+                            ),
+                          ],
+                        ),
+
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.06,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -97,6 +122,10 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                           ),
                           child: TextField(
+                            onChanged: (value) {
+                              phone = value;
+                            },
+                            keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                                 icon: Padding(
                                   padding: const EdgeInsets.only(left: 20),
@@ -122,73 +151,73 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.03,
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 10,
-                                  spreadRadius: 7,
-                                  offset: Offset(1, 1),
-                                  color: Colors.grey.withOpacity(0.3)),
-                            ],
-                          ),
-                          child: TextField(
-                            obscureText: passwordObscured,
-                            decoration: InputDecoration(
-                                icon: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Icon(
-                                    Icons.lock,
-                                    color: Color.fromARGB(149, 0, 0, 0),
-                                  ),
-                                ),
-                                suffixIcon: Padding(
-                                  padding: const EdgeInsets.only(right: 25),
-                                  child: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        passwordObscured = !passwordObscured;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      passwordObscured
-                                          ? Icons.visibility_off
-                                          : Icons.visibility,
-                                    ),
-                                    color: Color.fromARGB(149, 0, 0, 0),
-                                  ),
-                                ),
-                                hintText: "Password",
-                                hintStyle: TextStyle(color: Colors.grey),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1.0)),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1.0)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30))),
-                          ),
-                        ),
+                        // Container(
+                        //   decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(30),
+                        //     color: Colors.white,
+                        //     boxShadow: [
+                        //       BoxShadow(
+                        //           blurRadius: 10,
+                        //           spreadRadius: 7,
+                        //           offset: Offset(1, 1),
+                        //           color: Colors.grey.withOpacity(0.3)),
+                        //     ],
+                        //   ),
+                        //   child: TextField(
+                        //     obscureText: passwordObscured,
+                        //     decoration: InputDecoration(
+                        //         icon: Padding(
+                        //           padding: const EdgeInsets.only(left: 20),
+                        //           child: Icon(
+                        //             Icons.lock,
+                        //             color: Color.fromARGB(149, 0, 0, 0),
+                        //           ),
+                        //         ),
+                        //         suffixIcon: Padding(
+                        //           padding: const EdgeInsets.only(right: 25),
+                        //           child: IconButton(
+                        //             onPressed: () {
+                        //               setState(() {
+                        //                 passwordObscured = !passwordObscured;
+                        //               });
+                        //             },
+                        //             icon: Icon(
+                        //               passwordObscured
+                        //                   ? Icons.visibility_off
+                        //                   : Icons.visibility,
+                        //             ),
+                        //             color: Color.fromARGB(149, 0, 0, 0),
+                        //           ),
+                        //         ),
+                        //         hintText: "Password",
+                        //         hintStyle: TextStyle(color: Colors.grey),
+                        //         focusedBorder: OutlineInputBorder(
+                        //             borderRadius: BorderRadius.circular(30),
+                        //             borderSide: BorderSide(
+                        //                 color: Colors.white, width: 1.0)),
+                        //         enabledBorder: OutlineInputBorder(
+                        //             borderRadius: BorderRadius.circular(30),
+                        //             borderSide: BorderSide(
+                        //                 color: Colors.white, width: 1.0)),
+                        //         border: OutlineInputBorder(
+                        //             borderRadius: BorderRadius.circular(30))),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: MediaQuery.of(context).size.height * 0.04,
+                        // ),
+                        // Container(
+                        //   margin: EdgeInsets.only(
+                        //       left: MediaQuery.of(context).size.width * 0.5),
+                        //   child: Text(
+                        //     "Forgot Password ?",
+                        //     style: TextStyle(
+                        //         color: Color.fromARGB(255, 2, 54, 133),
+                        //         fontSize: 13),
+                        //   ),
+                        // ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.5),
-                          child: Text(
-                            "Forgot Password ?",
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 2, 54, 133),
-                                fontSize: 13),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.02,
                         ),
                         GestureDetector(
                           child: Container(
@@ -200,7 +229,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             child: Center(
                               child: Text(
-                                "Login",
+                                "Send OTP",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,
@@ -209,41 +238,55 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           onTap: (() async {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (BuildContext context) => HomePage()));
+                            await FirebaseAuth.instance.verifyPhoneNumber(
+                              phoneNumber: '+91${phone}',
+                              verificationCompleted:
+                                  (PhoneAuthCredential credential) {},
+                              verificationFailed: (FirebaseAuthException e) {},
+                              codeSent:
+                                  (String verificationId, int? resendToken) {
+                                SignUpPage.verify = verificationId;
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => VerifyOtp()));
+                              },
+                              codeAutoRetrievalTimeout:
+                                  (String verificationId) {},
+                            );
                           }),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.03,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Don't have account ? ",
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 99, 98, 98)),
-                            ),
-                            GestureDetector(
-                              child: Text(
-                                "Create an account now",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 2, 54, 133),
-                                ),
-                              ),
-                              onTap: (() {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SignUpPage()));
-                              }),
-                            )
-                          ],
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     Text(
+                        //       "Don't have account ? ",
+                        //       style: TextStyle(
+                        //           fontSize: 14,
+                        //           fontWeight: FontWeight.bold,
+                        //           color: Color.fromARGB(255, 99, 98, 98)),
+                        //     ),
+                        //     GestureDetector(
+                        //       child: Text(
+                        //         "Create an account now",
+                        //         style: TextStyle(
+                        //           fontSize: 14,
+                        //           fontWeight: FontWeight.bold,
+                        //           color: Color.fromARGB(255, 2, 54, 133),
+                        //         ),
+                        //       ),
+                        //       onTap: (() {
+                        //         Navigator.push(
+                        //             context,
+                        //             MaterialPageRoute(
+                        //                 builder: (context) => SignUpPage()));
+                        //       }),
+                        //     )
+                        //   ],
+                        // ),
                       ],
                     ),
                   ),

@@ -3,8 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import 'package:sportzy/Nitesh/loginPage.dart';
-import 'package:sportzy/Nitesh/signUpPage.dart';
+import 'package:sportzy/Heet/profile.dart';
 
 class VerifyOtp extends StatefulWidget {
   const VerifyOtp({Key? key}) : super(key: key);
@@ -150,7 +149,7 @@ class _VerifyOtp extends State<VerifyOtp> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "Register",
+                                    "Let's Start",
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 20,
@@ -162,7 +161,7 @@ class _VerifyOtp extends State<VerifyOtp> {
                                 try {
                                   PhoneAuthCredential credential =
                                       PhoneAuthProvider.credential(
-                                          verificationId: SignUpPage.verify,
+                                          verificationId: Profile.verify,
                                           smsCode: code);
 
                                   // Sign the user in (or link) with the credential
@@ -170,7 +169,7 @@ class _VerifyOtp extends State<VerifyOtp> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => LoginPage()));
+                                          builder: (context) => Profile()));
                                 } catch (e) {
                                   print("Wrong OTP!");
                                 }

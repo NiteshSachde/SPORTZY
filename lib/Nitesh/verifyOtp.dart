@@ -1,12 +1,28 @@
 // ignore_for_file: unused_local_variable
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import 'package:sportzy/Heet/profile.dart';
+import 'package:sportzy/Heet/HomePage.dart';
+// import 'package:sportzy/Heet/profile.dart';
+import 'package:sportzy/Nitesh/loginPage.dart';
 
+// ignore: must_be_immutable
 class VerifyOtp extends StatefulWidget {
-  const VerifyOtp({Key? key}) : super(key: key);
+  var unumber;
+  final String uname;
+  final String uemail;
+  final String uage;
+  final String ugender;
+  VerifyOtp({
+    Key? key,
+    required this.unumber,
+    required this.uname,
+    required this.uemail,
+    required this.uage,
+    required this.ugender,
+  }) : super(key: key);
 
   @override
   State<VerifyOtp> createState() => _VerifyOtp();
@@ -15,6 +31,7 @@ class VerifyOtp extends StatefulWidget {
 class _VerifyOtp extends State<VerifyOtp> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   var code = "";
+  late var userid;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -161,15 +178,29 @@ class _VerifyOtp extends State<VerifyOtp> {
                                 try {
                                   PhoneAuthCredential credential =
                                       PhoneAuthProvider.credential(
-                                          verificationId: Profile.verify,
+                                          verificationId: LoginPage.verify,
                                           smsCode: code);
 
                                   // Sign the user in (or link) with the credential
-                                  await auth.signInWithCredential(credential);
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Profile()));
+                                  await auth
+                                      .signInWithCredential(credential)
+                                      .then((value) {
+                                    FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(value.user!.uid)
+                                        .set({
+                                      'number': widget.unumber,
+                                      'name': widget.uname,
+                                      'email': widget.uemail,
+                                      'age': widget.uage,
+                                      'gender': widget.ugender,
+                                    });
+                                  }).then((value) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => HomePage()));
+                                  });
                                 } catch (e) {
                                   print("Wrong OTP!");
                                 }

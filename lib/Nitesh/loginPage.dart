@@ -2,6 +2,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sportzy/Heet/HomePage.dart';
+import 'package:sportzy/Heet/profile.dart';
 import 'package:sportzy/Nitesh/verifyOtp.dart';
 import './signUpPage.dart';
 
@@ -237,24 +239,30 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          onTap: (() async {
-                            await FirebaseAuth.instance.verifyPhoneNumber(
-                              phoneNumber: '+91${phone}',
-                              verificationCompleted:
-                                  (PhoneAuthCredential credential) {},
-                              verificationFailed: (FirebaseAuthException e) {},
-                              codeSent:
-                                  (String verificationId, int? resendToken) {
-                                SignUpPage.verify = verificationId;
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => VerifyOtp()));
-                              },
-                              codeAutoRetrievalTimeout:
-                                  (String verificationId) {},
-                            );
-                          }),
+                          // onTap: (() async {
+                          //   await FirebaseAuth.instance.verifyPhoneNumber(
+                          //     phoneNumber: '${phone}',
+                          //     verificationCompleted:
+                          //         (PhoneAuthCredential credential) {},
+                          //     verificationFailed: (FirebaseAuthException e) {},
+                          //     codeSent:
+                          //         (String verificationId, int? resendToken) {
+                          //       SignUpPage.verify = verificationId;
+                          //       Navigator.push(
+                          //           context,
+                          //           MaterialPageRoute(
+                          //               builder: (context) => Profile()));
+                          //     },
+                          //     codeAutoRetrievalTimeout:
+                          //         (String verificationId) {},
+                          //   );
+                          // }),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Profile()));
+                          },
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.03,

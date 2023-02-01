@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sportzy/Heet/HomePage.dart';
 import 'package:sportzy/Nitesh/loginPage.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sportzy/Nitesh/signUpPage.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -8,15 +11,40 @@ Future main() async {
   runApp(Sportzy());
 }
 
-class Sportzy extends StatelessWidget {
+class Sportzy extends StatefulWidget {
   const Sportzy({super.key});
 
+  @override
+  State<Sportzy> createState() => _SportzyState();
+}
+
+class _SportzyState extends State<Sportzy> {
   // This widget is the root of your application.
+  var auth = FirebaseAuth.instance;
+  var isUser = false;
+
+  checkIfUser() async {
+    auth.authStateChanges().listen((User? user) {
+      if (user != null && mounted) {
+        setState(() {
+          isUser = true;
+        });
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    checkIfUser();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: isUser ? HomePage() : SignUpPage(),
     );
   }
 }

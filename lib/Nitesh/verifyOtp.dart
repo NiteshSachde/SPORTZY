@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sportzy/Heet/HomePage.dart';
 // import 'package:sportzy/Heet/profile.dart';
-import 'package:sportzy/Nitesh/loginPage.dart';
+// import 'package:sportzy/Nitesh/loginPage.dart';
+import 'package:sportzy/Nitesh/signUpPage.dart';
 
 // ignore: must_be_immutable
 class VerifyOtp extends StatefulWidget {
@@ -178,7 +179,7 @@ class _VerifyOtp extends State<VerifyOtp> {
                                 try {
                                   PhoneAuthCredential credential =
                                       PhoneAuthProvider.credential(
-                                          verificationId: LoginPage.verify,
+                                          verificationId: SignUpPage.verify,
                                           smsCode: code);
 
                                   // Sign the user in (or link) with the credential

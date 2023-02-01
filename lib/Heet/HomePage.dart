@@ -4,6 +4,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 //import 'package:sportzy/Heet/viewerScreen.dart';
 
 import '../Nitesh/matchtabbar.dart';
+import '../Nitesh/userProfile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,10 +22,12 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _widgetOptions = <Widget>[
     MatchTabBar(),
     OrganizerScreen(),
+    UserProfile(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -36,7 +39,7 @@ class _HomePageState extends State<HomePage> {
           color: Color.fromARGB(255, 69, 137, 254),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
           child: GNav(
             backgroundColor: Color.fromARGB(255, 69, 137, 254),
             color: Colors.white,
@@ -61,7 +64,15 @@ class _HomePageState extends State<HomePage> {
                   fontSize: 18,
                   color: Color.fromARGB(255, 25, 100, 231),
                 ),
-              )
+              ),
+              GButton(
+                icon: Icons.person,
+                text: "Profile",
+                textStyle: TextStyle(
+                  fontSize: 18,
+                  color: Color.fromARGB(255, 25, 100, 231),
+                ),
+              ),
             ],
             selectedIndex: _selectedIndex,
             onTabChange: (index) {

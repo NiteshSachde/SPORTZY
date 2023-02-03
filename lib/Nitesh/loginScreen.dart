@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:sportzy/Heet/HomePage.dart';
+import 'package:sportzy/Page_Backup/signUpPage.dart';
+
+import '../Heet/SignupScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,6 +16,13 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   // form key
   final _formKey = GlobalKey<FormState>();
+  var _obscureText;
+  @override
+  void initState() {
+    // TODO: implement initState
+    _obscureText = true;
+    super.initState();
+  }
 
   // editing controller
   final TextEditingController emailcontroller = new TextEditingController();
@@ -19,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     // email field
     final emailField = TextFormField(
       autofocus: false,
@@ -30,9 +42,12 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-          prefixIcon: Icon(Icons.mail),
+          prefixIcon: Padding(
+            padding: const EdgeInsetsDirectional.only(start: 8),
+            child: Icon(Icons.mail),
+          ),
           contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
-          hintText: "E-mail",
+          hintText: "Enter Email",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
     );
     // password field
@@ -44,12 +59,48 @@ class _LoginScreenState extends State<LoginScreen> {
         passwordcontroller.text = value!;
       },
       textInputAction: TextInputAction.done,
+      obscureText: _obscureText,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.lock),
+        prefixIcon: Padding(
+          padding: const EdgeInsetsDirectional.only(start: 8),
+          child: Icon(Icons.lock),
+        ),
+        suffixIcon: IconButton(
+          padding: EdgeInsetsDirectional.only(end: 12),
+          icon: _obscureText
+              ? Icon(Icons.visibility)
+              // ignore: dead_code
+              : Icon(Icons.visibility_off),
+          onPressed: () {
+            setState(() {
+              _obscureText = !_obscureText;
+            });
+          },
+        ),
         contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
         hintText: "Password",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
+        ),
+      ),
+    );
+    // login button
+    final LoginButton = Material(
+      elevation: 5,
+      borderRadius: BorderRadius.circular(30),
+      color: Color.fromARGB(255, 50, 115, 228),
+      child: MaterialButton(
+        padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        minWidth: MediaQuery.of(context).size.width,
+        onPressed: (() {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+        }),
+        child: Text(
+          "Login",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
     );
@@ -82,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
                     child: Text(
-                      "Get Started !",
+                      "Login",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 40,
@@ -118,48 +169,80 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: SingleChildScrollView(
                     child: Container(
                       margin: EdgeInsets.only(left: 25, right: 25),
-                      child: Expanded(
-                        child: Column(
-                          children: <Widget>[
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.05,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  'assets/images/Sportzy_Blue_Final_Transparent.png',
-                                  width: 150,
-                                  height: 150,
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/Sportzy_Blue_Final_Transparent.png',
+                                width: 150,
+                                height: 150,
+                              ),
+                              Text(
+                                " Sportzy",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 36,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            child: Form(
+                                child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.03,
                                 ),
-                                Text(
-                                  " Sportzy",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 36,
-                                      fontWeight: FontWeight.bold),
+                                emailField,
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
                                 ),
+                                passwordField,
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.05,
+                                ),
+                                LoginButton,
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.03,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Text(
+                                      "Don't have an account ? ",
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    GestureDetector(
+                                        onTap: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          SignupScreen()));
+                                        },
+                                        child: Text(
+                                          "SignUp",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 50, 115, 228),
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
+                                        ))
+                                  ],
+                                )
                               ],
-                            ),
-                            Container(
-                              child: Form(
-                                  child: Column(
-                                children: <Widget>[
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.03,
-                                  ),
-                                  emailField,
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.02,
-                                  ),
-                                  passwordField,
-                                ],
-                              )),
-                            )
-                          ],
-                        ),
+                            )),
+                          )
+                        ],
                       ),
                     ),
                   ),

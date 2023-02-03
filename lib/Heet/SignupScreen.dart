@@ -13,21 +13,33 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   // form key
   final _formKey = GlobalKey<FormState>();
+  var _pobscureText;
+  var _cpobscureText;
+  @override
+  void initState() {
+    // TODO: implement initState
+    _pobscureText = true;
+    _cpobscureText = true;
+    super.initState();
+  }
 
   // editing controller
+  final TextEditingController namecontroller = new TextEditingController();
   final TextEditingController emailcontroller = new TextEditingController();
   final TextEditingController passwordcontroller = new TextEditingController();
+  final TextEditingController confirmpasscontroller =
+      new TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    // email field
+    // name field
     final nameField = TextFormField(
       autofocus: false,
-      controller: emailcontroller,
+      controller: namecontroller,
       keyboardType: TextInputType.emailAddress,
       // validator: (){},
       onSaved: (value) {
-        emailcontroller.text = value!;
+        namecontroller.text = value!;
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
@@ -36,13 +48,13 @@ class _SignupScreenState extends State<SignupScreen> {
           hintText: "Enter Name",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
     );
-    // password field
+    // email field
     final emailField = TextFormField(
       autofocus: false,
-      controller: passwordcontroller,
+      controller: emailcontroller,
       // validator: (){},
       onSaved: (value) {
-        passwordcontroller.text = value!;
+        emailcontroller.text = value!;
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
@@ -54,6 +66,7 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ),
     );
+    // password field
     final passwordField = TextFormField(
       autofocus: false,
       controller: passwordcontroller,
@@ -62,8 +75,21 @@ class _SignupScreenState extends State<SignupScreen> {
         passwordcontroller.text = value!;
       },
       textInputAction: TextInputAction.done,
+      obscureText: _pobscureText,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.lock),
+        suffixIcon: IconButton(
+          padding: EdgeInsetsDirectional.only(end: 12),
+          icon: _pobscureText
+              ? Icon(Icons.visibility)
+              // ignore: dead_code
+              : Icon(Icons.visibility_off),
+          onPressed: () {
+            setState(() {
+              _pobscureText = !_pobscureText;
+            });
+          },
+        ),
         contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
         hintText: "Password",
         border: OutlineInputBorder(
@@ -71,16 +97,30 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ),
     );
+    // confirm password field
     final confirmpasswordField = TextFormField(
       autofocus: false,
-      controller: passwordcontroller,
+      controller: confirmpasscontroller,
       // validator: (){},
       onSaved: (value) {
-        passwordcontroller.text = value!;
+        confirmpasscontroller.text = value!;
       },
       textInputAction: TextInputAction.done,
+      obscureText: _cpobscureText,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.lock),
+        suffixIcon: IconButton(
+          padding: EdgeInsetsDirectional.only(end: 12),
+          icon: _cpobscureText
+              ? Icon(Icons.visibility)
+              // ignore: dead_code
+              : Icon(Icons.visibility_off),
+          onPressed: () {
+            setState(() {
+              _cpobscureText = !_cpobscureText;
+            });
+          },
+        ),
         contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
         hintText: "Confirm Password",
         border: OutlineInputBorder(
@@ -88,6 +128,7 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ),
     );
+    // signUp button
     final SignupButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
@@ -204,7 +245,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   confirmpasswordField,
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
-                                        0.08,
+                                        0.05,
                                   ),
                                   SignupButton,
                                 ],

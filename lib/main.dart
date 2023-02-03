@@ -1,4 +1,5 @@
 // import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // import 'package:sportzy/Heet/HomePage.dart';
 // import 'package:sportzy/Page_Backup/loginPage.dart';
@@ -8,7 +9,9 @@ import 'Heet/SignupScreen.dart';
 
 import 'Nitesh/loginScreen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(Sportzy());
 }
 
@@ -19,7 +22,7 @@ class Sportzy extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignupScreen(),
+      home: LoginScreen(),
     );
   }
 }

@@ -63,7 +63,7 @@ class _UserProfileState extends State<UserProfile> {
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.17,
+                          height: MediaQuery.of(context).size.height * 0.1,
                         ),
                         GestureDetector(
                           child: Container(

@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sportzy/Heet/HomePage.dart';
 import 'package:sportzy/Page_Backup/signUpPage.dart';
 
@@ -27,6 +29,9 @@ class _LoginScreenState extends State<LoginScreen> {
   // editing controller
   final TextEditingController emailcontroller = new TextEditingController();
   final TextEditingController passwordcontroller = new TextEditingController();
+
+  // firebase
+  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -36,7 +41,16 @@ class _LoginScreenState extends State<LoginScreen> {
       autofocus: false,
       controller: emailcontroller,
       keyboardType: TextInputType.emailAddress,
-      // validator: (){},
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return ("Please enter your email !");
+        }
+        // reg expression for email validation
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
+          return ("Please enter a valid email !");
+        }
+        return null;
+      },
       onSaved: (value) {
         emailcontroller.text = value!;
       },
@@ -54,7 +68,15 @@ class _LoginScreenState extends State<LoginScreen> {
     final passwordField = TextFormField(
       autofocus: false,
       controller: passwordcontroller,
-      // validator: (){},
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ("Password is required for login !");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Password must contain minimum 6 character !");
+        }
+      },
       onSaved: (value) {
         passwordcontroller.text = value!;
       },
@@ -93,8 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: (() {
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+          signIn(emailcontroller.text, passwordcontroller.text);
         }),
         child: Text(
           "Login",
@@ -171,9 +192,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       margin: EdgeInsets.only(left: 25, right: 25),
                       child: Column(
                         children: <Widget>[
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.05,
-                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -193,54 +211,60 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           Container(
                             child: Form(
+                                key: _formKey,
                                 child: Column(
-                              children: <Widget>[
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.03,
-                                ),
-                                emailField,
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.02,
-                                ),
-                                passwordField,
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.05,
-                                ),
-                                LoginButton,
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.03,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    Text(
-                                      "Don't have an account ? ",
-                                      style: TextStyle(fontSize: 14),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.03,
                                     ),
-                                    GestureDetector(
-                                        onTap: () {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder:
-                                                      (BuildContext context) =>
+                                    emailField,
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02,
+                                    ),
+                                    passwordField,
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.05,
+                                    ),
+                                    LoginButton,
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.03,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          "Don't have an account ? ",
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                        GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (BuildContext
+                                                              context) =>
                                                           SignupScreen()));
-                                        },
-                                        child: Text(
-                                          "SignUp",
-                                          style: TextStyle(
-                                              color: Color.fromARGB(
-                                                  255, 50, 115, 228),
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 16),
-                                        ))
+                                            },
+                                            child: Text(
+                                              "SignUp",
+                                              style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 50, 115, 228),
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ))
+                                      ],
+                                    )
                                   ],
-                                )
-                              ],
-                            )),
+                                )),
                           )
                         ],
                       ),
@@ -253,5 +277,21 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void signIn(String email, String password) async {
+    if (_formKey.currentState!.validate()) {
+      await _auth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((uid) => {
+                Fluttertoast.showToast(msg: "Login Successful !"),
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => HomePage()))
+              })
+          .catchError((e) {
+        // ignore: invalid_return_type_for_catch_error
+        return Fluttertoast.showToast(msg: e!.message);
+      });
+    }
   }
 }

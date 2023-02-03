@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:sportzy/Nitesh/loginScreen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -170,8 +169,20 @@ class _SignupScreenState extends State<SignupScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  AppBar(
+                    leading: new IconButton(
+                      icon: new Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                      ),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                    backgroundColor: Colors.transparent
+                        .withOpacity(0.0), //You can make this transparent
+                    elevation: 0.0, //No shadow
+                  ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.1,
+                    height: MediaQuery.of(context).size.height * 0.03,
                   ),
                   Padding(
                     padding:

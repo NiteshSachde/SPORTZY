@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Heet/HomePage.dart';
-import 'package:sportzy/Nitesh/loginPage.dart';
+import 'package:sportzy/Page_Backup/loginPage.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:sportzy/Nitesh/signUpPage.dart';
+import 'package:sportzy/Page_Backup/signUpPage.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

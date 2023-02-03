@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-import 'package:sportzy/Nitesh/loginScreen.dart';
+import 'package:sportzy/Heet/HomePage.dart';
+import 'package:sportzy/Models/userModel.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -10,12 +14,14 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final _auth = FirebaseAuth.instance;
   // form key
   final _formKey = GlobalKey<FormState>();
   var _pobscureText;
   var _cpobscureText;
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     _pobscureText = true;
     _cpobscureText = true;
@@ -23,10 +29,10 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   // editing controller
-  final TextEditingController namecontroller = new TextEditingController();
-  final TextEditingController emailcontroller = new TextEditingController();
-  final TextEditingController passwordcontroller = new TextEditingController();
-  final TextEditingController confirmpasscontroller =
+  final TextEditingController nameController = new TextEditingController();
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController confirmPassController =
       new TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -34,11 +40,20 @@ class _SignupScreenState extends State<SignupScreen> {
     // name field
     final nameField = TextFormField(
       autofocus: false,
-      controller: namecontroller,
+      controller: nameController,
       keyboardType: TextInputType.emailAddress,
-      // validator: (){},
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{3,}$');
+        if (value!.isEmpty) {
+          return ("Name cannot be empty !");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter valid name (Minimum 3 characters)");
+        }
+        return null;
+      },
       onSaved: (value) {
-        namecontroller.text = value!;
+        nameController.text = value!;
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
@@ -50,10 +65,20 @@ class _SignupScreenState extends State<SignupScreen> {
     // email field
     final emailField = TextFormField(
       autofocus: false,
-      controller: emailcontroller,
-      // validator: (){},
+      controller: emailController,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return ("Please enter your email !");
+        }
+        // reg expression for email validation
+        if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+            .hasMatch(value)) {
+          return ("Please enter a valid email !");
+        }
+        return null;
+      },
       onSaved: (value) {
-        emailcontroller.text = value!;
+        emailController.text = value!;
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
@@ -68,10 +93,18 @@ class _SignupScreenState extends State<SignupScreen> {
     // password field
     final passwordField = TextFormField(
       autofocus: false,
-      controller: passwordcontroller,
-      // validator: (){},
+      controller: passwordController,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ("Password is required for login !");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Password must contain minimum 6 character !");
+        }
+      },
       onSaved: (value) {
-        passwordcontroller.text = value!;
+        passwordController.text = value!;
       },
       textInputAction: TextInputAction.done,
       obscureText: _pobscureText,
@@ -99,10 +132,15 @@ class _SignupScreenState extends State<SignupScreen> {
     // confirm password field
     final confirmpasswordField = TextFormField(
       autofocus: false,
-      controller: confirmpasscontroller,
-      // validator: (){},
+      controller: confirmPassController,
+      validator: (value) {
+        if (confirmPassController.text != passwordController.text) {
+          return "Passwords don't match";
+        }
+        return null;
+      },
       onSaved: (value) {
-        confirmpasscontroller.text = value!;
+        confirmPassController.text = value!;
       },
       textInputAction: TextInputAction.done,
       obscureText: _cpobscureText,
@@ -136,8 +174,7 @@ class _SignupScreenState extends State<SignupScreen> {
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: (() {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (BuildContext context) => LoginScreen()));
+          signUp(emailController.text, passwordController.text);
         }),
         child: Text(
           "SignUp",
@@ -181,9 +218,6 @@ class _SignupScreenState extends State<SignupScreen> {
                         .withOpacity(0.0), //You can make this transparent
                     elevation: 0.0, //No shadow
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03,
-                  ),
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
@@ -209,7 +243,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.06,
+                height: MediaQuery.of(context).size.height * 0.03,
               ),
               Expanded(
                 child: Container(
@@ -228,39 +262,45 @@ class _SignupScreenState extends State<SignupScreen> {
                         child: Column(
                           children: <Widget>[
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.05,
+                              height: MediaQuery.of(context).size.height * 0.02,
                             ),
                             Container(
                               child: Form(
+                                  key: _formKey,
                                   child: Column(
-                                children: <Widget>[
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.04,
-                                  ),
-                                  nameField,
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.02,
-                                  ),
-                                  emailField,
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.02,
-                                  ),
-                                  passwordField,
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.02,
-                                  ),
-                                  confirmpasswordField,
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.05,
-                                  ),
-                                  SignupButton,
-                                ],
-                              )),
+                                    children: <Widget>[
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.04,
+                                      ),
+                                      nameField,
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.02,
+                                      ),
+                                      emailField,
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.02,
+                                      ),
+                                      passwordField,
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.02,
+                                      ),
+                                      confirmpasswordField,
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.05,
+                                      ),
+                                      SignupButton,
+                                    ],
+                                  )),
                             )
                           ],
                         ),
@@ -274,5 +314,39 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ),
     );
+  }
+
+  void signUp(String email, String password) async {
+    if (_formKey.currentState!.validate()) {
+      await _auth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) => {postDetailsToFirestore()})
+          .catchError((e) {
+        Fluttertoast.showToast(msg: e!.message);
+      });
+    }
+  }
+
+  postDetailsToFirestore() async {
+    // calling our firestore
+    // calling our user model
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    User? user = _auth.currentUser;
+    UserModel userModel = UserModel();
+
+    // writing all the values
+    userModel.email = user!.email;
+    userModel.uid = user.uid;
+    userModel.name = nameController.text;
+
+    await firebaseFirestore
+        .collection("users")
+        .doc(user.uid)
+        .set(userModel.toMap());
+    Fluttertoast.showToast(msg: "Account created successfully !");
+    Navigator.pushAndRemoveUntil((context),
+        MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
   }
 }

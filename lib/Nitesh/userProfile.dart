@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:sportzy/Nitesh/loginScreen.dart';
 
 class UserProfile extends StatefulWidget {
   const UserProfile({super.key});
@@ -84,9 +86,7 @@ class _UserProfileState extends State<UserProfile> {
                             ),
                           ),
                           onTap: (() {
-                            // Navigator.of(context).push(MaterialPageRoute(
-                            //     builder: (BuildContext context) =>
-                            //         matchScreen()));
+                            logOut(context);
                           }),
                         ),
                       ],
@@ -99,5 +99,11 @@ class _UserProfileState extends State<UserProfile> {
         ),
       ),
     );
+  }
+
+  Future<void> logOut(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 }

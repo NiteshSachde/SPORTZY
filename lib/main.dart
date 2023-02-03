@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // import 'package:sportzy/Page_Backup/loginPage.dart';
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:sportzy/Page_Backup/signUpPage.dart';
+import 'Heet/SignupScreen.dart';
 
 import 'Nitesh/loginScreen.dart';
 
@@ -18,7 +19,7 @@ class Sportzy extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: SignupScreen(),
     );
   }
 }

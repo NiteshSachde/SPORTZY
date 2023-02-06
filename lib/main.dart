@@ -1,12 +1,12 @@
 // import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // import 'package:sportzy/Heet/HomePage.dart';
 // import 'package:sportzy/Page_Backup/loginPage.dart';
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:sportzy/Page_Backup/signUpPage.dart';
-import 'Heet/SignupScreen.dart';
-
+import 'Heet/HomePage.dart';
 import 'Nitesh/loginScreen.dart';
 
 Future<void> main() async {
@@ -15,14 +15,39 @@ Future<void> main() async {
   runApp(Sportzy());
 }
 
-class Sportzy extends StatelessWidget {
+class Sportzy extends StatefulWidget {
   const Sportzy({super.key});
+
+  @override
+  State<Sportzy> createState() => _SportzyState();
+}
+
+class _SportzyState extends State<Sportzy> {
+  var auth = FirebaseAuth.instance;
+  var isLogin = false;
+
+  checkIfLogin() async {
+    auth.authStateChanges().listen((User? user) {
+      if (user != null && mounted) {
+        setState(() {
+          isLogin = true;
+        });
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    checkIfLogin();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: isLogin ? HomePage() : LoginScreen(),
     );
   }
 }

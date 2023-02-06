@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
         return null;
       },
       onSaved: (value) {
-        emailcontroller.text = value!;
+        emailcontroller.text = value!.trim();
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       },
       onSaved: (value) {
-        passwordcontroller.text = value!;
+        passwordcontroller.text = value!.trim();
       },
       textInputAction: TextInputAction.done,
       obscureText: _obscureText,
@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: (() {
-          signIn(emailcontroller.text, passwordcontroller.text);
+          signIn(emailcontroller.text.trim(), passwordcontroller.text.trim());
         }),
         child: Text(
           "Login",

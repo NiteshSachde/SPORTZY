@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 
 import 'package:sportzy/Heet/HomePage.dart';
 import 'package:sportzy/Models/userModel.dart';
@@ -78,7 +79,7 @@ class _SignupScreenState extends State<SignupScreen> {
         return null;
       },
       onSaved: (value) {
-        emailController.text = value!;
+        emailController.text = value!.trim();
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
@@ -104,7 +105,7 @@ class _SignupScreenState extends State<SignupScreen> {
         }
       },
       onSaved: (value) {
-        passwordController.text = value!;
+        passwordController.text = value!.trim();
       },
       textInputAction: TextInputAction.done,
       obscureText: _pobscureText,
@@ -140,7 +141,7 @@ class _SignupScreenState extends State<SignupScreen> {
         return null;
       },
       onSaved: (value) {
-        confirmPassController.text = value!;
+        confirmPassController.text = value!.trim();
       },
       textInputAction: TextInputAction.done,
       obscureText: _cpobscureText,
@@ -174,7 +175,7 @@ class _SignupScreenState extends State<SignupScreen> {
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: (() {
-          signUp(emailController.text, passwordController.text);
+          signUp(emailController.text.trim(), passwordController.text.trim());
         }),
         child: Text(
           "SignUp",

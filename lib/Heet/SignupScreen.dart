@@ -2,10 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/get.dart';
-
-import 'package:sportzy/Heet/HomePage.dart';
 import 'package:sportzy/Models/userModel.dart';
+import '../Nitesh/verifyEmail.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -347,7 +345,9 @@ class _SignupScreenState extends State<SignupScreen> {
         .doc(user.uid)
         .set(userModel.toMap());
     Fluttertoast.showToast(msg: "Account created successfully !");
-    Navigator.pushAndRemoveUntil((context),
-        MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
+    Navigator.pushAndRemoveUntil(
+        (context),
+        MaterialPageRoute(builder: (context) => VerifyEmail()),
+        (route) => false);
   }
 }

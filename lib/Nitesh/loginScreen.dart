@@ -1,11 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sportzy/Heet/HomePage.dart';
-import 'package:sportzy/Page_Backup/signUpPage.dart';
-
+import 'package:sportzy/Nitesh/verifyEmail.dart';
 import '../Heet/SignupScreen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,12 +14,28 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   // form key
+  User? user = FirebaseAuth.instance.currentUser;
   final _formKey = GlobalKey<FormState>();
   var _obscureText;
+  var isVerified = false;
+
+  checkIfVerified() async {
+    if (user!.emailVerified == true) {
+      setState(() {
+        isVerified = true;
+      });
+    } else {
+      setState(() {
+        isVerified = false;
+      });
+    }
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     _obscureText = true;
+    checkIfVerified();
     super.initState();
   }
 
@@ -284,9 +297,17 @@ class _LoginScreenState extends State<LoginScreen> {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((uid) => {
-                Fluttertoast.showToast(msg: "Login Successful !"),
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => HomePage()))
+                if (isVerified)
+                  {
+                    Fluttertoast.showToast(msg: "Login Successful !"),
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => HomePage())),
+                  }
+                else
+                  {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => VerifyEmail())),
+                  }
               })
           .catchError((e) {
         // ignore: invalid_return_type_for_catch_error

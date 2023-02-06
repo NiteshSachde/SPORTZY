@@ -2,6 +2,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:sportzy/Nitesh/verifyEmail.dart';
+import 'package:sportzy/Page_Backup/loginPage.dart';
 // import 'package:sportzy/Heet/HomePage.dart';
 // import 'package:sportzy/Page_Backup/loginPage.dart';
 // import 'package:firebase_core/firebase_core.dart';
@@ -23,9 +25,10 @@ class Sportzy extends StatefulWidget {
 }
 
 class _SportzyState extends State<Sportzy> {
+  User? user = FirebaseAuth.instance.currentUser;
   var auth = FirebaseAuth.instance;
   var isLogin = false;
-
+  var isVerified = false;
   checkIfLogin() async {
     auth.authStateChanges().listen((User? user) {
       if (user != null && mounted) {
@@ -36,10 +39,23 @@ class _SportzyState extends State<Sportzy> {
     });
   }
 
+  checkIfVerified() async {
+    if (user!.emailVerified == true) {
+      setState(() {
+        isVerified = true;
+      });
+    } else {
+      setState(() {
+        isVerified = false;
+      });
+    }
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     checkIfLogin();
+    checkIfVerified();
     super.initState();
   }
 
@@ -47,7 +63,7 @@ class _SportzyState extends State<Sportzy> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: isLogin ? HomePage() : LoginScreen(),
+      home: isLogin && isVerified ? HomePage() : LoginScreen(),
     );
   }
 }

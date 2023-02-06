@@ -344,7 +344,7 @@ class _SignupScreenState extends State<SignupScreen> {
         .collection("users")
         .doc(user.uid)
         .set(userModel.toMap());
-    Fluttertoast.showToast(msg: "Account created successfully !");
+    Fluttertoast.showToast(msg: "Link has been sent to email !");
     Navigator.pushAndRemoveUntil(
         (context),
         MaterialPageRoute(builder: (context) => VerifyEmail()),

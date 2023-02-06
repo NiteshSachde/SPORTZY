@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sportzy/Heet/HomePage.dart';
 import 'package:sportzy/Nitesh/verifyEmail.dart';
+import '../Heet/ForgotPaswordPage.dart';
 import '../Heet/SignupScreen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -239,6 +240,37 @@ class _LoginScreenState extends State<LoginScreen> {
                                               0.02,
                                     ),
                                     passwordField,
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.01,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 25.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          ForgotPasswordPage()));
+                                            },
+                                            child: Text(
+                                              'Forgot Password ? ',
+                                              style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 50, 115, 228),
+                                                  fontSize: 12),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *

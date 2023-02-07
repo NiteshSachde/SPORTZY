@@ -70,8 +70,7 @@ class _SignupScreenState extends State<SignupScreen> {
           return ("Please enter your email !");
         }
         // reg expression for email validation
-        if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-            .hasMatch(value)) {
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
           return ("Please enter a valid email !");
         }
         return null;
@@ -79,7 +78,7 @@ class _SignupScreenState extends State<SignupScreen> {
       onSaved: (value) {
         emailController.text = value!.trim();
       },
-      textInputAction: TextInputAction.done,
+      textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.email),
         contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
@@ -251,8 +250,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50)),
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30)),
                   ),
                   child: SingleChildScrollView(
                     child: Container(

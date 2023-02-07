@@ -198,8 +198,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50)),
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30)),
                   ),
                   child: SingleChildScrollView(
                     child: Container(
@@ -247,7 +247,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 25.0),
+                                          horizontal: 25.0, vertical: 5),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.end,
@@ -274,7 +274,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.05,
+                                              0.03,
                                     ),
                                     LoginButton,
                                     SizedBox(

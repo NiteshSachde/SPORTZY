@@ -2,8 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Nitesh/loginScreen.dart';
 
-import '../Nitesh/badminton.dart';
-
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
 
@@ -107,7 +105,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           height: MediaQuery.of(context).size.height * 0.1,
                         ),
                         Text(
-                          "Enter Your Email And We Will Send You A Password Reset Link",
+                          "Enter your email and we will send you password reset link",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.black,

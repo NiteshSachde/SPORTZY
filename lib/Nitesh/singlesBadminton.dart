@@ -11,6 +11,9 @@ class SinglesBadminton extends StatefulWidget {
 class _SinglesBadminton extends State<SinglesBadminton> {
   TextEditingController _p1 = new TextEditingController();
   TextEditingController _p2 = new TextEditingController();
+  TextEditingController _m = new TextEditingController();
+  TextEditingController _t1 = new TextEditingController();
+  TextEditingController _t2 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -48,33 +51,183 @@ class _SinglesBadminton extends State<SinglesBadminton> {
               height: MediaQuery.of(context).size.height * 0.04,
             ),
             Expanded(
-              child: SingleChildScrollView(
-                physics: NeverScrollableScrollPhysics(),
-                child: Container(
-                  height: size.height,
-                  width: size.width,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50)),
-                  ),
+              child: Container(
+                height: size.height,
+                width: size.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30)),
+                ),
+                child: SingleChildScrollView(
                   child: Container(
                     margin: EdgeInsets.only(left: 25, right: 25),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.06,
                         ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.18,
+                        ),
                         Text(
-                          "Team A",
+                          "Enter Match Name",
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.015,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 10,
+                                  spreadRadius: 7,
+                                  offset: Offset(1, 1),
+                                  color: Colors.grey.withOpacity(0.3)),
+                            ],
+                          ),
+                          child: TextField(
+                            controller: _m,
+                            textInputAction: TextInputAction.next,
+                            decoration: InputDecoration(
+                                icon: Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: Icon(
+                                    Icons.person,
+                                    color: Color.fromARGB(149, 0, 0, 0),
+                                  ),
+                                ),
+                                hintText: "Enter Match Name",
+                                hintStyle: TextStyle(color: Colors.grey),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: Colors.white, width: 1.0)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: Colors.white, width: 1.0)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30))),
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                        ),
+                        Text(
+                          "Enter Team Name",
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 10,
+                                  spreadRadius: 7,
+                                  offset: Offset(1, 1),
+                                  color: Colors.grey.withOpacity(0.3)),
+                            ],
+                          ),
+                          child: TextField(
+                            controller: _t1,
+                            textInputAction: TextInputAction.next,
+                            decoration: InputDecoration(
+                                icon: Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: Icon(
+                                    Icons.people,
+                                    color: Color.fromARGB(149, 0, 0, 0),
+                                  ),
+                                ),
+                                hintText: "Team A Name",
+                                hintStyle: TextStyle(color: Colors.grey),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: Colors.white, width: 1.0)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: Colors.white, width: 1.0)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30))),
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 10,
+                                  spreadRadius: 7,
+                                  offset: Offset(1, 1),
+                                  color: Colors.grey.withOpacity(0.3)),
+                            ],
+                          ),
+                          child: TextField(
+                            controller: _t2,
+                            textInputAction: TextInputAction.next,
+                            decoration: InputDecoration(
+                                icon: Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: Icon(
+                                    Icons.people,
+                                    color: Color.fromARGB(149, 0, 0, 0),
+                                  ),
+                                ),
+                                hintText: "Team B Name",
+                                hintStyle: TextStyle(color: Colors.grey),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: Colors.white, width: 1.0)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                        color: Colors.white, width: 1.0)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30))),
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Team A",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
@@ -93,6 +246,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                           ),
                           child: TextField(
                             controller: _p1,
+                            textInputAction: TextInputAction.next,
                             decoration: InputDecoration(
                                 icon: Padding(
                                   padding: const EdgeInsets.only(left: 20),
@@ -118,14 +272,18 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04,
                         ),
-                        Text(
-                          "Team B",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        Row(
+                          children: [
+                            Text(
+                              "Team B",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
@@ -144,6 +302,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                           ),
                           child: TextField(
                             controller: _p2,
+                            textInputAction: TextInputAction.done,
                             decoration: InputDecoration(
                                 icon: Padding(
                                   padding: const EdgeInsets.only(left: 20),
@@ -167,7 +326,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.09,
+                          height: MediaQuery.of(context).size.height * 0.06,
                         ),
                         GestureDetector(
                           child: Container(
@@ -195,6 +354,9 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                                       p2: _p2.text,
                                     )));
                           }),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.06,
                         ),
                       ],
                     ),

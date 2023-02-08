@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Heet/singleScoreScreen.dart';
 
@@ -347,12 +348,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                             ),
                           ),
                           onTap: (() {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    SingleScoreScreen(
-                                      p1: _p1.text,
-                                      p2: _p2.text,
-                                    )));
+                            postMatchDetailsToFirestore();
                           }),
                         ),
                         SizedBox(
@@ -368,5 +364,32 @@ class _SinglesBadminton extends State<SinglesBadminton> {
         ),
       ),
     );
+  }
+
+  postMatchDetailsToFirestore() async {
+    // calling our firestore
+    // calling our user model
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc()
+        .set({
+      'match_name': _m.text.trim(),
+      'team_A_name': _t1.text.trim(),
+      'team_B_name': _t2.text.trim(),
+      'team_A_player': _p1.text.trim(),
+      'team_B_player': _p2.text.trim()
+    });
+
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => SingleScoreScreen(
+              p1: _p1.text,
+              p2: _p2.text,
+            )));
   }
 }

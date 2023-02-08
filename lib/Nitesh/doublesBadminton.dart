@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Heet/singleScoreScreen.dart';
 
@@ -431,14 +432,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
                             ),
                           ),
                           onTap: (() {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    doubleScoreScreen(
-                                      p1: _t1p1.text,
-                                      p2: _t1p2.text,
-                                      p3: _t2p1.text,
-                                      p4: _t2p2.text,
-                                    )));
+                            postMatchDetailsToFirestore();
                           }),
                         ),
                         SizedBox(
@@ -454,6 +448,37 @@ class _DoublesBadminton extends State<DoublesBadminton> {
         ),
       ),
     );
+  }
+
+  postMatchDetailsToFirestore() async {
+    // calling our firestore
+    // calling our user model
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc()
+        .set({
+      'match_name': _m.text.trim(),
+      'team_A_name': _t1.text.trim(),
+      'team_B_name': _t2.text.trim(),
+      'team_A_player1': _t1p1.text.trim(),
+      'team_B_player1': _t2p1.text.trim(),
+      'team_A_player2': _t1p2.text.trim(),
+      'team_B_player2': _t2p2.text.trim(),
+    });
+
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => doubleScoreScreen(
+              p1: _t1p1.text,
+              p2: _t1p2.text,
+              p3: _t2p1.text,
+              p4: _t2p2.text,
+            )));
   }
 }
 

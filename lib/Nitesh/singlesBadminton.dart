@@ -41,7 +41,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
-                "Team Details",
+                "Match Details",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 34,
@@ -339,7 +339,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                             ),
                             child: Center(
                               child: Text(
-                                "Add Players",
+                                "Create Match",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,
@@ -368,28 +368,45 @@ class _SinglesBadminton extends State<SinglesBadminton> {
 
   postMatchDetailsToFirestore() async {
     // calling our firestore
-    // calling our user model
+
     // sending these values
 
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
+    DocumentReference documentReference = FirebaseFirestore.instance
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc();
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
         .collection('singles')
-        .doc()
+        .doc(documentReference.id)
         .set({
       'match_name': _m.text.trim(),
       'team_A_name': _t1.text.trim(),
       'team_B_name': _t2.text.trim(),
       'team_A_player': _p1.text.trim(),
-      'team_B_player': _p2.text.trim()
+      'team_B_player': _p2.text.trim(),
     });
-
+    print(documentReference);
+    var docRef = await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc(documentReference.id)
+        .collection('scorecard')
+        .add({
+      'point_team_A': 0,
+      'point_team_B': 0,
+    });
+    print(docRef.id);
     Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) => SingleScoreScreen(
               p1: _p1.text,
               p2: _p2.text,
+              docRef: docRef.id.toString(),
+              singlesDocRef: documentReference.id.toString(),
             )));
   }
 }

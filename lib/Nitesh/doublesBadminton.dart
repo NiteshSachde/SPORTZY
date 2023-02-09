@@ -45,7 +45,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
-                "Team Details",
+                "Match Details",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 34,
@@ -423,7 +423,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
                             ),
                             child: Center(
                               child: Text(
-                                "Add Players",
+                                "Create Match",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,
@@ -452,7 +452,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
 
   postMatchDetailsToFirestore() async {
     // calling our firestore
-    // calling our user model
+
     // sending these values
 
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;

@@ -18,50 +18,50 @@ class doubleScoreScreen extends StatefulWidget {
 }
 
 class _doubleScoreScreenState extends State<doubleScoreScreen> {
-  int _counterp1 = 0;
-  int _counterp2 = 0;
-  int _setCountp1 = 0;
-  int _setCountp2 = 0;
+  int _countert1 = 0;
+  int _countert2 = 0;
+  int _setCountt1 = 0;
+  int _setCountt2 = 0;
   int _setNumber = 1;
   late int _swap1;
   late var _swapName;
   void _decrementCountP1() {
     setState(() {
-      if (_counterp1 < 1) {
+      if (_countert1 < 1) {
         return;
       }
-      _counterp1--;
+      _countert1--;
     });
   }
 
   void _decrementCountP2() {
     setState(() {
-      if (_counterp2 < 1) {
+      if (_countert2 < 1) {
         return;
       }
-      _counterp2--;
+      _countert2--;
     });
   }
 
   void _resetAll() {
     setState(() {
-      _counterp1 = 0;
-      _counterp2 = 0;
-      _setCountp1 = 0;
-      _setCountp2 = 0;
+      _countert1 = 0;
+      _countert2 = 0;
+      _setCountt1 = 0;
+      _setCountt2 = 0;
       _setNumber = 1;
     });
   }
 
   void _swapCourt() {
     setState(() {
-      _swap1 = _counterp1;
-      _counterp1 = _counterp2;
-      _counterp2 = _swap1;
+      _swap1 = _countert1;
+      _countert1 = _countert2;
+      _countert2 = _swap1;
 
-      _swap1 = _setCountp1;
-      _setCountp1 = _setCountp2;
-      _setCountp2 = _swap1;
+      _swap1 = _setCountt1;
+      _setCountt1 = _setCountt2;
+      _setCountt2 = _swap1;
 
       _swapName = widget.p1;
       widget.p1 = widget.p3;
@@ -192,7 +192,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        ("${_counterp1}"),
+                        ("${_countert1}"),
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 70,
@@ -202,17 +202,17 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   ),
                   onTap: () {
                     setState(() {
-                      _counterp1++;
+                      _countert1++;
 
-                      if (_counterp1 == 21) {
-                        _counterp1 = 0;
-                        _counterp2 = 0;
-                        _setCountp1++;
+                      if (_countert1 == 21) {
+                        _countert1 = 0;
+                        _countert2 = 0;
+                        _setCountt1++;
                         _setNumber++;
                       }
-                      if (_setCountp1 == 2 || _setCountp2 == 2) {
-                        _setCountp1 = 0;
-                        _setCountp2 = 0;
+                      if (_setCountt1 == 2 || _setCountt2 == 2) {
+                        _setCountt1 = 0;
+                        _setCountt2 = 0;
                         _setNumber = 1;
                       }
                     });
@@ -231,7 +231,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        ("${_counterp2}"),
+                        ("${_countert2}"),
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 70,
@@ -241,17 +241,17 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   ),
                   onTap: (() {
                     setState(() {
-                      _counterp2++;
+                      _countert2++;
 
-                      if (_counterp2 == 21) {
-                        _counterp1 = 0;
-                        _counterp2 = 0;
-                        _setCountp2++;
+                      if (_countert2 == 21) {
+                        _countert1 = 0;
+                        _countert2 = 0;
+                        _setCountt2++;
                         _setNumber++;
                       }
-                      if (_setCountp1 == 2 || _setCountp2 == 2) {
-                        _setCountp1 = 0;
-                        _setCountp2 = 0;
+                      if (_setCountt1 == 2 || _setCountt2 == 2) {
+                        _setCountt1 = 0;
+                        _setCountt2 = 0;
                         _setNumber = 1;
                       }
                     });
@@ -319,7 +319,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      ("${_setCountp1}"),
+                      ("${_setCountt1}"),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -339,7 +339,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      ("${_setCountp2}"),
+                      ("${_setCountt2}"),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,

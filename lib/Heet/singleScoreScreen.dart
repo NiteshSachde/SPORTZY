@@ -1,13 +1,16 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class SingleScoreScreen extends StatefulWidget {
-  var p1, p2;
+  var p1, p2, docRef, singlesDocRef;
   SingleScoreScreen({
     Key? mykey,
     required this.p1,
     required this.p2,
+    required this.docRef,
+    required this.singlesDocRef,
   }) : super(key: mykey);
 
   @override
@@ -15,50 +18,50 @@ class SingleScoreScreen extends StatefulWidget {
 }
 
 class _SingleScoreScreen extends State<SingleScoreScreen> {
-  int _counterp1 = 0;
-  int _counterp2 = 0;
-  int _setCountp1 = 0;
-  int _setCountp2 = 0;
+  int _countert1 = 0;
+  int _countert2 = 0;
+  int _setCountt1 = 0;
+  int _setCountt2 = 0;
   int _setNumber = 1;
   late int _swap1;
   late var _swapName;
   void _decrementCountP1() {
     setState(() {
-      if (_counterp1 < 1) {
+      if (_countert1 < 1) {
         return;
       }
-      _counterp1--;
+      _countert1--;
     });
   }
 
   void _decrementCountP2() {
     setState(() {
-      if (_counterp2 < 1) {
+      if (_countert2 < 1) {
         return;
       }
-      _counterp2--;
+      _countert2--;
     });
   }
 
   void _resetAll() {
     setState(() {
-      _counterp1 = 0;
-      _counterp2 = 0;
-      _setCountp1 = 0;
-      _setCountp2 = 0;
+      _countert1 = 0;
+      _countert2 = 0;
+      _setCountt1 = 0;
+      _setCountt2 = 0;
       _setNumber = 1;
     });
   }
 
   void _swapCourt() {
     setState(() {
-      _swap1 = _counterp1;
-      _counterp1 = _counterp2;
-      _counterp2 = _swap1;
+      _swap1 = _countert1;
+      _countert1 = _countert2;
+      _countert2 = _swap1;
 
-      _swap1 = _setCountp1;
-      _setCountp1 = _setCountp2;
-      _setCountp2 = _swap1;
+      _swap1 = _setCountt1;
+      _setCountt1 = _setCountt2;
+      _setCountt2 = _swap1;
 
       _swapName = widget.p1;
       widget.p1 = widget.p2;
@@ -138,7 +141,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        ("${_counterp1}"),
+                        ("${_countert1}"),
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 70,
@@ -148,20 +151,21 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                   ),
                   onTap: () {
                     setState(() {
-                      _counterp1++;
+                      _countert1++;
 
-                      if (_counterp1 == 21) {
-                        _counterp1 = 0;
-                        _counterp2 = 0;
-                        _setCountp1++;
+                      if (_countert1 == 21) {
+                        _countert1 = 0;
+                        _countert2 = 0;
+                        _setCountt1++;
                         _setNumber++;
                       }
-                      if (_setCountp1 == 2 || _setCountp2 == 2) {
-                        _setCountp1 = 0;
-                        _setCountp2 = 0;
+                      if (_setCountt1 == 2 || _setCountt2 == 2) {
+                        _setCountt1 = 0;
+                        _setCountt2 = 0;
                         _setNumber = 1;
                       }
                     });
+                    postPointDetailsToFirestore();
                   },
                 ),
                 SizedBox(
@@ -177,7 +181,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        ("${_counterp2}"),
+                        ("${_countert2}"),
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 70,
@@ -187,20 +191,21 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                   ),
                   onTap: (() {
                     setState(() {
-                      _counterp2++;
+                      _countert2++;
 
-                      if (_counterp2 == 21) {
-                        _counterp1 = 0;
-                        _counterp2 = 0;
-                        _setCountp2++;
+                      if (_countert2 == 21) {
+                        _countert1 = 0;
+                        _countert2 = 0;
+                        _setCountt2++;
                         _setNumber++;
                       }
-                      if (_setCountp1 == 2 || _setCountp2 == 2) {
-                        _setCountp1 = 0;
-                        _setCountp2 = 0;
+                      if (_setCountt1 == 2 || _setCountt2 == 2) {
+                        _setCountt1 = 0;
+                        _setCountt2 = 0;
                         _setNumber = 1;
                       }
                     });
+                    postPointDetailsToFirestore();
                   }),
                 ),
               ],
@@ -265,7 +270,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      ("${_setCountp1}"),
+                      ("${_setCountt1}"),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -285,7 +290,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      ("${_setCountp2}"),
+                      ("${_setCountt2}"),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -348,5 +353,25 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         ),
       ),
     );
+  }
+
+  postPointDetailsToFirestore() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc(widget.singlesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'point_team_A': _countert1,
+      'point_team_B': _countert2,
+    });
   }
 }

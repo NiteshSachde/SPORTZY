@@ -407,7 +407,6 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       'team_B_set_3_points': 0,
       'team_A_set': 0,
       'team_B_set': 0,
-      'winner_team': null,
     });
     print(docRef.id);
     Navigator.of(context).push(MaterialPageRoute(

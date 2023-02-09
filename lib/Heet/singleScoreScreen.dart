@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:sportzy/Heet/HomePage.dart';
 
 class SingleScoreScreen extends StatefulWidget {
   var p1, p2, docRef, singlesDocRef;
@@ -32,6 +33,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
       }
       _countert1--;
     });
+    postPointDetailsToFirestore();
   }
 
   void _decrementCountP2() {
@@ -41,6 +43,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
       }
       _countert2--;
     });
+    postPointDetailsToFirestore();
   }
 
   void _resetAll() {
@@ -50,8 +53,9 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
       _setCountt1 = 0;
       _setCountt2 = 0;
       _setNumber = 1;
-      postPointDetailsToFirestore();
+      ;
     });
+    postPointDetailsToFirestore();
   }
 
   void _swapCourt() {
@@ -169,6 +173,11 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                         _setNumber++;
                       }
                       if (_setCountt1 == 2 || _setCountt2 == 2) {
+                        if (_setCountt1 == 2) {
+                          winningTeam_A();
+                        } else if (_setCountt2 == 2) {
+                          winningTeam_B();
+                        }
                         _setCountt1 = 0;
                         _setCountt2 = 0;
                         _setNumber = 1;
@@ -217,6 +226,11 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                         _setNumber++;
                       }
                       if (_setCountt1 == 2 || _setCountt2 == 2) {
+                        if (_setCountt1 == 2) {
+                          winningTeam_A();
+                        } else if (_setCountt2 == 2) {
+                          winningTeam_B();
+                        }
                         _setCountt1 = 0;
                         _setCountt2 = 0;
                         _setNumber = 1;
@@ -488,5 +502,47 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .update({
       'team_B_set': _setCountt2,
     });
+  }
+
+  winningTeam_A() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc(widget.singlesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'winner_team ': "Team A",
+    });
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+  }
+
+  winningTeam_B() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc(widget.singlesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'winner_team ': "Team B",
+    });
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (BuildContext context) => HomePage()));
   }
 }

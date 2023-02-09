@@ -456,12 +456,16 @@ class _DoublesBadminton extends State<DoublesBadminton> {
     // sending these values
 
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
+    DocumentReference documentReference = FirebaseFirestore.instance
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc();
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
         .collection('doubles')
-        .doc()
+        .doc(documentReference.id)
         .set({
       'match_name': _m.text.trim(),
       'team_A_name': _t1.text.trim(),
@@ -471,13 +475,34 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       'team_A_player2': _t1p2.text.trim(),
       'team_B_player2': _t2p2.text.trim(),
     });
-
+    print(documentReference);
+    var docRef = await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc(documentReference.id)
+        .collection('scorecard')
+        .add({
+      'point_team_A': 0,
+      'point_team_B': 0,
+      'team_A_set_1_points': 0,
+      'team_B_set_1_points': 0,
+      'team_A_set_2_points': 0,
+      'team_B_set_2_points': 0,
+      'team_A_set_3_points': 0,
+      'team_B_set_3_points': 0,
+      'team_A_set': 0,
+      'team_B_set': 0,
+    });
+    print(docRef.id);
     Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) => doubleScoreScreen(
               p1: _t1p1.text,
               p2: _t1p2.text,
               p3: _t2p1.text,
               p4: _t2p2.text,
+              docRef: docRef.id.toString(),
+              doublesDocRef: documentReference.id.toString(),
             )));
   }
 }

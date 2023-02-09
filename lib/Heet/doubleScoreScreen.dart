@@ -1,9 +1,12 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import 'HomePage.dart';
+
 class doubleScoreScreen extends StatefulWidget {
-  var p1, p2, p3, p4;
+  var p1, p2, p3, p4, docRef, doublesDocRef;
 
   doubleScoreScreen({
     Key? mykey,
@@ -11,6 +14,8 @@ class doubleScoreScreen extends StatefulWidget {
     required this.p2,
     required this.p3,
     required this.p4,
+    required this.docRef,
+    required this.doublesDocRef,
   }) : super(key: mykey);
 
   @override
@@ -32,6 +37,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
       }
       _countert1--;
     });
+    postPointDetailsToFirestore();
   }
 
   void _decrementCountP2() {
@@ -41,6 +47,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
       }
       _countert2--;
     });
+    postPointDetailsToFirestore();
   }
 
   void _resetAll() {
@@ -51,6 +58,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
       _setCountt2 = 0;
       _setNumber = 1;
     });
+    postPointDetailsToFirestore();
   }
 
   void _swapCourt() {
@@ -205,17 +213,31 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                       _countert1++;
 
                       if (_countert1 == 21) {
+                        if (_setNumber == 1) {
+                          set_1_points();
+                        } else if (_setNumber == 2) {
+                          set_2_points();
+                        } else if (_setNumber == 3) {
+                          set_3_points();
+                        }
                         _countert1 = 0;
                         _countert2 = 0;
                         _setCountt1++;
+                        setDetailsTeam_A();
                         _setNumber++;
                       }
                       if (_setCountt1 == 2 || _setCountt2 == 2) {
+                        if (_setCountt1 == 2) {
+                          winningTeam_A();
+                        } else if (_setCountt2 == 2) {
+                          winningTeam_B();
+                        }
                         _setCountt1 = 0;
                         _setCountt2 = 0;
                         _setNumber = 1;
                       }
                     });
+                    postPointDetailsToFirestore();
                   },
                 ),
                 SizedBox(
@@ -244,17 +266,31 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                       _countert2++;
 
                       if (_countert2 == 21) {
+                        if (_setNumber == 1) {
+                          set_1_points();
+                        } else if (_setNumber == 2) {
+                          set_2_points();
+                        } else if (_setNumber == 3) {
+                          set_3_points();
+                        }
                         _countert1 = 0;
                         _countert2 = 0;
                         _setCountt2++;
+                        setDetailsTeam_B();
                         _setNumber++;
                       }
                       if (_setCountt1 == 2 || _setCountt2 == 2) {
+                        if (_setCountt1 == 2) {
+                          winningTeam_A();
+                        } else if (_setCountt2 == 2) {
+                          winningTeam_B();
+                        }
                         _setCountt1 = 0;
                         _setCountt2 = 0;
                         _setNumber = 1;
                       }
                     });
+                    postPointDetailsToFirestore();
                   }),
                 ),
               ],
@@ -399,5 +435,165 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         ),
       ),
     );
+  }
+
+  postPointDetailsToFirestore() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc(widget.doublesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'point_team_A': _countert1,
+      'point_team_B': _countert2,
+    });
+  }
+
+  set_1_points() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc(widget.doublesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'team_A_set_1_points': _countert1,
+      'team_B_set_1_points': _countert2,
+    });
+  }
+
+  set_2_points() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc(widget.doublesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'team_A_set_2_points': _countert1,
+      'team_B_set_2_points': _countert2,
+    });
+  }
+
+  set_3_points() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc(widget.doublesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'team_A_set_3_points': _countert1,
+      'team_B_set_3_points': _countert2,
+    });
+  }
+
+  setDetailsTeam_A() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc(widget.doublesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'team_A_set': _setCountt1,
+    });
+  }
+
+  setDetailsTeam_B() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc(widget.doublesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'team_B_set': _setCountt2,
+    });
+  }
+
+  winningTeam_A() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc(widget.doublesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'winner_team ': "Team A",
+    });
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+  }
+
+  winningTeam_B() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc(widget.doublesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'winner_team ': "Team B",
+    });
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (BuildContext context) => HomePage()));
   }
 }

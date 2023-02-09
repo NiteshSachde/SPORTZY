@@ -50,6 +50,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
       _setCountt1 = 0;
       _setCountt2 = 0;
       _setNumber = 1;
+      postPointDetailsToFirestore();
     });
   }
 
@@ -154,9 +155,17 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                       _countert1++;
 
                       if (_countert1 == 21) {
+                        if (_setNumber == 1) {
+                          set_1_points();
+                        } else if (_setNumber == 2) {
+                          set_2_points();
+                        } else if (_setNumber == 3) {
+                          set_3_points();
+                        }
                         _countert1 = 0;
                         _countert2 = 0;
                         _setCountt1++;
+                        setDetailsTeam_A();
                         _setNumber++;
                       }
                       if (_setCountt1 == 2 || _setCountt2 == 2) {
@@ -194,9 +203,17 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                       _countert2++;
 
                       if (_countert2 == 21) {
+                        if (_setNumber == 1) {
+                          set_1_points();
+                        } else if (_setNumber == 2) {
+                          set_2_points();
+                        } else if (_setNumber == 3) {
+                          set_3_points();
+                        }
                         _countert1 = 0;
                         _countert2 = 0;
                         _setCountt2++;
+                        setDetailsTeam_B();
                         _setNumber++;
                       }
                       if (_setCountt1 == 2 || _setCountt2 == 2) {
@@ -372,6 +389,104 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .update({
       'point_team_A': _countert1,
       'point_team_B': _countert2,
+    });
+  }
+
+  set_1_points() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc(widget.singlesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'team_A_set_1_points': _countert1,
+      'team_B_set_1_points': _countert2,
+    });
+  }
+
+  set_2_points() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc(widget.singlesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'team_A_set_2_points': _countert1,
+      'team_B_set_2_points': _countert2,
+    });
+  }
+
+  set_3_points() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc(widget.singlesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'team_A_set_3_points': _countert1,
+      'team_B_set_3_points': _countert2,
+    });
+  }
+
+  setDetailsTeam_A() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc(widget.singlesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'team_A_set': _setCountt1,
+    });
+  }
+
+  setDetailsTeam_B() async {
+    // calling our firestore
+
+    // sending these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc(widget.singlesDocRef)
+        .collection('scorecard')
+        .doc(widget.docRef)
+        .update({
+      'team_B_set': _setCountt2,
     });
   }
 }

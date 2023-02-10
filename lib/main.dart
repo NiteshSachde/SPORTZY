@@ -53,7 +53,6 @@ class _SportzyState extends State<Sportzy> {
 
   @override
   void initState() {
-    // TODO: implement initState
     checkIfLogin();
     checkIfVerified();
     super.initState();

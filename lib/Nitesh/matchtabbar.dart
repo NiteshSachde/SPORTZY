@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sportzy/Heet/viewerScreen.dart';
+
+import '../Heet/liveViewerScreen.dart';
 
 class MatchTabBar extends StatefulWidget {
   const MatchTabBar({super.key});
@@ -113,7 +114,7 @@ class _MatchTabBarState extends State<MatchTabBar>
                             Center(
                               child: Text('Previous Matches'),
                             ),
-                            viewerScreen(),
+                            LiveViewerScreen(),
                             Center(
                               child: Text('Upcoming Matches'),
                             ),

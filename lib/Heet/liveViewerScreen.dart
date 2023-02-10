@@ -104,22 +104,24 @@ class _LiveViewerScreenState extends State<LiveViewerScreen> {
                             final matchDocs = snapshot.data!.docs;
                             print(matchDocs.length);
                             return Expanded(
-                              child: ListView.builder(
-                                  itemCount: matchDocs.length,
-                                  itemBuilder: (context, index) => Column(
-                                        children: <Widget>[
-                                          Text(
-                                              "Match Name : ${matchDocs[index][FireStoreFields.match_name]}"),
-                                          Text(
-                                              "Team A Name : ${matchDocs[index][FireStoreFields.team_A_name]}"),
-                                          Text(
-                                              "Team B Name : ${matchDocs[index][FireStoreFields.team_B_name]}"),
-                                          Text(
-                                              "Team A Player Name : ${matchDocs[index][FireStoreFields.team_A_player]}"),
-                                          Text(
-                                              "Team B Player Name : ${matchDocs[index][FireStoreFields.team_B_player]}"),
-                                        ],
-                                      )),
+                              child: SingleChildScrollView(
+                                child: ListView.builder(
+                                    itemCount: matchDocs.length,
+                                    itemBuilder: (context, index) => Column(
+                                          children: <Widget>[
+                                            Text(
+                                                "Match Name : ${matchDocs[index][FireStoreFields.match_name]}"),
+                                            Text(
+                                                "Team A Name : ${matchDocs[index][FireStoreFields.team_A_name]}"),
+                                            Text(
+                                                "Team B Name : ${matchDocs[index][FireStoreFields.team_B_name]}"),
+                                            Text(
+                                                "Team A Player Name : ${matchDocs[index][FireStoreFields.team_A_player]}"),
+                                            Text(
+                                                "Team B Player Name : ${matchDocs[index][FireStoreFields.team_B_player]}"),
+                                          ],
+                                        )),
+                              ),
                             );
                           }),
                     ],

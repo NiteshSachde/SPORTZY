@@ -382,8 +382,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
         .doc('badminton')
         .collection('singles')
         .doc(documentReference.id)
-        .collection('match_details')
-        .add({
+        .set({
       'match_name': _m.text.trim(),
       'team_A_name': _t1.text.trim(),
       'team_B_name': _t2.text.trim(),
@@ -396,8 +395,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
         .doc('badminton')
         .collection('singles')
         .doc(documentReference.id)
-        .collection('scorecard')
-        .add({
+        .update({
       'point_team_A': 0,
       'point_team_B': 0,
       'team_A_set_1_points': 0,
@@ -409,12 +407,12 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       'team_A_set': 0,
       'team_B_set': 0,
     });
-    print(docRef.id);
+    // print(docRef.id);
     Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) => SingleScoreScreen(
               p1: _p1.text,
               p2: _p2.text,
-              docRef: docRef.id.toString(),
+              // docRef: docRef.id.toString(),
               singlesDocRef: documentReference.id.toString(),
             )));
   }

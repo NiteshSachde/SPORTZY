@@ -10,7 +10,7 @@ class SingleScoreScreen extends StatefulWidget {
     Key? mykey,
     required this.p1,
     required this.p2,
-    required this.docRef,
+    // required this.docRef,
     required this.singlesDocRef,
   }) : super(key: mykey);
 

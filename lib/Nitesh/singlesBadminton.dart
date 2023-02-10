@@ -382,7 +382,8 @@ class _SinglesBadminton extends State<SinglesBadminton> {
         .doc('badminton')
         .collection('singles')
         .doc(documentReference.id)
-        .set({
+        .collection('match_details')
+        .add({
       'match_name': _m.text.trim(),
       'team_A_name': _t1.text.trim(),
       'team_B_name': _t2.text.trim(),

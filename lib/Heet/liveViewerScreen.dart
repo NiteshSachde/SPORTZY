@@ -87,67 +87,30 @@ class _LiveViewerScreenState extends State<LiveViewerScreen> {
                           ),
                         ),
                       ),
-                      Expanded(
-                        child: StreamBuilder(
+                      StreamBuilder(
                           stream: FirebaseFirestore.instance
-                              .collection(FireStoreBucket.sport)
+                              .collection('sport')
                               .doc('badminton')
                               .collection('singles')
+                              .doc()
+                              .collection('match_details')
                               .snapshots(),
-                          builder: (__,
-                              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
-                                  snapshot) {
-                            if (snapshot.hasData && snapshot.data != null) {
-                              if (snapshot.data!.docs.isNotEmpty) {
-                                return ListView.separated(
-                                    itemBuilder: (__, int index) {
-                                      Map<String, dynamic> docData =
-                                          snapshot.data!.docs[index].data();
-                                      if (docData.isEmpty) {
-                                        return Text("Document is empty !");
-                                      }
-                                      String match_name =
-                                          docData[FireStoreFields.match_name];
-                                      String team_A_name =
-                                          docData[FireStoreFields.team_A_name];
-                                      String team_B_name =
-                                          docData[FireStoreFields.team_B_name];
-                                      String team_A_player = docData[
-                                          FireStoreFields.team_A_player];
-                                      String team_B_player = docData[
-                                          FireStoreFields.team_B_player];
-
-                                      return Container(
-                                        height: double.infinity,
-                                        width: double.infinity,
-                                        child: Column(
-                                          children: <Widget>[
-                                            Text(match_name),
-                                            Text(team_A_name),
-                                            Text(team_B_name),
-                                            Text(team_A_player),
-                                            Text(team_B_player),
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                    separatorBuilder: (__, ___) {
-                                      return const Divider();
-                                    },
-                                    itemCount: snapshot.data!.docs.length);
-                              } else {
-                                return Center(
-                                  child: Text("Documents aren't available !"),
-                                );
-                              }
-                            } else {
+                          builder: (ctx, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
                               return Center(
-                                child: Text("Getting Error !"),
+                                child: CircularProgressIndicator(),
                               );
                             }
-                          },
-                        ),
-                      )
+                            final matchDocs = snapshot.data!.docs;
+                            return Expanded(
+                              child: ListView.builder(
+                                  itemCount: matchDocs.length,
+                                  itemBuilder: (context, index) => Text(
+                                      matchDocs[index]
+                                          [FireStoreFields.match_name])),
+                            );
+                          })
                     ],
                   ),
                 ),

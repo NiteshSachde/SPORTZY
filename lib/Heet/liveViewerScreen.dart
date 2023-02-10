@@ -92,8 +92,6 @@ class _LiveViewerScreenState extends State<LiveViewerScreen> {
                               .collection('sport')
                               .doc('badminton')
                               .collection('singles')
-                              .doc()
-                              .collection('match_details')
                               .snapshots(),
                           builder: (ctx, snapshot) {
                             if (snapshot.connectionState ==
@@ -102,7 +100,9 @@ class _LiveViewerScreenState extends State<LiveViewerScreen> {
                                 child: CircularProgressIndicator(),
                               );
                             }
+
                             final matchDocs = snapshot.data!.docs;
+                            print(matchDocs.length);
                             return Expanded(
                               child: ListView.builder(
                                   itemCount: matchDocs.length,
@@ -110,7 +110,7 @@ class _LiveViewerScreenState extends State<LiveViewerScreen> {
                                       matchDocs[index]
                                           [FireStoreFields.match_name])),
                             );
-                          })
+                          }),
                     ],
                   ),
                 ),

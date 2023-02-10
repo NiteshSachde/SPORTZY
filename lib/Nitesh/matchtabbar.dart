@@ -15,7 +15,7 @@ class _MatchTabBarState extends State<MatchTabBar>
 
   @override
   void initState() {
-    _tabController = new TabController(length: 3, vsync: this, initialIndex: 1);
+    _tabController = new TabController(length: 2, vsync: this, initialIndex: 1);
 
     super.initState();
   }
@@ -30,7 +30,7 @@ class _MatchTabBarState extends State<MatchTabBar>
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         body: Container(
           height: size.height,
@@ -49,7 +49,7 @@ class _MatchTabBarState extends State<MatchTabBar>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.11,
+                height: MediaQuery.of(context).size.height * 0.06,
               ),
               Padding(
                 padding:
@@ -63,7 +63,7 @@ class _MatchTabBarState extends State<MatchTabBar>
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
+                height: MediaQuery.of(context).size.height * 0.03,
               ),
               Expanded(
                 child: Container(
@@ -101,9 +101,6 @@ class _MatchTabBarState extends State<MatchTabBar>
                                 Tab(
                                   text: 'Live',
                                 ),
-                                Tab(
-                                  text: 'Upcoming',
-                                )
                               ]),
                         ),
                       ),
@@ -115,9 +112,6 @@ class _MatchTabBarState extends State<MatchTabBar>
                               child: Text('Previous Matches'),
                             ),
                             LiveViewerScreen(),
-                            Center(
-                              child: Text('Upcoming Matches'),
-                            ),
                           ],
                         ),
                       ),

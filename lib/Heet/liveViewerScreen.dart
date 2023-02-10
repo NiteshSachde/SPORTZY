@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Nitesh/firestoreBucket.dart';
+
 import 'package:sportzy/Nitesh/firestoreFields.dart';
 
 class LiveViewerScreen extends StatefulWidget {
@@ -28,7 +28,7 @@ class _LiveViewerScreenState extends State<LiveViewerScreen> {
                 child: Column(
                   children: <Widget>[
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
+                      height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -66,7 +66,7 @@ class _LiveViewerScreenState extends State<LiveViewerScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.04,
+                      height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -84,6 +84,9 @@ class _LiveViewerScreenState extends State<LiveViewerScreen> {
                           size: 35,
                         ),
                       ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     StreamBuilder(
                         stream: FirebaseFirestore.instance
@@ -103,21 +106,55 @@ class _LiveViewerScreenState extends State<LiveViewerScreen> {
                           print(matchDocs.length);
                           return Expanded(
                             child: ListView.builder(
-                                itemCount: matchDocs.length,
-                                itemBuilder: (context, index) => Column(
-                                      children: <Widget>[
-                                        Text(
-                                            "Match Name : ${matchDocs[index][FireStoreFields.match_name]}"),
-                                        Text(
-                                            "Team A Name : ${matchDocs[index][FireStoreFields.team_A_name]}"),
-                                        Text(
-                                            "Team B Name : ${matchDocs[index][FireStoreFields.team_B_name]}"),
-                                        Text(
-                                            "Team A Player Name : ${matchDocs[index][FireStoreFields.team_A_player]}"),
-                                        Text(
-                                            "Team B Player Name : ${matchDocs[index][FireStoreFields.team_B_player]}"),
-                                      ],
-                                    )),
+                              itemCount: matchDocs.length,
+                              itemBuilder: (context, index) => Container(
+                                margin: EdgeInsets.all(5),
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(25),
+                                  color: Color.fromARGB(255, 47, 153, 240),
+                                ),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "Match Name : ${matchDocs[index][FireStoreFields.match_name]}",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      "Team A Name : ${matchDocs[index][FireStoreFields.team_A_name]}",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Team B Name : ${matchDocs[index][FireStoreFields.team_B_name]}",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Team A Player Name : ${matchDocs[index][FireStoreFields.team_A_player]}",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Team B Player Name : ${matchDocs[index][FireStoreFields.team_B_player]}",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           );
                         }),
                   ],

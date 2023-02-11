@@ -398,8 +398,6 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .doc('badminton')
         .collection('singles')
         .doc(widget.singlesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'point_team_A': _countert1,
       'point_team_B': _countert2,
@@ -418,8 +416,6 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .doc('badminton')
         .collection('singles')
         .doc(widget.singlesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'team_A_set_1_points': _countert1,
       'team_B_set_1_points': _countert2,
@@ -438,8 +434,6 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .doc('badminton')
         .collection('singles')
         .doc(widget.singlesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'team_A_set_2_points': _countert1,
       'team_B_set_2_points': _countert2,
@@ -458,8 +452,6 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .doc('badminton')
         .collection('singles')
         .doc(widget.singlesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'team_A_set_3_points': _countert1,
       'team_B_set_3_points': _countert2,
@@ -478,8 +470,6 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .doc('badminton')
         .collection('singles')
         .doc(widget.singlesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'team_A_set': _setCountt1,
     });
@@ -497,8 +487,6 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .doc('badminton')
         .collection('singles')
         .doc(widget.singlesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'team_B_set': _setCountt2,
     });
@@ -516,8 +504,6 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .doc('badminton')
         .collection('singles')
         .doc(widget.singlesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'winner_team ': "Team A",
     });
@@ -537,8 +523,6 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .doc('badminton')
         .collection('singles')
         .doc(widget.singlesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'winner_team ': "Team B",
     });

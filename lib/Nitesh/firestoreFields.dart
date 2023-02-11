@@ -8,4 +8,10 @@ class FireStoreFields {
   static const String point_team_B = "point_team_B";
   static const String team_A_set = "team_A_set";
   static const String team_B_set = "team_B_set";
+  static const String team_A_set_1_points = "team_A_set_1_points";
+  static const String team_A_set_2_points = "team_A_set_2_points";
+  static const String team_A_set_3_points = "team_A_set_3_points";
+  static const String team_B_set_1_points = "team_B_set_1_points";
+  static const String team_B_set_2_points = "team_B_set_2_points";
+  static const String team_B_set_3_points = "team_B_set_3_points";
 }

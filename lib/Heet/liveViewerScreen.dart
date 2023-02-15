@@ -321,6 +321,262 @@ class _LiveViewerScreenState extends State<LiveViewerScreen> {
                             ),
                           );
                         }),
+                    StreamBuilder(
+                        stream: FirebaseFirestore.instance
+                            .collection('sport')
+                            .doc('badminton')
+                            .collection('doubles')
+                            .snapshots(),
+                        builder: (ctx2, snapshot2) {
+                          if (snapshot2.connectionState ==
+                              ConnectionState.waiting) {
+                            return Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+
+                          final matchDocs2 = snapshot2.data!.docs;
+                          print(matchDocs2.length);
+                          return Expanded(
+                            child: ListView.builder(
+                              itemCount: matchDocs2.length,
+                              itemBuilder: (context, index) => Container(
+                                margin: EdgeInsets.all(5),
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(25),
+                                  color: Colors.white,
+                                ),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "${matchDocs2[index][FireStoreFields.match_name]}",
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 47, 153, 240),
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.team_A_name]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        Text(
+                                          "  v/s  ",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.team_B_name]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.team_A_player1]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        Text("             "),
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.team_B_player1]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.team_A_player2]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        Text("             "),
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.team_B_player2]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.point_team_A]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 24,
+                                          ),
+                                        ),
+                                        Text("                      "),
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.point_team_B]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 24,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          "Set 1:   ",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.team_A_set_1_points]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        Text(
+                                          "  -  ",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.team_B_set_1_points]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          "Set 2:   ",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.team_A_set_2_points]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        Text(
+                                          "  -  ",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.team_B_set_2_points]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          "Set 3:   ",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.team_A_set_3_points]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        Text(
+                                          "  -  ",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        Text(
+                                          "${matchDocs2[index][FireStoreFields.team_B_set_3_points]}",
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 47, 153, 240),
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
                   ],
                 ),
               ),

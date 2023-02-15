@@ -14,7 +14,7 @@ class doubleScoreScreen extends StatefulWidget {
     required this.p2,
     required this.p3,
     required this.p4,
-    required this.docRef,
+    //required this.docRef,
     required this.doublesDocRef,
   }) : super(key: mykey);
 
@@ -449,8 +449,6 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .doc('badminton')
         .collection('doubles')
         .doc(widget.doublesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'point_team_A': _countert1,
       'point_team_B': _countert2,
@@ -469,8 +467,6 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .doc('badminton')
         .collection('doubles')
         .doc(widget.doublesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'team_A_set_1_points': _countert1,
       'team_B_set_1_points': _countert2,
@@ -489,8 +485,6 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .doc('badminton')
         .collection('doubles')
         .doc(widget.doublesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'team_A_set_2_points': _countert1,
       'team_B_set_2_points': _countert2,
@@ -509,8 +503,6 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .doc('badminton')
         .collection('doubles')
         .doc(widget.doublesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'team_A_set_3_points': _countert1,
       'team_B_set_3_points': _countert2,
@@ -529,8 +521,6 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .doc('badminton')
         .collection('doubles')
         .doc(widget.doublesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'team_A_set': _setCountt1,
     });
@@ -548,8 +538,6 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .doc('badminton')
         .collection('doubles')
         .doc(widget.doublesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'team_B_set': _setCountt2,
     });
@@ -567,8 +555,6 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .doc('badminton')
         .collection('doubles')
         .doc(widget.doublesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'winner_team ': "Team A",
     });
@@ -588,8 +574,6 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .doc('badminton')
         .collection('doubles')
         .doc(widget.doublesDocRef)
-        .collection('scorecard')
-        .doc(widget.docRef)
         .update({
       'winner_team ': "Team B",
     });

@@ -481,8 +481,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
         .doc('badminton')
         .collection('doubles')
         .doc(documentReference.id)
-        .collection('scorecard')
-        .add({
+        .update({
       'point_team_A': 0,
       'point_team_B': 0,
       'team_A_set_1_points': 0,
@@ -494,14 +493,14 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       'team_A_set': 0,
       'team_B_set': 0,
     });
-    print(docRef.id);
+    //print(docRef.id);
     Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) => doubleScoreScreen(
               p1: _t1p1.text,
               p2: _t1p2.text,
               p3: _t2p1.text,
               p4: _t2p2.text,
-              docRef: docRef.id.toString(),
+              //docRef: docRef.id.toString(),
               doublesDocRef: documentReference.id.toString(),
             )));
   }

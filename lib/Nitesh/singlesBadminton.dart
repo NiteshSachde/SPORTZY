@@ -398,12 +398,12 @@ class _SinglesBadminton extends State<SinglesBadminton> {
         .update({
       'point_team_A': 0,
       'point_team_B': 0,
-      'team_A_set_1_points': 0,
-      'team_B_set_1_points': 0,
-      'team_A_set_2_points': 0,
-      'team_B_set_2_points': 0,
-      'team_A_set_3_points': 0,
-      'team_B_set_3_points': 0,
+      'team_A_set_1_points': "",
+      'team_B_set_1_points': "",
+      'team_A_set_2_points': "",
+      'team_B_set_2_points': "",
+      'team_A_set_3_points': "",
+      'team_B_set_3_points': "",
       'team_A_set': 0,
       'team_B_set': 0,
     });

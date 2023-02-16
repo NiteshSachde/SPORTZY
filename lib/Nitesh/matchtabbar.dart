@@ -32,97 +32,120 @@ class _MatchTabBarState extends State<MatchTabBar>
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        body: Container(
-          height: size.height,
-          width: size.width,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              colors: [
-                Color.fromARGB(255, 17, 71, 234),
-                Color.fromARGB(255, 50, 115, 228),
-                Color.fromARGB(255, 88, 192, 233),
-              ],
-            ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.06,
+        body:
+            // Container(
+            //   height: size.height,
+            //   width: size.width,
+            //   decoration: BoxDecoration(
+            //     gradient: LinearGradient(
+            //       begin: Alignment.topCenter,
+            //       colors: [
+            //         Color.fromARGB(255, 17, 71, 234),
+            //         Color.fromARGB(255, 50, 115, 228),
+            //         Color.fromARGB(255, 88, 192, 233),
+            //       ],
+            //     ),
+            //   ),
+            //   child: Column(
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     children: <Widget>[
+            //       SizedBox(
+            //         height: MediaQuery.of(context).size.height * 0.06,
+            //       ),
+            //       Padding(
+            //         padding:
+            //             const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
+            //         child: Text(
+            //           "Search Matches",
+            //           style: TextStyle(
+            //               color: Colors.white,
+            //               fontSize: 34,
+            //               fontWeight: FontWeight.bold),
+            //         ),
+            //       ),
+            //       SizedBox(
+            //         height: MediaQuery.of(context).size.height * 0.03,
+            //       ),
+            //       Expanded(
+            // child:
+            //   Container(
+            // height: size.height,
+            // width: size.width,
+            // decoration: BoxDecoration(
+            //   color: Colors.white,
+            //   borderRadius: BorderRadius.only(
+            //       topLeft: Radius.circular(50), topRight: Radius.circular(50)),
+            // ),
+            // child:
+            Column(
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                // color: Color.fromARGB(255, 50, 115, 228),
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30)),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
-                child: Text(
-                  "Search Matches",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 34,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.03,
-              ),
-              Expanded(
-                child: Container(
-                  height: size.height,
-                  width: size.width,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50)),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.04,
                   ),
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 13, horizontal: 20),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.08,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: TabBar(
-                              controller: _tabController,
-                              indicator: BoxDecoration(
-                                color: Color.fromARGB(255, 50, 115, 228),
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              unselectedLabelColor:
-                                  Color.fromARGB(255, 50, 115, 228),
-                              tabs: [
-                                Tab(
-                                  text: 'Previous',
-                                ),
-                                Tab(
-                                  text: 'Live',
-                                ),
-                              ]),
-                        ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.08,
+                      decoration: BoxDecoration(
+                        // color: Color.fromARGB(255, 50, 115, 228),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30),
                       ),
-                      Expanded(
-                        child: TabBarView(
+                      child: TabBar(
                           controller: _tabController,
-                          children: [
-                            Center(
-                              child: Text('Previous Matches'),
+                          indicator: BoxDecoration(
+                            // color: Colors.white,
+                            color: Color.fromARGB(255, 50, 115, 228),
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          // unselectedLabelColor: Colors.white,
+                          unselectedLabelColor:
+                              Color.fromARGB(255, 50, 115, 228),
+                          // labelColor: Color.fromARGB(255, 50, 115, 228),
+                          tabs: [
+                            Tab(
+                              text: 'Previous',
                             ),
-                            LiveViewerScreen(),
-                          ],
-                        ),
-                      ),
-                    ],
+                            Tab(
+                              text: 'Live',
+                            ),
+                          ]),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
+            ),
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  Center(
+                    child: Text('Previous Matches'),
+                  ),
+                  LiveViewerScreen(),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
+    // );
+    //         ],
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 }

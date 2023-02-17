@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sportzy/Heet/singleScoreScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SinglesBadminton extends StatefulWidget {
   const SinglesBadminton({Key? key}) : super(key: key);
@@ -10,14 +13,157 @@ class SinglesBadminton extends StatefulWidget {
 }
 
 class _SinglesBadminton extends State<SinglesBadminton> {
-  TextEditingController _p1 = new TextEditingController();
-  TextEditingController _p2 = new TextEditingController();
-  TextEditingController _m = new TextEditingController();
-  TextEditingController _t1 = new TextEditingController();
-  TextEditingController _t2 = new TextEditingController();
+  final _auth = FirebaseAuth.instance;
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController p1 = new TextEditingController();
+  final TextEditingController p2 = new TextEditingController();
+  final TextEditingController m = new TextEditingController();
+  final TextEditingController t1 = new TextEditingController();
+  final TextEditingController t2 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final mField = TextFormField(
+      autofocus: false,
+      controller: m,
+      keyboardType: TextInputType.name,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{3,12}$');
+        if (value!.isEmpty) {
+          return ("Name cannot be empty !");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Minimum 3 and Maximum 12 characters)");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        m.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+          prefixIcon: Icon(Icons.edit),
+          contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+          hintText: "Enter Match Name",
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+    );
+    final t1Field = TextFormField(
+      autofocus: false,
+      controller: t1,
+      keyboardType: TextInputType.name,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{3,12}$');
+        if (value!.isEmpty) {
+          return ("Name cannot be empty !");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Minimum 3 and Maximum 12 characters");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        t1.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+          prefixIcon: Icon(Icons.people),
+          contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+          hintText: "Team A Name",
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+    );
+    final t2Field = TextFormField(
+      autofocus: false,
+      controller: t2,
+      keyboardType: TextInputType.name,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{3,12}$');
+        if (value!.isEmpty) {
+          return ("Name cannot be empty !");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Minimum 3 and Maximum 12 characters");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        t2.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+          prefixIcon: Icon(Icons.people),
+          contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+          hintText: "Team B Name",
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+    );
+    final p1Field = TextFormField(
+      autofocus: false,
+      controller: p1,
+      keyboardType: TextInputType.name,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{3,12}$');
+        if (value!.isEmpty) {
+          return ("Name cannot be empty !");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Minimum 3 and Maximum 12 characters");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        p1.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+          prefixIcon: Icon(Icons.person),
+          contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+          hintText: "Player Name",
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+    );
+    final p2Field = TextFormField(
+      autofocus: false,
+      controller: p2,
+      keyboardType: TextInputType.name,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{3,12}$');
+        if (value!.isEmpty) {
+          return ("Name cannot be empty !");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Minimum 3 and Maximum 12 characters");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        p2.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+          prefixIcon: Icon(Icons.person),
+          contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+          hintText: "Player Name",
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+    );
+    final SignupButton = Material(
+      elevation: 5,
+      borderRadius: BorderRadius.circular(30),
+      color: Color.fromARGB(255, 50, 115, 228),
+      child: MaterialButton(
+        padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        minWidth: MediaQuery.of(context).size.width,
+        onPressed: (() {
+          if (_formKey.currentState!.validate()) {
+            postMatchDetailsToFirestore(m.text.trim(), t1.text.trim(),
+                t2.text.trim(), p1.text.trim(), p2.text.trim());
+          }
+        }),
+        child: Text(
+          "Create",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
     return Scaffold(
       body: Container(
         height: size.height,
@@ -64,297 +210,131 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                 child: SingleChildScrollView(
                   child: Container(
                     margin: EdgeInsets.only(left: 25, right: 25),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.06,
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.18,
-                        ),
-                        Text(
-                          "Enter Match Name",
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
+                    child: Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
                           ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.015,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 10,
-                                  spreadRadius: 7,
-                                  offset: Offset(1, 1),
-                                  color: Colors.grey.withOpacity(0.3)),
-                            ],
+                          // SizedBox(
+                          //   width: MediaQuery.of(context).size.width * 0.2,
+                          // ),
+                          Container(
+                            child: Form(
+                                key: _formKey,
+                                child: Column(
+                                  children: <Widget>[
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.04,
+                                    ),
+                                    Text(
+                                      "Enter Match Name",
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015,
+                                    ),
+                                    mField,
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.05,
+                                    ),
+                                    Text(
+                                      "Enter Team Name",
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.03,
+                                    ),
+                                    t1Field,
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02,
+                                    ),
+                                    t2Field,
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.05,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "Team A",
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02,
+                                    ),
+                                    p1Field,
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.04,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "Team B",
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02,
+                                    ),
+                                    p2Field,
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.06,
+                                    ),
+                                    SignupButton,
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.06,
+                                    ),
+                                  ],
+                                )),
                           ),
-                          child: TextField(
-                            controller: _m,
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
-                                icon: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Icon(
-                                    Icons.person,
-                                    color: Color.fromARGB(149, 0, 0, 0),
-                                  ),
-                                ),
-                                hintText: "Enter Match Name",
-                                hintStyle: TextStyle(color: Colors.grey),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1.0)),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1.0)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30))),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05,
-                        ),
-                        Text(
-                          "Enter Team Name",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 10,
-                                  spreadRadius: 7,
-                                  offset: Offset(1, 1),
-                                  color: Colors.grey.withOpacity(0.3)),
-                            ],
-                          ),
-                          child: TextField(
-                            controller: _t1,
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
-                                icon: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Icon(
-                                    Icons.people,
-                                    color: Color.fromARGB(149, 0, 0, 0),
-                                  ),
-                                ),
-                                hintText: "Team A Name",
-                                hintStyle: TextStyle(color: Colors.grey),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1.0)),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1.0)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30))),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 10,
-                                  spreadRadius: 7,
-                                  offset: Offset(1, 1),
-                                  color: Colors.grey.withOpacity(0.3)),
-                            ],
-                          ),
-                          child: TextField(
-                            controller: _t2,
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
-                                icon: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Icon(
-                                    Icons.people,
-                                    color: Color.fromARGB(149, 0, 0, 0),
-                                  ),
-                                ),
-                                hintText: "Team B Name",
-                                hintStyle: TextStyle(color: Colors.grey),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1.0)),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1.0)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30))),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "Team A",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 10,
-                                  spreadRadius: 7,
-                                  offset: Offset(1, 1),
-                                  color: Colors.grey.withOpacity(0.3)),
-                            ],
-                          ),
-                          child: TextField(
-                            controller: _p1,
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
-                                icon: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Icon(
-                                    Icons.person,
-                                    color: Color.fromARGB(149, 0, 0, 0),
-                                  ),
-                                ),
-                                hintText: "Player 1 Name",
-                                hintStyle: TextStyle(color: Colors.grey),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1.0)),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1.0)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30))),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "Team B",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 10,
-                                  spreadRadius: 7,
-                                  offset: Offset(1, 1),
-                                  color: Colors.grey.withOpacity(0.3)),
-                            ],
-                          ),
-                          child: TextField(
-                            controller: _p2,
-                            textInputAction: TextInputAction.done,
-                            decoration: InputDecoration(
-                                icon: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Icon(
-                                    Icons.person,
-                                    color: Color.fromARGB(149, 0, 0, 0),
-                                  ),
-                                ),
-                                hintText: "Player 2 Name",
-                                hintStyle: TextStyle(color: Colors.grey),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1.0)),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 1.0)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30))),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.06,
-                        ),
-                        GestureDetector(
-                          child: Container(
-                            height: 50,
-                            width: size.width,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: Color.fromARGB(255, 68, 167, 248),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Create Match",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                          onTap: (() {
-                            postMatchDetailsToFirestore();
-                          }),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.06,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -366,7 +346,14 @@ class _SinglesBadminton extends State<SinglesBadminton> {
     );
   }
 
-  postMatchDetailsToFirestore() async {
+  // void check() async {
+  //   if (_formKey.currentState!.validate()) {
+  //     (value) => {postMatchDetailsToFirestore()};
+  //   }
+  // }
+
+  postMatchDetailsToFirestore(
+      String m, String t1, String t2, String p1, String p2) async {
     // calling our firestore
 
     // sending these values
@@ -383,11 +370,11 @@ class _SinglesBadminton extends State<SinglesBadminton> {
         .collection('singles')
         .doc(documentReference.id)
         .set({
-      'match_name': _m.text.trim(),
-      'team_A_name': _t1.text.trim(),
-      'team_B_name': _t2.text.trim(),
-      'team_A_player': _p1.text.trim(),
-      'team_B_player': _p2.text.trim(),
+      'match_name': m,
+      'team_A_name': t1,
+      'team_B_name': t2,
+      'team_A_player': p1,
+      'team_B_player': p2,
     });
     print(documentReference);
     var docRef = await firebaseFirestore
@@ -410,8 +397,8 @@ class _SinglesBadminton extends State<SinglesBadminton> {
     // print(docRef.id);
     Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) => SingleScoreScreen(
-              p1: _p1.text,
-              p2: _p2.text,
+              p1: p1,
+              p2: p2,
               // docRef: docRef.id.toString(),
               singlesDocRef: documentReference.id.toString(),
             )));

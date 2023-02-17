@@ -346,12 +346,6 @@ class _SinglesBadminton extends State<SinglesBadminton> {
     );
   }
 
-  // void check() async {
-  //   if (_formKey.currentState!.validate()) {
-  //     (value) => {postMatchDetailsToFirestore()};
-  //   }
-  // }
-
   postMatchDetailsToFirestore(
       String m, String t1, String t2, String p1, String p2) async {
     // calling our firestore

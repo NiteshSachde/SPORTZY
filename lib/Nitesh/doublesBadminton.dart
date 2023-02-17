@@ -28,10 +28,10 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       validator: (value) {
         RegExp regex = new RegExp(r'^.{3,12}$');
         if (value!.isEmpty) {
-          return ("Name cannot be empty !");
+          return ("Match Name cannot be empty !");
         }
         if (!regex.hasMatch(value)) {
-          return ("Minimum 3 and Maximum 12 characters)");
+          return ("Minimum 3 and Maximum 12 characters");
         }
         return null;
       },
@@ -52,7 +52,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       validator: (value) {
         RegExp regex = new RegExp(r'^.{3,12}$');
         if (value!.isEmpty) {
-          return ("Name cannot be empty !");
+          return ("Team Name cannot be empty !");
         }
         if (!regex.hasMatch(value)) {
           return ("Minimum 3 and Maximum 12 characters");
@@ -76,7 +76,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       validator: (value) {
         RegExp regex = new RegExp(r'^.{3,12}$');
         if (value!.isEmpty) {
-          return ("Name cannot be empty !");
+          return ("Team Name cannot be empty !");
         }
         if (!regex.hasMatch(value)) {
           return ("Minimum 3 and Maximum 12 characters");
@@ -98,12 +98,12 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       controller: t1p1,
       keyboardType: TextInputType.name,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{3,12}$');
+        RegExp regex = new RegExp(r'^.{2,12}$');
         if (value!.isEmpty) {
-          return ("Name cannot be empty !");
+          return ("Player Name cannot be empty !");
         }
         if (!regex.hasMatch(value)) {
-          return ("Minimum 3 and Maximum 12 characters");
+          return ("Minimum 2 and Maximum 12 characters");
         }
         return null;
       },
@@ -122,12 +122,12 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       controller: t1p2,
       keyboardType: TextInputType.name,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{3,12}$');
+        RegExp regex = new RegExp(r'^.{2,12}$');
         if (value!.isEmpty) {
-          return ("Name cannot be empty !");
+          return ("Player Name cannot be empty !");
         }
         if (!regex.hasMatch(value)) {
-          return ("Minimum 3 and Maximum 12 characters");
+          return ("Minimum 2 and Maximum 12 characters");
         }
         return null;
       },
@@ -146,12 +146,12 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       controller: t2p1,
       keyboardType: TextInputType.name,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{3,12}$');
+        RegExp regex = new RegExp(r'^.{2,12}$');
         if (value!.isEmpty) {
-          return ("Name cannot be empty !");
+          return ("Player Name cannot be empty !");
         }
         if (!regex.hasMatch(value)) {
-          return ("Minimum 3 and Maximum 12 characters");
+          return ("Minimum 2 and Maximum 12 characters");
         }
         return null;
       },
@@ -170,12 +170,12 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       controller: t2p2,
       keyboardType: TextInputType.name,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{3,12}$');
+        RegExp regex = new RegExp(r'^.{2,12}$');
         if (value!.isEmpty) {
-          return ("Name cannot be empty !");
+          return ("Player Name cannot be empty !");
         }
         if (!regex.hasMatch(value)) {
-          return ("Minimum 3 and Maximum 12 characters");
+          return ("Minimum 2 and Maximum 12 characters");
         }
         return null;
       },
@@ -209,7 +209,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
           }
         }),
         child: Text(
-          "Create",
+          "Create Match",
           textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),

@@ -26,10 +26,10 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       validator: (value) {
         RegExp regex = new RegExp(r'^.{3,12}$');
         if (value!.isEmpty) {
-          return ("Name cannot be empty !");
+          return ("Match Name cannot be empty !");
         }
         if (!regex.hasMatch(value)) {
-          return ("Minimum 3 and Maximum 12 characters)");
+          return ("Minimum 3 and Maximum 12 characters");
         }
         return null;
       },
@@ -50,7 +50,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       validator: (value) {
         RegExp regex = new RegExp(r'^.{3,12}$');
         if (value!.isEmpty) {
-          return ("Name cannot be empty !");
+          return ("Team Name cannot be empty !");
         }
         if (!regex.hasMatch(value)) {
           return ("Minimum 3 and Maximum 12 characters");
@@ -74,7 +74,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       validator: (value) {
         RegExp regex = new RegExp(r'^.{3,12}$');
         if (value!.isEmpty) {
-          return ("Name cannot be empty !");
+          return ("Team Name cannot be empty !");
         }
         if (!regex.hasMatch(value)) {
           return ("Minimum 3 and Maximum 12 characters");
@@ -96,12 +96,12 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       controller: p1,
       keyboardType: TextInputType.name,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{3,12}$');
+        RegExp regex = new RegExp(r'^.{2,12}$');
         if (value!.isEmpty) {
-          return ("Name cannot be empty !");
+          return ("Player Name cannot be empty !");
         }
         if (!regex.hasMatch(value)) {
-          return ("Minimum 3 and Maximum 12 characters");
+          return ("Minimum 2 and Maximum 12 characters");
         }
         return null;
       },
@@ -120,12 +120,12 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       controller: p2,
       keyboardType: TextInputType.name,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{3,12}$');
+        RegExp regex = new RegExp(r'^.{2,12}$');
         if (value!.isEmpty) {
-          return ("Name cannot be empty !");
+          return ("Player Name cannot be empty !");
         }
         if (!regex.hasMatch(value)) {
-          return ("Minimum 3 and Maximum 12 characters");
+          return ("Minimum 2 and Maximum 12 characters");
         }
         return null;
       },
@@ -153,7 +153,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
           }
         }),
         child: Text(
-          "Create",
+          "Create Match",
           textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),

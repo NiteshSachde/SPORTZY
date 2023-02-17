@@ -1,3 +1,4 @@
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Heet/HomePage.dart';
 
@@ -12,7 +13,14 @@ class Result extends StatefulWidget {
 }
 
 class _ResultState extends State<Result> {
+  bool isPlaying = true;
+  final controller = ConfettiController();
   @override
+  void initState() {
+    super.initState();
+    controller.play();
+  }
+
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -65,13 +73,25 @@ class _ResultState extends State<Result> {
                     child: Column(
                       children: <Widget>[
                         SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                        ),
+                        Text(
+                          "${widget.winner}",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 1, 33, 211),
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
                           height: MediaQuery.of(context).size.height * 0.1,
                         ),
                         Text(
                           "Congratulations ${widget.winner} For Winning This Match!",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Color.fromARGB(255, 1, 33, 211),
+                            color: Colors.black,
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
@@ -110,6 +130,10 @@ class _ResultState extends State<Result> {
                   ),
                 ),
               ),
+            ),
+            ConfettiWidget(
+              confettiController: controller,
+              shouldLoop: true,
             ),
           ],
         ),

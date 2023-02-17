@@ -2,11 +2,12 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:sportzy/Heet/Result.dart';
 
 import 'HomePage.dart';
 
 class doubleScoreScreen extends StatefulWidget {
-  var p1, p2, p3, p4, docRef, doublesDocRef;
+  var p1, p2, p3, p4, t1, t2, docRef, doublesDocRef;
 
   doubleScoreScreen({
     Key? mykey,
@@ -14,6 +15,8 @@ class doubleScoreScreen extends StatefulWidget {
     required this.p2,
     required this.p3,
     required this.p4,
+    required this.t1,
+    required this.t2,
     //required this.docRef,
     required this.doublesDocRef,
   }) : super(key: mykey);
@@ -556,10 +559,12 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .collection('doubles')
         .doc(widget.doublesDocRef)
         .update({
-      'winner_team ': "Team A",
+      'winner_team ': widget.t1.toString(),
     });
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (BuildContext context) => Result(
+              winner: widget.t1.toString(),
+            )));
   }
 
   winningTeam_B() async {
@@ -575,9 +580,11 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .collection('doubles')
         .doc(widget.doublesDocRef)
         .update({
-      'winner_team ': "Team B",
+      'winner_team ': widget.t2.toString(),
     });
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (BuildContext context) => Result(
+              winner: widget.t2.toString(),
+            )));
   }
 }

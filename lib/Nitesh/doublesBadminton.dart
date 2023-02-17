@@ -458,6 +458,8 @@ class _DoublesBadminton extends State<DoublesBadminton> {
               p2: t1p2,
               p3: t2p1,
               p4: t2p2,
+              t1: t1,
+              t2: t2,
               //docRef: docRef.id.toString(),
               doublesDocRef: documentReference.id.toString(),
             )));

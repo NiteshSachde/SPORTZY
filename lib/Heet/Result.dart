@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:sportzy/Heet/HomePage.dart';
 
 class Result extends StatefulWidget {
+  var winner;
+  Result({
+    Key? mykey,
+    required this.winner,
+  }) : super(key: mykey);
   @override
   State<Result> createState() => _ResultState();
 }
@@ -33,7 +38,7 @@ class _ResultState extends State<Result> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
-                "Result",
+                "Match Result",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 34,
@@ -59,11 +64,14 @@ class _ResultState extends State<Result> {
                     margin: EdgeInsets.only(left: 25, right: 25),
                     child: Column(
                       children: <Widget>[
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.1,
+                        ),
                         Text(
-                          "_mresult",
-                          textAlign: TextAlign.start,
+                          "Congratulations ${widget.winner} For Winning This Match!",
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Color.fromARGB(255, 1, 33, 211),
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),

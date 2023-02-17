@@ -389,6 +389,8 @@ class _SinglesBadminton extends State<SinglesBadminton> {
         builder: (BuildContext context) => SingleScoreScreen(
               p1: p1,
               p2: p2,
+              t1: t1,
+              t2: t2,
               // docRef: docRef.id.toString(),
               singlesDocRef: documentReference.id.toString(),
             )));

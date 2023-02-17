@@ -3,13 +3,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Heet/HomePage.dart';
+import 'package:sportzy/Heet/Result.dart';
 
 class SingleScoreScreen extends StatefulWidget {
-  var p1, p2, docRef, singlesDocRef;
+  var p1, p2, docRef, singlesDocRef, t1, t2;
   SingleScoreScreen({
     Key? mykey,
     required this.p1,
     required this.p2,
+    required this.t1,
+    required this.t2,
     // required this.docRef,
     required this.singlesDocRef,
   }) : super(key: mykey);
@@ -544,10 +547,12 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .collection('singles')
         .doc(widget.singlesDocRef)
         .update({
-      'winner_team ': "Team A",
+      'winner_team ': widget.t1.toString(),
     });
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (BuildContext context) => Result(
+              winner: widget.t1.toString(),
+            )));
   }
 
   winningTeam_B() async {
@@ -563,9 +568,11 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .collection('singles')
         .doc(widget.singlesDocRef)
         .update({
-      'winner_team ': "Team B",
+      'winner_team ': widget.t2.toString(),
     });
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (BuildContext context) => Result(
+              winner: widget.t2.toString(),
+            )));
   }
 }

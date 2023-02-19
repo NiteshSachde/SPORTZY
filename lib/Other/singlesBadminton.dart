@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Misc/singleScoreScreen.dart';
+import 'package:sportzy/Other/singleScoreScreen.dart';
 
 class SinglesBadminton extends StatefulWidget {
   const SinglesBadminton({Key? key}) : super(key: key);
@@ -367,23 +367,23 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       'team_B_player': p2,
     });
     print(documentReference);
-    var docRef = await firebaseFirestore
-        .collection('sport')
-        .doc('badminton')
-        .collection('singles')
-        .doc(documentReference.id)
-        .update({
-      'point_team_A': 0,
-      'point_team_B': 0,
-      'team_A_set_1_points': "",
-      'team_B_set_1_points': "",
-      'team_A_set_2_points': "",
-      'team_B_set_2_points': "",
-      'team_A_set_3_points': "",
-      'team_B_set_3_points': "",
-      'team_A_set': 0,
-      'team_B_set': 0,
-    });
+    // var docRef = await firebaseFirestore
+    //     .collection('sport')
+    //     .doc('badminton')
+    //     .collection('singles')
+    //     .doc(documentReference.id)
+    //     .update({
+    //   'point_team_A': 0,
+    //   'point_team_B': 0,
+    //   'team_A_set_1_points': "",
+    //   'team_B_set_1_points': "",
+    //   'team_A_set_2_points': "",
+    //   'team_B_set_2_points': "",
+    //   'team_A_set_3_points': "",
+    //   'team_B_set_3_points': "",
+    //   'team_A_set': 0,
+    //   'team_B_set': 0,
+    // });
     // print(docRef.id);
     Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) => SingleScoreScreen(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sportzy/Misc/badminton.dart';
+import 'package:sportzy/Other/standaloneScreen.dart';
+import 'package:sportzy/Other/tournamentScreen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -85,10 +86,39 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ),
                           ),
                           onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => Badminton(),
-                              ),
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return SimpleDialog(
+                                  title: const Text('Select Match Type'),
+                                  children: <Widget>[
+                                    SimpleDialogOption(
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (BuildContext context) {
+                                              return StandaloneScreen();
+                                            },
+                                          ),
+                                        );
+                                      },
+                                      child: const Text('Standalone-Match'),
+                                    ),
+                                    SimpleDialogOption(
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (BuildContext context) {
+                                              return TournamentScreen();
+                                            },
+                                          ),
+                                        );
+                                      },
+                                      child: const Text('Tournament'),
+                                    ),
+                                  ],
+                                );
+                              },
                             );
                           },
                         ),

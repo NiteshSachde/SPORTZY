@@ -2,7 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Misc/Result.dart';
+import 'package:sportzy/Other/Result.dart';
 
 class doubleScoreScreen extends StatefulWidget {
   var p1, p2, p3, p4, t1, t2, docRef, doublesDocRef;

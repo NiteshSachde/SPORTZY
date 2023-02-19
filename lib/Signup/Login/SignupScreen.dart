@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:sportzy/Misc/userModel.dart';
+import 'package:sportzy/Other/userModel.dart';
 import 'verifyEmail.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -319,10 +319,10 @@ class _SignupScreenState extends State<SignupScreen> {
     if (_formKey.currentState!.validate()) {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) => {postDetailsToFirestore()})
-          .catchError((e) {
-        Fluttertoast.showToast(msg: e!.message);
-      });
+          .then((value) => {postDetailsToFirestore()});
+      //     .catchError((e) {
+      //   Fluttertoast.showToast(msg: e!.message);
+      // });
     }
   }
 

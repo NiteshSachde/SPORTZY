@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Misc/firestoreFields.dart';
+import 'package:sportzy/Other/firestoreFields.dart';
 
 class LiveScreen extends StatefulWidget {
   const LiveScreen({super.key});

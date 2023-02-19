@@ -2,7 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Misc/Result.dart';
+import 'package:sportzy/Other/Result.dart';
 import 'package:sportzy/Home/homeScreen.dart';
 
 class SingleScoreScreen extends StatefulWidget {
@@ -27,8 +27,8 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
   int _setCountt1 = 0;
   int _setCountt2 = 0;
   int _setNumber = 1;
-  late int _swap1;
-  late var _swapName;
+  // late int _swap1;
+  // late var _swapName;
   void _decrementCountP1() {
     setState(() {
       if (_countert1 < 1) {
@@ -49,33 +49,33 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
     postPointDetailsToFirestore();
   }
 
-  void _resetAll() {
-    setState(() {
-      _countert1 = 0;
-      _countert2 = 0;
-      _setCountt1 = 0;
-      _setCountt2 = 0;
-      _setNumber = 1;
-      ;
-    });
-    postPointDetailsToFirestore();
-  }
+  // void _resetAll() {
+  //   setState(() {
+  //     _countert1 = 0;
+  //     _countert2 = 0;
+  //     _setCountt1 = 0;
+  //     _setCountt2 = 0;
+  //     _setNumber = 1;
+  //     ;
+  //   });
+  //   postPointDetailsToFirestore();
+  // }
 
-  void _swapCourt() {
-    setState(() {
-      _swap1 = _countert1;
-      _countert1 = _countert2;
-      _countert2 = _swap1;
+  // void _swapCourt() {
+  //   setState(() {
+  //     _swap1 = _countert1;
+  //     _countert1 = _countert2;
+  //     _countert2 = _swap1;
 
-      _swap1 = _setCountt1;
-      _setCountt1 = _setCountt2;
-      _setCountt2 = _swap1;
+  //     _swap1 = _setCountt1;
+  //     _setCountt1 = _setCountt2;
+  //     _setCountt2 = _swap1;
 
-      _swapName = widget.p1;
-      widget.p1 = widget.p2;
-      widget.p2 = _swapName;
-    });
-  }
+  //     _swapName = widget.p1;
+  //     widget.p1 = widget.p2;
+  //     widget.p2 = _swapName;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

@@ -18,19 +18,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int _currentIndex = 1;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screen[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        onTap: _onItemTapped,
+        onTap: (value) {
+          setState(() {
+            _currentIndex = value;
+          });
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.business),

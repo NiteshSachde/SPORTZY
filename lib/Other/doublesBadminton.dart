@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sportzy/Home/homeScreen.dart';
 import 'doubleScoreScreen.dart';
 
 class DoublesBadminton extends StatefulWidget {
@@ -424,6 +426,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
 
   postMatchDetailsToFirestore(String m, String t1, String t2, String t1p1,
       String t1p2, String t2p1, String t2p2) async {
+    final _auth = FirebaseAuth.instance;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     DocumentReference documentReference = FirebaseFirestore.instance
         .collection('sport')
@@ -443,20 +446,43 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       'team_B_player1': t2p1,
       'team_A_player2': t1p2,
       'team_B_player2': t2p2,
+      'createdBy': _auth.currentUser!.uid,
     });
-    print(documentReference);
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (BuildContext context) => doubleScoreScreen(
-          p1: t1p1,
-          p2: t1p2,
-          p3: t2p1,
-          p4: t2p2,
-          t1: t1,
-          t2: t2,
-          doublesDocRef: documentReference.id.toString(),
-        ),
-      ),
-    );
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc(documentReference.id)
+        .update({
+      'point_team_A': 0,
+      'point_team_B': 0,
+      'team_A_set_1_points': "",
+      'team_B_set_1_points': "",
+      'team_A_set_2_points': "",
+      'team_B_set_2_points': "",
+      'team_A_set_3_points': "",
+      'team_B_set_3_points': "",
+      'team_A_set': 0,
+      'team_B_set': 0,
+    });
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+      builder: (ctx) {
+        return HomeScreen();
+      },
+    ), (route) => false);
+    // print(documentReference);
+    // Navigator.of(context).push(
+    //   MaterialPageRoute(
+    //     builder: (BuildContext context) => doubleScoreScreen(
+    //       p1: t1p1,
+    //       p2: t1p2,
+    //       p3: t2p1,
+    //       p4: t2p2,
+    //       t1: t1,
+    //       t2: t2,
+    //       doublesDocRef: documentReference.id.toString(),
+    //     ),
+    //   ),
+    // );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MyMatchesScreen extends StatefulWidget {
@@ -9,10 +11,11 @@ class MyMatchesScreen extends StatefulWidget {
 class _MyMatchesScreenState extends State<MyMatchesScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
+  final _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
-    _tabController = new TabController(initialIndex: 1, length: 2, vsync: this);
+    _tabController = new TabController(initialIndex: 0, length: 2, vsync: this);
     super.initState();
   }
 
@@ -54,13 +57,39 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
             child: TabBarView(
               controller: _tabController,
               children: [
-                Center(
-                  child: Text(
-                    "Standalone-Match",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
+                StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection('sport')
+                      .doc('badminton')
+                      .collection('doubles')
+                      .snapshots()
+                      .where(
+                    (event) {
+                      return event.docs.where(
+                        (element) {
+                          return element['createdBy'] == _auth.currentUser!.uid;
+                        },
+                      ).isNotEmpty;
+                    },
                   ),
+                  builder: (ctx2, snapshot2) {
+                    if (snapshot2.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    return Expanded(
+                      child: ListView.builder(
+                        itemCount: snapshot2.data!.docs.length,
+                        itemBuilder: (ctx, index) {
+                          return ListTile(
+                            title:
+                                Text(snapshot2.data!.docs[index]['match_name']),
+                          );
+                        },
+                      ),
+                    );
+                  },
                 ),
                 Center(
                   child: Text(

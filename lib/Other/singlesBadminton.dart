@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:sportzy/Home/homeScreen.dart';
 import 'package:sportzy/Other/singleScoreScreen.dart';
 
 class SinglesBadminton extends StatefulWidget {
@@ -348,6 +351,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
 
     // sending these values
 
+    final _auth = FirebaseAuth.instance;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     DocumentReference documentReference = FirebaseFirestore.instance
         .collection('sport')
@@ -365,34 +369,40 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       'team_B_name': t2,
       'team_A_player': p1,
       'team_B_player': p2,
+      'createdBy': _auth.currentUser!.uid,
     });
     print(documentReference);
-    // var docRef = await firebaseFirestore
-    //     .collection('sport')
-    //     .doc('badminton')
-    //     .collection('singles')
-    //     .doc(documentReference.id)
-    //     .update({
-    //   'point_team_A': 0,
-    //   'point_team_B': 0,
-    //   'team_A_set_1_points': "",
-    //   'team_B_set_1_points': "",
-    //   'team_A_set_2_points': "",
-    //   'team_B_set_2_points': "",
-    //   'team_A_set_3_points': "",
-    //   'team_B_set_3_points': "",
-    //   'team_A_set': 0,
-    //   'team_B_set': 0,
-    // });
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc(documentReference.id)
+        .update({
+      'point_team_A': 0,
+      'point_team_B': 0,
+      'team_A_set_1_points': "",
+      'team_B_set_1_points': "",
+      'team_A_set_2_points': "",
+      'team_B_set_2_points': "",
+      'team_A_set_3_points': "",
+      'team_B_set_3_points': "",
+      'team_A_set': 0,
+      'team_B_set': 0,
+    });
     // print(docRef.id);
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (BuildContext context) => SingleScoreScreen(
-              p1: p1,
-              p2: p2,
-              t1: t1,
-              t2: t2,
-              // docRef: docRef.id.toString(),
-              singlesDocRef: documentReference.id.toString(),
-            )));
+    // Navigator.of(context).push(MaterialPageRoute(
+    //     builder: (BuildContext context) => SingleScoreScreen(
+    //           p1: p1,
+    //           p2: p2,
+    //           t1: t1,
+    //           t2: t2,
+    //           // docRef: docRef.id.toString(),
+    //           singlesDocRef: documentReference.id.toString(),
+    //         )));
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+      builder: (ctx) {
+        return HomeScreen();
+      },
+    ), (route) => false);
   }
 }

@@ -736,7 +736,7 @@ class _LiveScreenState extends State<LiveScreen> {
               ),
             ),
       floatingActionButton: FloatingActionButton(
-        child: Text(_isSingle ? "S" : "D"),
+        child: Icon(_isSingle ? Icons.person : Icons.people),
         onPressed: () {
           setState(() {
             _isSingle = !_isSingle;

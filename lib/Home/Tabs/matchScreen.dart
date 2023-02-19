@@ -26,42 +26,44 @@ class _MatchScreenState extends State<MatchScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          TabBar(
-            controller: _tabController,
-            tabs: [
-              Tab(
-                height: 50,
-                child: Text(
-                  "Completed",
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              Tab(
-                height: 50,
-                child: Text(
-                  "Live",
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-            child: TabBarView(
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            TabBar(
               controller: _tabController,
-              children: [
-                CompletedScreen(),
-                LiveScreen(),
+              tabs: [
+                Tab(
+                  height: 50,
+                  child: Text(
+                    "Completed",
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                Tab(
+                  height: 50,
+                  child: Text(
+                    "Live",
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
               ],
             ),
-          ),
-        ],
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  CompletedScreen(),
+                  LiveScreen(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

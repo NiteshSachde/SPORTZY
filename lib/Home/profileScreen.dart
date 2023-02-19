@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sportzy/Home/myMatchesScreen.dart';
 import 'package:sportzy/Signup/Login/loginScreen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -94,7 +95,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => MyMatchesScreen(),
+                              ),
+                            );
+                          },
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.05,

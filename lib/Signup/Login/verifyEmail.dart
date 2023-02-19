@@ -3,12 +3,11 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:sportzy/Heet/HomePage.dart';
-import 'package:sportzy/Nitesh/loginScreen.dart';
+import 'package:sportzy/Signup/Login/loginScreen.dart';
+import 'package:sportzy/Home/homeScreen.dart';
 
 class VerifyEmail extends StatefulWidget {
   const VerifyEmail({super.key});
-
   @override
   State<VerifyEmail> createState() => _VerifyEmailState();
 }
@@ -62,7 +61,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     if (isEmailVerified) {
-      return HomePage();
+      return HomeScreen();
     } else {
       return Scaffold(
         backgroundColor: Colors.white,
@@ -93,9 +92,11 @@ class _VerifyEmailState extends State<VerifyEmail> {
                           color: Colors.white,
                         ),
                         onPressed: () => Navigator.pushReplacement(
-                            (context),
-                            MaterialPageRoute(
-                                builder: (context) => LoginScreen())),
+                          (context),
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                        ),
                       ),
                       backgroundColor: Colors.transparent
                           .withOpacity(0.0), //You can make this transparent
@@ -107,9 +108,10 @@ class _VerifyEmailState extends State<VerifyEmail> {
                       child: Text(
                         "Email Verification",
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 36,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontSize: 36,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],
@@ -120,9 +122,10 @@ class _VerifyEmailState extends State<VerifyEmail> {
                   child: Text(
                     "Welcome To Sportzy",
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -135,8 +138,9 @@ class _VerifyEmailState extends State<VerifyEmail> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(50),
-                          topRight: Radius.circular(50)),
+                        topLeft: Radius.circular(50),
+                        topRight: Radius.circular(50),
+                      ),
                     ),
                     child: Container(
                       margin: EdgeInsets.only(left: 25, right: 25),
@@ -173,21 +177,24 @@ class _VerifyEmailState extends State<VerifyEmail> {
                               height: MediaQuery.of(context).size.height * 0.02,
                             ),
                             TextButton(
-                                style: ElevatedButton.styleFrom(
-                                  minimumSize: Size.fromHeight(50),
-                                ),
-                                child: Text(
-                                  'Cancel',
-                                  style: TextStyle(fontSize: 22),
-                                ),
-                                onPressed: () {
-                                  FirebaseAuth.instance.signOut();
-                                  Navigator.pushAndRemoveUntil(
-                                      (context),
-                                      MaterialPageRoute(
-                                          builder: (context) => LoginScreen()),
-                                      (route) => false);
-                                })
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: Size.fromHeight(50),
+                              ),
+                              child: Text(
+                                'Cancel',
+                                style: TextStyle(fontSize: 22),
+                              ),
+                              onPressed: () {
+                                FirebaseAuth.instance.signOut();
+                                Navigator.pushAndRemoveUntil(
+                                  (context),
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginScreen(),
+                                  ),
+                                  (route) => false,
+                                );
+                              },
+                            )
                           ],
                         ),
                       ),

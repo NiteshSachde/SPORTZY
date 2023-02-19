@@ -1,26 +1,24 @@
-import 'package:confetti/confetti.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Heet/HomePage.dart';
+import 'package:sportzy/Signup/Login/loginScreen.dart';
 
-class Result extends StatefulWidget {
-  var winner;
-  Result({
-    Key? mykey,
-    required this.winner,
-  }) : super(key: mykey);
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
   @override
-  State<Result> createState() => _ResultState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ResultState extends State<Result> {
-  bool isPlaying = true;
-  final controller = ConfettiController();
-  @override
-  void initState() {
-    super.initState();
-    controller.play();
+class _ProfileScreenState extends State<ProfileScreen> {
+  Future<void> logOut(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => LoginScreen(),
+      ),
+    );
   }
 
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -46,11 +44,12 @@ class _ResultState extends State<Result> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
-                "Match Result",
+                "User Profile",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 34,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: 34,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(
@@ -65,39 +64,16 @@ class _ResultState extends State<Result> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50)),
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50),
+                    ),
                   ),
                   child: Container(
                     margin: EdgeInsets.only(left: 25, right: 25),
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05,
-                        ),
-                        Text(
-                          "${widget.winner}",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 1, 33, 211),
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
                           height: MediaQuery.of(context).size.height * 0.1,
-                        ),
-                        Text(
-                          "Congratulations ${widget.winner} For Winning This Match!",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.17,
                         ),
                         GestureDetector(
                           child: Container(
@@ -109,31 +85,22 @@ class _ResultState extends State<Result> {
                             ),
                             child: Center(
                               child: Text(
-                                "Go To Home",
+                                "Logout",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
-                          onTap: (() {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (BuildContext context) => HomePage()));
-                          }),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
+                          onTap: () => logOut(context),
                         ),
                       ],
                     ),
                   ),
                 ),
               ),
-            ),
-            ConfettiWidget(
-              confettiController: controller,
-              shouldLoop: true,
             ),
           ],
         ),

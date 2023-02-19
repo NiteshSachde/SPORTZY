@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sportzy/Misc/badminton.dart';
 
-class SelectSport extends StatefulWidget {
-  const SelectSport({Key? key}) : super(key: key);
-
+class DashboardScreen extends StatefulWidget {
+  const DashboardScreen({super.key});
   @override
-  State<SelectSport> createState() => _SelectSport();
+  State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _SelectSport extends State<SelectSport> {
+class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -36,9 +36,10 @@ class _SelectSport extends State<SelectSport> {
               child: Text(
                 "Sport Selection",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 34,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: 34,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(
@@ -53,8 +54,9 @@ class _SelectSport extends State<SelectSport> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50)),
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50),
+                    ),
                   ),
                   child: Container(
                     margin: EdgeInsets.only(left: 25, right: 25),
@@ -63,22 +65,32 @@ class _SelectSport extends State<SelectSport> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.17,
                         ),
-                        Container(
-                          height: 50,
-                          width: size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 15, 136, 236),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Badminton",
-                              style: TextStyle(
+                        GestureDetector(
+                          child: Container(
+                            height: 50,
+                            width: size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Color.fromARGB(255, 15, 136, 236),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Badminton",
+                                style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) => Badminton(),
+                              ),
+                            );
+                          },
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04,
@@ -88,15 +100,16 @@ class _SelectSport extends State<SelectSport> {
                           width: size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 15, 136, 236),
+                            color: Colors.white,
                           ),
                           child: Center(
                             child: Text(
                               "Cricket",
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                                color: Color.fromARGB(255, 15, 136, 236),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
@@ -108,15 +121,16 @@ class _SelectSport extends State<SelectSport> {
                           width: size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Color.fromARGB(255, 15, 136, 236),
+                            color: Colors.white,
                           ),
                           child: Center(
                             child: Text(
                               "Table - Tennis",
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                                color: Color.fromARGB(255, 15, 136, 236),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),

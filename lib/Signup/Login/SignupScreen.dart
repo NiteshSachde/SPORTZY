@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:sportzy/Models/userModel.dart';
-import '../Nitesh/verifyEmail.dart';
+import 'package:sportzy/Misc/userModel.dart';
+import 'verifyEmail.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -100,6 +100,7 @@ class _SignupScreenState extends State<SignupScreen> {
         if (!regex.hasMatch(value)) {
           return ("Password must contain minimum 6 character !");
         }
+        return null;
       },
       onSaved: (value) {
         passwordController.text = value!.trim();

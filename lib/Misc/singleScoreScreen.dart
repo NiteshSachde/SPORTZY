@@ -2,8 +2,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Heet/HomePage.dart';
-import 'package:sportzy/Heet/Result.dart';
+import 'package:sportzy/Misc/Result.dart';
+import 'package:sportzy/Home/homeScreen.dart';
 
 class SingleScoreScreen extends StatefulWidget {
   var p1, p2, docRef, singlesDocRef, t1, t2;
@@ -96,7 +96,8 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                         deleteMatch();
                         Navigator.pushAndRemoveUntil(
                             (context),
-                            MaterialPageRoute(builder: (context) => HomePage()),
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()),
                             (route) => false);
                       },
                       child: Text("Cancel"))

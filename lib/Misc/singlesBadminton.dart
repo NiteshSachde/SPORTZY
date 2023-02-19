@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Heet/singleScoreScreen.dart';
+import 'package:sportzy/Misc/singleScoreScreen.dart';
 
 class SinglesBadminton extends StatefulWidget {
   const SinglesBadminton({Key? key}) : super(key: key);

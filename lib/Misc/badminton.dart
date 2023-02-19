@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:sportzy/Nitesh/doublesBadminton.dart';
-import 'package:sportzy/Nitesh/singlesBadminton.dart';
+import 'package:sportzy/Misc/doublesBadminton.dart';
+import 'package:sportzy/Misc/singlesBadminton.dart';
 
 class Badminton extends StatefulWidget {
   const Badminton({Key? key}) : super(key: key);
-
   @override
   State<Badminton> createState() => _Badminton();
 }
@@ -13,9 +12,6 @@ class Badminton extends StatefulWidget {
 class _Badminton extends State<Badminton> {
   int _selectedIndex = 0;
 
-  // ignore: unused_field
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   List<Widget> _widgetOptions = <Widget>[
     SinglesBadminton(),
     DoublesBadminton(),
@@ -29,7 +25,9 @@ class _Badminton extends State<Badminton> {
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+            topLeft: Radius.circular(40),
+            topRight: Radius.circular(40),
+          ),
           color: Color.fromARGB(255, 69, 137, 254),
         ),
         child: Padding(

@@ -2,13 +2,10 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Heet/Result.dart';
-
-import 'HomePage.dart';
+import 'package:sportzy/Misc/Result.dart';
 
 class doubleScoreScreen extends StatefulWidget {
   var p1, p2, p3, p4, t1, t2, docRef, doublesDocRef;
-
   doubleScoreScreen({
     Key? mykey,
     required this.p1,
@@ -17,10 +14,8 @@ class doubleScoreScreen extends StatefulWidget {
     required this.p4,
     required this.t1,
     required this.t2,
-    //required this.docRef,
     required this.doublesDocRef,
   }) : super(key: mykey);
-
   @override
   State<doubleScoreScreen> createState() => _doubleScoreScreenState();
 }
@@ -110,9 +105,10 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                     child: Text(
                       '${widget.p1}',
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -130,9 +126,10 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                     child: Text(
                       '${widget.p3}',
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -157,9 +154,10 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                     child: Text(
                       '${widget.p2}',
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -177,9 +175,10 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                     child: Text(
                       '${widget.p4}',
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -205,16 +204,16 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                       child: Text(
                         ("${_countert1}"),
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 70,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontSize: 70,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                   onTap: () {
                     setState(() {
                       _countert1++;
-
                       if (_countert1 == 21) {
                         if (_setNumber == 1) {
                           set_1_points();
@@ -258,16 +257,16 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                       child: Text(
                         ("${_countert2}"),
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 70,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontSize: 70,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                  onTap: (() {
+                  onTap: () {
                     setState(() {
                       _countert2++;
-
                       if (_countert2 == 21) {
                         if (_setNumber == 1) {
                           set_1_points();
@@ -294,7 +293,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                       }
                     });
                     postPointDetailsToFirestore();
-                  }),
+                  },
                 ),
               ],
             ),
@@ -360,9 +359,10 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                     child: Text(
                       ("${_setCountt1}"),
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -380,9 +380,10 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                     child: Text(
                       ("${_setCountt2}"),
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -441,12 +442,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
   }
 
   postPointDetailsToFirestore() async {
-    // calling our firestore
-
-    // sending these values
-
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
@@ -459,12 +455,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
   }
 
   set_1_points() async {
-    // calling our firestore
-
-    // sending these values
-
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
@@ -477,12 +468,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
   }
 
   set_2_points() async {
-    // calling our firestore
-
-    // sending these values
-
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
@@ -495,12 +481,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
   }
 
   set_3_points() async {
-    // calling our firestore
-
-    // sending these values
-
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
@@ -513,12 +494,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
   }
 
   setDetailsTeam_A() async {
-    // calling our firestore
-
-    // sending these values
-
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
@@ -530,12 +506,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
   }
 
   setDetailsTeam_B() async {
-    // calling our firestore
-
-    // sending these values
-
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
@@ -547,12 +518,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
   }
 
   winningTeam_A() async {
-    // calling our firestore
-
-    // sending these values
-
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
@@ -561,19 +527,17 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .update({
       'winner_team ': widget.t1.toString(),
     });
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
         builder: (BuildContext context) => Result(
-              winner: widget.t1.toString(),
-            )));
+          winner: widget.t1.toString(),
+        ),
+      ),
+    );
   }
 
   winningTeam_B() async {
-    // calling our firestore
-
-    // sending these values
-
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
@@ -582,9 +546,12 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .update({
       'winner_team ': widget.t2.toString(),
     });
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
         builder: (BuildContext context) => Result(
-              winner: widget.t2.toString(),
-            )));
+          winner: widget.t2.toString(),
+        ),
+      ),
+    );
   }
 }

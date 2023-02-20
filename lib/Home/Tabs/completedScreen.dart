@@ -310,6 +310,18 @@ class _CompletedScreenState extends State<CompletedScreen> {
                                 ),
                               ),
                             ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.01,
+                            ),
+                            Text(
+                              "${matchDocs[index][FireStoreFields.winner_team]} won the match !",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 47, 153, 240),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -687,7 +699,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
                               "${matchDocs2[index][FireStoreFields.winner_team]} won the match !",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 47, 153, 240),
                               ),

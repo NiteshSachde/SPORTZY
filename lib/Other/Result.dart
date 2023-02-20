@@ -1,14 +1,15 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:confetti/confetti.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Home/homeScreen.dart';
 
 class Result extends StatefulWidget {
-  var winner;
+  var winner, singlesDocRef;
   Result({
     Key? mykey,
     required this.winner,
+    this.singlesDocRef,
   }) : super(key: mykey);
   @override
   State<Result> createState() => _ResultState();
@@ -123,6 +124,7 @@ class _ResultState extends State<Result> {
                             ),
                           ),
                           onTap: () {
+                            deleteMatch();
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (BuildContext context) => HomeScreen(),
@@ -147,5 +149,15 @@ class _ResultState extends State<Result> {
         ),
       ),
     );
+  }
+
+  deleteMatch() async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('singles')
+        .doc(widget.singlesDocRef)
+        .delete();
   }
 }

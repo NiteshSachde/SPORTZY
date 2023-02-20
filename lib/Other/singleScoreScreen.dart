@@ -7,7 +7,6 @@ import 'package:sportzy/Other/Result.dart';
 class SingleScoreScreen extends StatefulWidget {
   var p1,
       p2,
-      docRef,
       singlesDocRef,
       t1,
       t2,
@@ -16,14 +15,8 @@ class SingleScoreScreen extends StatefulWidget {
       setTA,
       setTB,
       setNum,
-      match_name,
-      team_A_set_1_points,
-      team_B_set_1_points,
-      team_A_set_2_points,
-      team_B_set_2_points,
-      team_A_set_3_points,
-      team_B_set_3_pints,
-      winner_team;
+      match_name;
+
   SingleScoreScreen({
     Key? mykey,
     required this.match_name,
@@ -36,14 +29,6 @@ class SingleScoreScreen extends StatefulWidget {
     required this.setTA,
     required this.setTB,
     required this.setNum,
-    required this.team_A_set_1_points,
-    required this.team_A_set_2_points,
-    required this.team_A_set_3_points,
-    required this.team_B_set_1_points,
-    required this.team_B_set_2_points,
-    required this.team_B_set_3_pints,
-    required this.winner_team,
-    // required this.docRef,
     required this.singlesDocRef,
   }) : super(key: mykey);
 
@@ -54,10 +39,6 @@ class SingleScoreScreen extends StatefulWidget {
 class _SingleScoreScreen extends State<SingleScoreScreen> {
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
-  // var widget.pointTA;
-
-  // late int _swap1;
-  // late var _swapName;
   void _decrementCountP1() {
     setState(() {
       if (widget.pointTA < 1) {
@@ -78,36 +59,9 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
     postPointDetailsToFirestore();
   }
 
-  // void _resetAll() {
-  //   setState(() {
-  //     widget.pointTA = 0;
-  //     widget.pointTB = 0;
-  //     widget.setTA = 0;
-  //     widget.setTB = 0;
-  //     widget.setNum = 1;
-  //     ;
-  //   });
-  //   postPointDetailsToFirestore();
-  // }
-
-  // void _swapCourt() {
-  //   setState(() {
-  //     _swap1 = widget.pointTA;
-  //     widget.pointTA = widget.pointTB;
-  //     widget.pointTB = _swap1;
-
-  //     _swap1 = widget.setTA;
-  //     widget.setTA = widget.setTB;
-  //     widget.setTB = _swap1;
-
-  //     _swapName = widget.p1;
-  //     widget.p1 = widget.p2;
-  //     widget.p2 = _swapName;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
+    // completeMatchDetails();
     return Scaffold(
       body: Container(
         child: Column(
@@ -193,13 +147,10 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                       if (widget.pointTA == 21) {
                         if (widget.setNum == 1) {
                           set_1_points();
-                          // completeMatch();
                         } else if (widget.setNum == 2) {
                           set_2_points();
-                          // completeMatch();
                         } else if (widget.setNum == 3) {
                           set_3_points();
-                          // completeMatch();
                         }
                         widget.pointTA = 0;
                         widget.pointTB = 0;
@@ -210,13 +161,10 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                       if (widget.setTA == 2 || widget.setTB == 2) {
                         if (widget.setTA == 2) {
                           winningTeam_A();
-                          completeMatch();
-                          // deleteMatch();
                         } else if (widget.setTB == 2) {
                           winningTeam_B();
-                          completeMatch();
-                          // deleteMatch();
                         }
+                        completeMatchDetails();
                         widget.setTA = 0;
                         widget.setTB = 0;
                       }
@@ -252,13 +200,10 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                       if (widget.pointTB == 21) {
                         if (widget.setNum == 1) {
                           set_1_points();
-                          completeMatch();
                         } else if (widget.setNum == 2) {
                           set_2_points();
-                          completeMatch();
                         } else if (widget.setNum == 3) {
                           set_3_points();
-                          completeMatch();
                         }
                         widget.pointTA = 0;
                         widget.pointTB = 0;
@@ -269,13 +214,14 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                       if (widget.setTA == 2 || widget.setTB == 2) {
                         if (widget.setTA == 2) {
                           winningTeam_A();
-                          completeMatch();
+
                           // deleteMatch();
                         } else if (widget.setTB == 2) {
                           winningTeam_B();
-                          completeMatch();
+
                           // deleteMatch();
                         }
+                        completeMatchDetails();
                         widget.setTA = 0;
                         widget.setTB = 0;
                       }
@@ -375,105 +321,61 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                 ),
               ],
             ),
-
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.19,
             ),
-            // Row(
-            //   children: <Widget>[
-            //     SizedBox(
-            //       width: MediaQuery.of(context).size.width * 0.04,
-            //     ),
-            //     Container(
-            //       height: MediaQuery.of(context).size.height * 0.07,
-            //       width: MediaQuery.of(context).size.width * 0.45,
-            //       decoration: BoxDecoration(
-            //         borderRadius: BorderRadius.circular(30),
-            //         color: null,
-            //       ),
-            //       child: Center(
-            //         child: IconButton(
-            //           icon: Icon(
-            //             Icons.swap_horiz_sharp,
-            //             size: 40,
-            //           ),
-            //           color: Color.fromARGB(255, 15, 136, 236),
-            //           onPressed: _swapCourt,
-            //         ),
-            //       ),
-            //     ),
-            //     Container(
-            //       height: MediaQuery.of(context).size.height * 0.07,
-            //       width: MediaQuery.of(context).size.width * 0.45,
-            //       decoration: BoxDecoration(
-            //         borderRadius: BorderRadius.circular(30),
-            //         color: null,
-            //       ),
-            //       child: Center(
-            //         child: IconButton(
-            //           icon: Icon(
-            //             Icons.replay,
-            //             size: 40,
-            //           ),
-            //           onPressed: _resetAll,
-            //           color: Color.fromARGB(255, 15, 136, 236),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
           ],
         ),
       ),
     );
   }
 
-  completeMatch() async {
+  completeMatchDetails() async {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
-    DocumentReference documentReference = FirebaseFirestore.instance
-        .collection('sport')
-        .doc('badminton')
-        .collection('completed_singles')
-        .doc();
-    await firebaseFirestore
-        .collection('sport')
-        .doc('badminton')
-        .collection('completed_singles')
-        .doc(documentReference.id)
-        .set({
-      'match_name': widget.match_name,
-      'team_A_name': widget.t1,
-      'team_B_name': widget.t2,
-      'team_A_player': widget.p1,
-      'team_B_player': widget.p2,
-      'team_A_set': widget.setTA,
-      'team_B_set': widget.setTB,
-    });
-    await firebaseFirestore
-        .collection('sport')
-        .doc('badminton')
-        .collection('completed_singles')
-        .doc(documentReference.id)
-        .update({
-      'team_A_set_1_points': widget.team_A_set_1_points,
-      'team_B_set_1_points': widget.team_B_set_1_points,
-      'team_A_set_2_points': widget.team_A_set_2_points,
-      'team_B_set_2_points': widget.team_B_set_2_points,
-      'team_A_set_3_points': widget.team_A_set_3_points,
-      'team_B_set_3_points': widget.team_B_set_3_pints,
-      'winner_team': widget.winner_team,
-    });
-  }
-
-  deleteMatch() async {
-    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    await firebaseFirestore
+    var snapshot = await firebaseFirestore
         .collection('sport')
         .doc('badminton')
         .collection('singles')
         .doc(widget.singlesDocRef)
-        .delete();
+        .get();
+    var match_name = snapshot['match_name'];
+    var team_A_name = snapshot['team_A_name'];
+    var team_B_name = snapshot['team_B_name'];
+    var team_A_player = snapshot['team_A_player'];
+    var team_B_player = snapshot['team_B_player'];
+    var team_A_set = snapshot['team_A_set'];
+    // var team_B_set = snapshot['team_B_set'];
+    var team_A_set_1_points = snapshot['team_A_set_1_points'];
+    var team_A_set_2_points = snapshot['team_A_set_2_points'];
+    var team_A_set_3_points = snapshot['team_A_set_3_points'];
+    var team_B_set_1_points = snapshot['team_B_set_1_points'];
+    var team_B_set_2_points = snapshot['team_B_set_2_points'];
+    var team_B_set_3_points = snapshot['team_B_set_3_points'];
+    var winner_team;
+    if (team_A_set == 2) {
+      winner_team = widget.t1;
+    } else {
+      winner_team = widget.t2;
+    }
+    print(winner_team);
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('completed_singles')
+        .add({
+      'match_name': match_name,
+      'team_A_name': team_A_name,
+      'team_B_name': team_B_name,
+      'team_A_player': team_A_player,
+      'team_B_player': team_B_player,
+      'team_A_set_1_points': team_A_set_1_points,
+      'team_A_set_2_points': team_A_set_2_points,
+      'team_A_set_3_points': team_A_set_3_points,
+      'team_B_set_1_points': team_B_set_1_points,
+      'team_B_set_2_points': team_B_set_2_points,
+      'team_B_set_3_points': team_B_set_3_points,
+      'winner_team': winner_team,
+    });
   }
 
   postPointDetailsToFirestore() async {
@@ -602,6 +504,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
     Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (BuildContext context) => Result(
               winner: widget.t1.toString(),
+              singlesDocRef: widget.singlesDocRef,
             )));
   }
 
@@ -623,6 +526,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
     Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (BuildContext context) => Result(
               winner: widget.t2.toString(),
+              singlesDocRef: widget.singlesDocRef,
             )));
   }
 }

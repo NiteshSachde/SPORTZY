@@ -95,84 +95,69 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                                       onTap: () {
                                         Navigator.of(context).pushReplacement(
                                             MaterialPageRoute(
-                                                builder:
-                                                    (BuildContext context) =>
-                                                        SingleScoreScreen(
-                                                          p1: snapshot2.data!
-                                                                  .docs[index]
-                                                              ['team_A_player'],
-                                                          p2: snapshot2.data!
-                                                                  .docs[index]
-                                                              ['team_B_player'],
-                                                          t1: snapshot2.data!
-                                                                  .docs[index]
-                                                              ['team_A_name'],
-                                                          t2: snapshot2.data!
-                                                                  .docs[index]
-                                                              ['team_B_name'],
-                                                          singlesDocRef:
-                                                              snapshot2
-                                                                  .data!
-                                                                  .docs[index]
-                                                                  .id,
-                                                          pointTA: snapshot2
-                                                                  .data!
-                                                                  .docs[index]
-                                                              ['point_team_A'],
-                                                          pointTB: snapshot2
-                                                                  .data!
-                                                                  .docs[index]
-                                                              ['point_team_B'],
-                                                          setTA: snapshot2.data!
-                                                                  .docs[index]
-                                                              ['team_A_set'],
-                                                          setTB: snapshot2.data!
-                                                                  .docs[index]
-                                                              ['team_B_set'],
-                                                          setNum: snapshot2
-                                                                  .data!
-                                                                  .docs[index]
-                                                              ['set_number'],
-                                                          // team_A_name: snapshot2
-                                                          //         .data!.docs[index]
-                                                          //     ['team_A_name'],
-                                                          // team_B_name: snapshot2
-                                                          //         .data!.docs[index]
-                                                          //     ['team_B_name'],
-                                                          // team_A_player: snapshot2
-                                                          //         .data!.docs[index]
-                                                          //     ['team_A_player'],
-                                                          // team_B_player: snapshot2
-                                                          //         .data!.docs[index]
-                                                          //     ['team_B_player'],
-                                                          // team_A_set_1_points: snapshot2
-                                                          //         .data!
-                                                          //         .docs[index][
-                                                          //     'team_A_set_1_points'],
-                                                          // team_A_set_2_points: snapshot2
-                                                          //         .data!
-                                                          //         .docs[index][
-                                                          //     'team_A_set_2_points'],
-                                                          // team_A_set_3_points: snapshot2
-                                                          //         .data!
-                                                          //         .docs[index][
-                                                          //     'team_A_set_3_points'],
-                                                          // team_B_set_1_points: snapshot2
-                                                          //         .data!
-                                                          //         .docs[index][
-                                                          //     'team_B_set_1_points'],
-                                                          // team_B_set_2_points: snapshot2
-                                                          //         .data!
-                                                          //         .docs[index][
-                                                          //     'team_B_set_2_points'],
-                                                          // team_B_set_3_pints: snapshot2
-                                                          //         .data!
-                                                          //         .docs[index][
-                                                          //     'team_B_set_3_points'],
-                                                          // winner_team: snapshot2
-                                                          //         .data!.docs[index]
-                                                          //     ['winner_team'],
-                                                        )));
+                                                builder: (BuildContext
+                                                        context) =>
+                                                    SingleScoreScreen(
+                                                      match_name: snapshot2
+                                                              .data!.docs[index]
+                                                          ['match_name'],
+                                                      p1: snapshot2
+                                                              .data!.docs[index]
+                                                          ['team_A_player'],
+                                                      p2: snapshot2
+                                                              .data!.docs[index]
+                                                          ['team_B_player'],
+                                                      t1: snapshot2
+                                                              .data!.docs[index]
+                                                          ['team_A_name'],
+                                                      t2: snapshot2
+                                                              .data!.docs[index]
+                                                          ['team_B_name'],
+                                                      singlesDocRef: snapshot2
+                                                          .data!.docs[index].id,
+                                                      pointTA: snapshot2
+                                                              .data!.docs[index]
+                                                          ['point_team_A'],
+                                                      pointTB: snapshot2
+                                                              .data!.docs[index]
+                                                          ['point_team_B'],
+                                                      setTA: snapshot2
+                                                              .data!.docs[index]
+                                                          ['team_A_set'],
+                                                      setTB: snapshot2
+                                                              .data!.docs[index]
+                                                          ['team_B_set'],
+                                                      setNum: snapshot2
+                                                              .data!.docs[index]
+                                                          ['set_number'],
+                                                      team_A_set_1_points: snapshot2
+                                                              .data!
+                                                              .docs[index][
+                                                          'team_A_set_1_points'],
+                                                      team_A_set_2_points: snapshot2
+                                                              .data!
+                                                              .docs[index][
+                                                          'team_A_set_2_points'],
+                                                      team_A_set_3_points: snapshot2
+                                                              .data!
+                                                              .docs[index][
+                                                          'team_A_set_3_points'],
+                                                      team_B_set_1_points: snapshot2
+                                                              .data!
+                                                              .docs[index][
+                                                          'team_B_set_1_points'],
+                                                      team_B_set_2_points: snapshot2
+                                                              .data!
+                                                              .docs[index][
+                                                          'team_B_set_2_points'],
+                                                      team_B_set_3_pints: snapshot2
+                                                              .data!
+                                                              .docs[index][
+                                                          'team_B_set_3_points'],
+                                                      winner_team: snapshot2
+                                                              .data!.docs[index]
+                                                          ['winner_team'],
+                                                    )));
                                       },
                                     )
                                   : ListTile(

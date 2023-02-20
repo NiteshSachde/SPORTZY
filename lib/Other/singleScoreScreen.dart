@@ -17,10 +17,6 @@ class SingleScoreScreen extends StatefulWidget {
       setTB,
       setNum,
       match_name,
-      team_A_name,
-      team_B_name,
-      team_A_player,
-      team_B_player,
       team_A_set_1_points,
       team_B_set_1_points,
       team_A_set_2_points,
@@ -30,6 +26,7 @@ class SingleScoreScreen extends StatefulWidget {
       winner_team;
   SingleScoreScreen({
     Key? mykey,
+    required this.match_name,
     required this.p1,
     required this.p2,
     required this.t1,
@@ -39,17 +36,13 @@ class SingleScoreScreen extends StatefulWidget {
     required this.setTA,
     required this.setTB,
     required this.setNum,
-    // required this.team_A_name,
-    // required this.team_B_name,
-    // required this.team_A_player,
-    // required this.team_B_player,
-    // required this.team_A_set_1_points,
-    // required this.team_A_set_2_points,
-    // required this.team_A_set_3_points,
-    // required this.team_B_set_1_points,
-    // required this.team_B_set_2_points,
-    // required this.team_B_set_3_pints,
-    // required this.winner_team,
+    required this.team_A_set_1_points,
+    required this.team_A_set_2_points,
+    required this.team_A_set_3_points,
+    required this.team_B_set_1_points,
+    required this.team_B_set_2_points,
+    required this.team_B_set_3_pints,
+    required this.winner_team,
     // required this.docRef,
     required this.singlesDocRef,
   }) : super(key: mykey);
@@ -200,10 +193,13 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                       if (widget.pointTA == 21) {
                         if (widget.setNum == 1) {
                           set_1_points();
+                          // completeMatch();
                         } else if (widget.setNum == 2) {
                           set_2_points();
+                          // completeMatch();
                         } else if (widget.setNum == 3) {
                           set_3_points();
+                          // completeMatch();
                         }
                         widget.pointTA = 0;
                         widget.pointTB = 0;
@@ -215,9 +211,11 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                         if (widget.setTA == 2) {
                           winningTeam_A();
                           completeMatch();
+                          // deleteMatch();
                         } else if (widget.setTB == 2) {
                           winningTeam_B();
                           completeMatch();
+                          // deleteMatch();
                         }
                         widget.setTA = 0;
                         widget.setTB = 0;
@@ -254,10 +252,13 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                       if (widget.pointTB == 21) {
                         if (widget.setNum == 1) {
                           set_1_points();
+                          completeMatch();
                         } else if (widget.setNum == 2) {
                           set_2_points();
+                          completeMatch();
                         } else if (widget.setNum == 3) {
                           set_3_points();
+                          completeMatch();
                         }
                         widget.pointTA = 0;
                         widget.pointTB = 0;
@@ -269,9 +270,11 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                         if (widget.setTA == 2) {
                           winningTeam_A();
                           completeMatch();
+                          // deleteMatch();
                         } else if (widget.setTB == 2) {
                           winningTeam_B();
                           completeMatch();
+                          // deleteMatch();
                         }
                         widget.setTA = 0;
                         widget.setTB = 0;
@@ -428,32 +431,43 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
   completeMatch() async {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
-    // DocumentReference documentReference = FirebaseFirestore.instance
-    //     .collection('sport')
-    //     .doc('badminton')
-    //     .collection('completed_singles')
-    //     .doc();
-    // await firebaseFirestore
-    //     .collection('sport')
-    //     .doc('badminton')
-    //     .collection('completed_singles')
-    //     .doc(documentReference.id)
-    //     .set({
-    //   'match_name': widget.match_name,
-    //   'team_A_name': widget.team_A_name,
-    //   'team_B_name': widget.team_B_name,
-    //   'team_A_player': widget.team_A_player,
-    //   'team_B_player': widget.team_B_player,
-    //   'team_A_set_1_points': widget.team_A_set_1_points,
-    //   'team_B_set_1_points': widget.team_B_set_1_points,
-    //   'team_A_set_2_points': widget.team_A_set_2_points,
-    //   'team_B_set_2_points': widget.team_B_set_2_points,
-    //   'team_A_set_3_points': widget.team_A_set_3_points,
-    //   'team_B_set_3_points': widget.team_B_set_3_pints,
-    //   'team_A_set': widget.setTA,
-    //   'team_B_set': widget.setTB,
-    //   'winner_team': widget.winner_team,
-    // });
+    DocumentReference documentReference = FirebaseFirestore.instance
+        .collection('sport')
+        .doc('badminton')
+        .collection('completed_singles')
+        .doc();
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('completed_singles')
+        .doc(documentReference.id)
+        .set({
+      'match_name': widget.match_name,
+      'team_A_name': widget.t1,
+      'team_B_name': widget.t2,
+      'team_A_player': widget.p1,
+      'team_B_player': widget.p2,
+      'team_A_set': widget.setTA,
+      'team_B_set': widget.setTB,
+    });
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('completed_singles')
+        .doc(documentReference.id)
+        .update({
+      'team_A_set_1_points': widget.team_A_set_1_points,
+      'team_B_set_1_points': widget.team_B_set_1_points,
+      'team_A_set_2_points': widget.team_A_set_2_points,
+      'team_B_set_2_points': widget.team_B_set_2_points,
+      'team_A_set_3_points': widget.team_A_set_3_points,
+      'team_B_set_3_points': widget.team_B_set_3_pints,
+      'winner_team': widget.winner_team,
+    });
+  }
+
+  deleteMatch() async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')

@@ -21,7 +21,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
                 stream: FirebaseFirestore.instance
                     .collection('sport')
                     .doc('badminton')
-                    .collection('completed')
+                    .collection('completed_singles')
                     .snapshots(),
                 builder: (ctx, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {

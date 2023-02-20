@@ -352,32 +352,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
 
     final _auth = FirebaseAuth.instance;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    // DocumentReference completed = FirebaseFirestore.instance
-    //     .collection('sport')
-    //     .doc('badminton')
-    //     .collection('completed_singles')
-    //     .doc();
-    // await firebaseFirestore
-    //     .collection('sport')
-    //     .doc('badminton')
-    //     .collection('completed_singles')
-    //     .doc(completed.id)
-    //     .set({
-    //   'match_name': null,
-    //   'team_A_name': null,
-    //   'team_B_name': null,
-    //   'team_A_player': null,
-    //   'team_B_player': null,
-    //   'team_A_set_1_points': null,
-    //   'team_B_set_1_points': null,
-    //   'team_A_set_2_points': null,
-    //   'team_B_set_2_points': null,
-    //   'team_A_set_3_points': null,
-    //   'team_B_set_3_points': null,
-    //   'team_A_set': null,
-    //   'team_B_set': null,
-    //   'winner_team': null
-    // });
+
     DocumentReference documentReference = FirebaseFirestore.instance
         .collection('sport')
         .doc('badminton')
@@ -414,6 +389,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       'team_A_set': 0,
       'team_B_set': 0,
       'set_number': 1,
+      'winner_team': "",
     });
     // print(docRef.id);
     // Navigator.of(context).push(MaterialPageRoute(

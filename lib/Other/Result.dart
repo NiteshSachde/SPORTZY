@@ -15,13 +15,13 @@ class Result extends StatefulWidget {
 }
 
 class _ResultState extends State<Result> {
-  bool isPlaying = true;
-  final controller = ConfettiController();
+  // bool isPlaying = true;
+  // final controller = ConfettiController();
   @override
-  void initState() {
-    super.initState();
-    controller.play();
-  }
+  // void initState() {
+  //   super.initState();
+  //   controller.play();
+  // }
 
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -139,10 +139,10 @@ class _ResultState extends State<Result> {
                 ),
               ),
             ),
-            ConfettiWidget(
-              confettiController: controller,
-              shouldLoop: true,
-            ),
+            // ConfettiWidget(
+            //   confettiController: controller,
+            //   shouldLoop: true,
+            // ),
           ],
         ),
       ),

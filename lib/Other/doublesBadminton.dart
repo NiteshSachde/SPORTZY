@@ -201,7 +201,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       onSaved: (value) {
         t2p2.text = value!;
       },
-      textInputAction: TextInputAction.next,
+      textInputAction: TextInputAction.done,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.person),
         contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
@@ -463,6 +463,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       'team_B_set_3_points': "",
       'team_A_set': 0,
       'team_B_set': 0,
+      'set_number': 1,
     });
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
       builder: (ctx) {

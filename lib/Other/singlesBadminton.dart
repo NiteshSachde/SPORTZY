@@ -134,7 +134,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       onSaved: (value) {
         p2.text = value!;
       },
-      textInputAction: TextInputAction.next,
+      textInputAction: TextInputAction.done,
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.person),
           contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),

@@ -2,7 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Other/Result.dart';
+import 'package:sportzy/Other/singlesResult.dart';
 
 class SingleScoreScreen extends StatefulWidget {
   var p1,
@@ -167,6 +167,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                         completeMatchDetails();
                         widget.setTA = 0;
                         widget.setTB = 0;
+                        widget.setNum = 1;
                       }
                     });
                     postPointDetailsToFirestore();
@@ -224,6 +225,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                         completeMatchDetails();
                         widget.setTA = 0;
                         widget.setTB = 0;
+                        widget.setNum = 1;
                       }
                     });
                     postPointDetailsToFirestore();
@@ -357,7 +359,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
     } else {
       winner_team = widget.t2;
     }
-    print(winner_team);
+
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
@@ -502,7 +504,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
       'winner_team ': widget.t1.toString(),
     });
     Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (BuildContext context) => Result(
+        builder: (BuildContext context) => SinglesResult(
               winner: widget.t1.toString(),
               singlesDocRef: widget.singlesDocRef,
             )));
@@ -524,7 +526,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
       'winner_team ': widget.t2.toString(),
     });
     Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (BuildContext context) => Result(
+        builder: (BuildContext context) => SinglesResult(
               winner: widget.t2.toString(),
               singlesDocRef: widget.singlesDocRef,
             )));

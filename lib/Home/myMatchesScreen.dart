@@ -81,7 +81,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                         if (snapshot2.connectionState ==
                             ConnectionState.waiting) {
                           return Center(
-                            child: Text("No matches!"),
+                            child: CircularProgressIndicator(),
                           );
                         }
                         return Expanded(
@@ -89,88 +89,135 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                             itemCount: snapshot2.data!.docs.length,
                             itemBuilder: (ctx, index) {
                               return _isSingle
-                                  ? ListTile(
-                                      title: Text(snapshot2.data!.docs[index]
-                                          ['match_name']),
-                                      onTap: () {
-                                        Navigator.of(context).pushReplacement(
-                                            MaterialPageRoute(
-                                                builder:
-                                                    (BuildContext context) =>
-                                                        SingleScoreScreen(
-                                                          match_name: snapshot2
-                                                                  .data!
-                                                                  .docs[index]
-                                                              ['match_name'],
-                                                          p1: snapshot2.data!
-                                                                  .docs[index]
-                                                              ['team_A_player'],
-                                                          p2: snapshot2.data!
-                                                                  .docs[index]
-                                                              ['team_B_player'],
-                                                          t1: snapshot2.data!
-                                                                  .docs[index]
-                                                              ['team_A_name'],
-                                                          t2: snapshot2.data!
-                                                                  .docs[index]
-                                                              ['team_B_name'],
-                                                          singlesDocRef:
-                                                              snapshot2
-                                                                  .data!
-                                                                  .docs[index]
-                                                                  .id,
-                                                          pointTA: snapshot2
-                                                                  .data!
-                                                                  .docs[index]
-                                                              ['point_team_A'],
-                                                          pointTB: snapshot2
-                                                                  .data!
-                                                                  .docs[index]
-                                                              ['point_team_B'],
-                                                          setTA: snapshot2.data!
-                                                                  .docs[index]
-                                                              ['team_A_set'],
-                                                          setTB: snapshot2.data!
-                                                                  .docs[index]
-                                                              ['team_B_set'],
-                                                          setNum: snapshot2
-                                                                  .data!
-                                                                  .docs[index]
-                                                              ['set_number'],
-                                                        )));
-                                      },
+                                  ? Container(
+                                      margin: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color:
+                                            Color.fromARGB(255, 47, 153, 240),
+                                      ),
+                                      child: ListTile(
+                                        title: Text(
+                                          snapshot2.data!.docs[index]
+                                              ['match_name'],
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        onTap: () {
+                                          Navigator.of(context).pushReplacement(
+                                              MaterialPageRoute(
+                                                  builder: (BuildContext
+                                                          context) =>
+                                                      SingleScoreScreen(
+                                                        match_name: snapshot2
+                                                                .data!
+                                                                .docs[index]
+                                                            ['match_name'],
+                                                        p1: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_player'],
+                                                        p2: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_player'],
+                                                        t1: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_name'],
+                                                        t2: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_name'],
+                                                        singlesDocRef: snapshot2
+                                                            .data!
+                                                            .docs[index]
+                                                            .id,
+                                                        pointTA: snapshot2.data!
+                                                                .docs[index]
+                                                            ['point_team_A'],
+                                                        pointTB: snapshot2.data!
+                                                                .docs[index]
+                                                            ['point_team_B'],
+                                                        setTA: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_set'],
+                                                        setTB: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_set'],
+                                                        setNum: snapshot2.data!
+                                                                .docs[index]
+                                                            ['set_number'],
+                                                      )));
+                                        },
+                                      ),
                                     )
-                                  : ListTile(
-                                      title: Text(snapshot2.data!.docs[index]
-                                          ['match_name']),
-                                      onTap: () {
-                                        Navigator.of(context).pushReplacement(
-                                            MaterialPageRoute(
-                                                builder: (BuildContext
-                                                        context) =>
-                                                    doubleScoreScreen(
-                                                      p1: snapshot2
-                                                              .data!.docs[index]
-                                                          ['team_A_player_1'],
-                                                      p2: snapshot2
-                                                              .data!.docs[index]
-                                                          ['team_A_player_2'],
-                                                      p3: snapshot2
-                                                              .data!.docs[index]
-                                                          ['team_B_player_2'],
-                                                      p4: snapshot2
-                                                              .data!.docs[index]
-                                                          ['team_B_player_2'],
-                                                      t1: snapshot2
-                                                              .data!.docs[index]
-                                                          ['team_A_name'],
-                                                      t2: snapshot2
-                                                              .data!.docs[index]
-                                                          ['team_B_name'],
-                                                      doublesDocRef: snapshot2
-                                                          .data!.docs[index].id,
-                                                    )));
-                                      },
+                                  : Container(
+                                      margin: EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color:
+                                            Color.fromARGB(255, 47, 153, 240),
+                                      ),
+                                      child: ListTile(
+                                        title: Text(
+                                          snapshot2.data!.docs[index]
+                                              ['match_name'],
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        onTap: () {
+                                          Navigator.of(context).pushReplacement(
+                                              MaterialPageRoute(
+                                                  builder: (BuildContext
+                                                          context) =>
+                                                      doubleScoreScreen(
+                                                        p1: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_player1'],
+                                                        p2: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_player2'],
+                                                        p3: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_player2'],
+                                                        p4: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_player2'],
+                                                        t1: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_name'],
+                                                        t2: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_name'],
+                                                        doublesDocRef: snapshot2
+                                                            .data!
+                                                            .docs[index]
+                                                            .id,
+                                                        match_name: snapshot2
+                                                                .data!
+                                                                .docs[index]
+                                                            ['match_name'],
+                                                        pointTA: snapshot2.data!
+                                                                .docs[index]
+                                                            ['point_team_A'],
+                                                        pointTB: snapshot2.data!
+                                                                .docs[index]
+                                                            ['point_team_B'],
+                                                        setNum: snapshot2.data!
+                                                                .docs[index]
+                                                            ['set_number'],
+                                                        setTA: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_set'],
+                                                        setTB: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_set'],
+                                                      )));
+                                        },
+                                      ),
                                     );
                             },
                           ),

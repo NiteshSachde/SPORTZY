@@ -2,10 +2,24 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Other/Result.dart';
+
+import 'doublesResult.dart';
 
 class doubleScoreScreen extends StatefulWidget {
-  var p1, p2, p3, p4, t1, t2, docRef, doublesDocRef;
+  var p1,
+      p2,
+      p3,
+      p4,
+      t1,
+      t2,
+      docRef,
+      doublesDocRef,
+      pointTA,
+      pointTB,
+      setTA,
+      setTB,
+      setNum,
+      match_name;
   doubleScoreScreen({
     Key? mykey,
     required this.p1,
@@ -15,68 +29,36 @@ class doubleScoreScreen extends StatefulWidget {
     required this.t1,
     required this.t2,
     required this.doublesDocRef,
+    required this.match_name,
+    required this.pointTA,
+    required this.pointTB,
+    required this.setNum,
+    required this.setTA,
+    required this.setTB,
   }) : super(key: mykey);
   @override
   State<doubleScoreScreen> createState() => _doubleScoreScreenState();
 }
 
 class _doubleScoreScreenState extends State<doubleScoreScreen> {
-  int _countert1 = 0;
-  int _countert2 = 0;
-  int _setCountt1 = 0;
-  int _setCountt2 = 0;
-  int _setNumber = 1;
-  late int _swap1;
-  late var _swapName;
   void _decrementCountP1() {
     setState(() {
-      if (_countert1 < 1) {
+      if (widget.pointTA < 1) {
         return;
       }
-      _countert1--;
+      widget.pointTA--;
     });
     postPointDetailsToFirestore();
   }
 
   void _decrementCountP2() {
     setState(() {
-      if (_countert2 < 1) {
+      if (widget.pointTB < 1) {
         return;
       }
-      _countert2--;
+      widget.pointTB--;
     });
     postPointDetailsToFirestore();
-  }
-
-  void _resetAll() {
-    setState(() {
-      _countert1 = 0;
-      _countert2 = 0;
-      _setCountt1 = 0;
-      _setCountt2 = 0;
-      _setNumber = 1;
-    });
-    postPointDetailsToFirestore();
-  }
-
-  void _swapCourt() {
-    setState(() {
-      _swap1 = _countert1;
-      _countert1 = _countert2;
-      _countert2 = _swap1;
-
-      _swap1 = _setCountt1;
-      _setCountt1 = _setCountt2;
-      _setCountt2 = _swap1;
-
-      _swapName = widget.p1;
-      widget.p1 = widget.p3;
-      widget.p3 = _swapName;
-
-      _swapName = widget.p2;
-      widget.p2 = widget.p4;
-      widget.p4 = _swapName;
-    });
   }
 
   @override
@@ -202,7 +184,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        ("${_countert1}"),
+                        ("${widget.pointTA}"),
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 70,
@@ -213,30 +195,31 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   ),
                   onTap: () {
                     setState(() {
-                      _countert1++;
-                      if (_countert1 == 21) {
-                        if (_setNumber == 1) {
+                      widget.pointTA++;
+                      if (widget.pointTA == 21) {
+                        if (widget.setNum == 1) {
                           set_1_points();
-                        } else if (_setNumber == 2) {
+                        } else if (widget.setNum == 2) {
                           set_2_points();
-                        } else if (_setNumber == 3) {
+                        } else if (widget.setNum == 3) {
                           set_3_points();
                         }
-                        _countert1 = 0;
-                        _countert2 = 0;
-                        _setCountt1++;
+                        widget.pointTA = 0;
+                        widget.pointTB = 0;
+                        widget.setTA++;
                         setDetailsTeam_A();
-                        _setNumber++;
+                        widget.setNum++;
                       }
-                      if (_setCountt1 == 2 || _setCountt2 == 2) {
-                        if (_setCountt1 == 2) {
+                      if (widget.setTA == 2 || widget.setTB == 2) {
+                        if (widget.setTA == 2) {
                           winningTeam_A();
-                        } else if (_setCountt2 == 2) {
+                        } else if (widget.setTB == 2) {
                           winningTeam_B();
                         }
-                        _setCountt1 = 0;
-                        _setCountt2 = 0;
-                        _setNumber = 1;
+                        completeMatchDetails();
+                        widget.setTA = 0;
+                        widget.setTB = 0;
+                        widget.setNum = 1;
                       }
                     });
                     postPointDetailsToFirestore();
@@ -255,7 +238,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        ("${_countert2}"),
+                        ("${widget.pointTB}"),
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 70,
@@ -266,30 +249,31 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   ),
                   onTap: () {
                     setState(() {
-                      _countert2++;
-                      if (_countert2 == 21) {
-                        if (_setNumber == 1) {
+                      widget.pointTB++;
+                      if (widget.pointTB == 21) {
+                        if (widget.setNum == 1) {
                           set_1_points();
-                        } else if (_setNumber == 2) {
+                        } else if (widget.setNum == 2) {
                           set_2_points();
-                        } else if (_setNumber == 3) {
+                        } else if (widget.setNum == 3) {
                           set_3_points();
                         }
-                        _countert1 = 0;
-                        _countert2 = 0;
-                        _setCountt2++;
+                        widget.pointTA = 0;
+                        widget.pointTB = 0;
+                        widget.setTB++;
                         setDetailsTeam_B();
-                        _setNumber++;
+                        widget.setNum++;
                       }
-                      if (_setCountt1 == 2 || _setCountt2 == 2) {
-                        if (_setCountt1 == 2) {
+                      if (widget.setTA == 2 || widget.setTB == 2) {
+                        if (widget.setTA == 2) {
                           winningTeam_A();
-                        } else if (_setCountt2 == 2) {
+                        } else if (widget.setTB == 2) {
                           winningTeam_B();
                         }
-                        _setCountt1 = 0;
-                        _setCountt2 = 0;
-                        _setNumber = 1;
+                        completeMatchDetails();
+                        widget.setTA = 0;
+                        widget.setTB = 0;
+                        widget.setNum = 1;
                       }
                     });
                     postPointDetailsToFirestore();
@@ -322,7 +306,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   height: MediaQuery.of(context).size.height * 0.001,
                 ),
                 Text(
-                  "Set " + "${_setNumber}",
+                  "Set " + "${widget.setNum}",
                   style: TextStyle(fontSize: 26),
                 ),
                 SizedBox(
@@ -357,7 +341,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      ("${_setCountt1}"),
+                      ("${widget.setTA}"),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -378,58 +362,12 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      ("${_setCountt2}"),
+                      ("${widget.setTB}"),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
-            ),
-            Row(
-              children: <Widget>[
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.04,
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: null,
-                  ),
-                  child: Center(
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.swap_horiz_sharp,
-                        size: 40,
-                      ),
-                      color: Color.fromARGB(255, 15, 136, 236),
-                      onPressed: _swapCourt,
-                    ),
-                  ),
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: null,
-                  ),
-                  child: Center(
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.replay,
-                        size: 40,
-                      ),
-                      onPressed: _resetAll,
-                      color: Color.fromARGB(255, 15, 136, 236),
                     ),
                   ),
                 ),
@@ -441,6 +379,58 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
     );
   }
 
+  completeMatchDetails() async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    var snapshot = await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('doubles')
+        .doc(widget.doublesDocRef)
+        .get();
+    var match_name = snapshot['match_name'];
+    var team_A_name = snapshot['team_A_name'];
+    var team_B_name = snapshot['team_B_name'];
+    var team_A_player1 = snapshot['team_A_player1'];
+    var team_B_player1 = snapshot['team_B_player1'];
+    var team_A_player2 = snapshot['team_A_player1'];
+    var team_B_player2 = snapshot['team_B_player2'];
+    var team_A_set = snapshot['team_A_set'];
+
+    var team_A_set_1_points = snapshot['team_A_set_1_points'];
+    var team_A_set_2_points = snapshot['team_A_set_2_points'];
+    var team_A_set_3_points = snapshot['team_A_set_3_points'];
+    var team_B_set_1_points = snapshot['team_B_set_1_points'];
+    var team_B_set_2_points = snapshot['team_B_set_2_points'];
+    var team_B_set_3_points = snapshot['team_B_set_3_points'];
+    var winner_team;
+    if (team_A_set == 2) {
+      winner_team = widget.t1;
+    } else {
+      winner_team = widget.t2;
+    }
+
+    await firebaseFirestore
+        .collection('sport')
+        .doc('badminton')
+        .collection('completed_doubles')
+        .add({
+      'match_name': match_name,
+      'team_A_name': team_A_name,
+      'team_B_name': team_B_name,
+      'team_A_player1': team_A_player1,
+      'team_B_player1': team_B_player1,
+      'team_A_player2': team_A_player2,
+      'team_B_player2': team_B_player2,
+      'team_A_set_1_points': team_A_set_1_points,
+      'team_A_set_2_points': team_A_set_2_points,
+      'team_A_set_3_points': team_A_set_3_points,
+      'team_B_set_1_points': team_B_set_1_points,
+      'team_B_set_2_points': team_B_set_2_points,
+      'team_B_set_3_points': team_B_set_3_points,
+      'winner_team': winner_team,
+    });
+  }
+
   postPointDetailsToFirestore() async {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     await firebaseFirestore
@@ -449,8 +439,8 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .collection('doubles')
         .doc(widget.doublesDocRef)
         .update({
-      'point_team_A': _countert1,
-      'point_team_B': _countert2,
+      'point_team_A': widget.pointTA,
+      'point_team_B': widget.pointTB,
     });
   }
 
@@ -462,8 +452,8 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .collection('doubles')
         .doc(widget.doublesDocRef)
         .update({
-      'team_A_set_1_points': _countert1,
-      'team_B_set_1_points': _countert2,
+      'team_A_set_1_points': widget.pointTA,
+      'team_B_set_1_points': widget.pointTB,
     });
   }
 
@@ -475,8 +465,8 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .collection('doubles')
         .doc(widget.doublesDocRef)
         .update({
-      'team_A_set_2_points': _countert1,
-      'team_B_set_2_points': _countert2,
+      'team_A_set_2_points': widget.pointTA,
+      'team_B_set_2_points': widget.pointTB,
     });
   }
 
@@ -488,8 +478,8 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .collection('doubles')
         .doc(widget.doublesDocRef)
         .update({
-      'team_A_set_3_points': _countert1,
-      'team_B_set_3_points': _countert2,
+      'team_A_set_3_points': widget.pointTA,
+      'team_B_set_3_points': widget.pointTB,
     });
   }
 
@@ -501,7 +491,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .collection('doubles')
         .doc(widget.doublesDocRef)
         .update({
-      'team_A_set': _setCountt1,
+      'team_A_set': widget.setTA,
     });
   }
 
@@ -513,7 +503,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .collection('doubles')
         .doc(widget.doublesDocRef)
         .update({
-      'team_B_set': _setCountt2,
+      'team_B_set': widget.setTB,
     });
   }
 
@@ -529,8 +519,9 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
     });
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (BuildContext context) => Result(
+        builder: (BuildContext context) => DoublesResult(
           winner: widget.t1.toString(),
+          doublesDocRef: widget.doublesDocRef,
         ),
       ),
     );
@@ -548,8 +539,9 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
     });
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (BuildContext context) => Result(
+        builder: (BuildContext context) => DoublesResult(
           winner: widget.t2.toString(),
+          doublesDocRef: widget.doublesDocRef,
         ),
       ),
     );

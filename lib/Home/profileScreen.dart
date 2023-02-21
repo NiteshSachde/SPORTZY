@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Home/myMatchesScreen.dart';
@@ -22,6 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Container(
         height: size.height,
@@ -74,12 +76,63 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.1,
+                          height: MediaQuery.of(context).size.height * 0.06,
                         ),
+                        StreamBuilder(
+                          stream: FirebaseFirestore.instance
+                              .collection('users')
+                              .where('uid',
+                                  isEqualTo:
+                                      FirebaseAuth.instance.currentUser!.uid)
+                              .snapshots(),
+                          builder: (ctx2, snapshot2) {
+                            if (snapshot2.connectionState ==
+                                ConnectionState.waiting) {
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                            return Flexible(
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: 1,
+                                itemBuilder: (ctx, index) {
+                                  return Column(
+                                    children: <Widget>[
+                                      Text(
+                                        "Username : ${snapshot2.data!.docs[index]['name']}",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.01),
+                                      Text(
+                                        "E-mail : ${snapshot2.data!.docs[index]['email']}",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.1),
                         GestureDetector(
                           child: Container(
-                            height: 50,
-                            width: size.width,
+                            height: MediaQuery.of(context).size.height * 0.07,
+                            width: MediaQuery.of(context).size.width * 0.6,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: Color.fromARGB(255, 15, 136, 236),
@@ -104,12 +157,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           },
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.04,
                         ),
                         GestureDetector(
                           child: Container(
-                            height: 50,
-                            width: size.width,
+                            height: MediaQuery.of(context).size.height * 0.07,
+                            width: MediaQuery.of(context).size.width * 0.6,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: Color.fromARGB(255, 15, 136, 236),

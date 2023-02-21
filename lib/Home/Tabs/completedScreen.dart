@@ -336,7 +336,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
                 stream: FirebaseFirestore.instance
                     .collection('sport')
                     .doc('badminton')
-                    .collection('doubles')
+                    .collection('completed_doubles')
                     .snapshots(),
                 builder: (ctx2, snapshot2) {
                   if (snapshot2.connectionState == ConnectionState.waiting) {
@@ -464,47 +464,6 @@ class _CompletedScreenState extends State<CompletedScreen> {
                                   ),
                                 ),
                               ],
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.01,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Color.fromARGB(255, 241, 28, 74),
-                                ),
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      "${matchDocs2[index][FireStoreFields.point_team_A]}",
-                                      style: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 47, 153, 240),
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.2,
-                                    ),
-                                    Text(
-                                      "${matchDocs2[index][FireStoreFields.point_team_B]}",
-                                      style: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 47, 153, 240),
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
                             ),
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.01,
@@ -699,7 +658,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
                               "${matchDocs2[index][FireStoreFields.winner_team]} won the match !",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 47, 153, 240),
                               ),

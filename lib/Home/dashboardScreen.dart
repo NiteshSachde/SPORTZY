@@ -122,48 +122,48 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             );
                           },
                         ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
-                        ),
-                        Container(
-                          height: 50,
-                          width: size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.white,
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Cricket",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 15, 136, 236),
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
-                        ),
-                        Container(
-                          height: 50,
-                          width: size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.white,
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Table - Tennis",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 15, 136, 236),
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
+                        // SizedBox(
+                        //   height: MediaQuery.of(context).size.height * 0.04,
+                        // ),
+                        // Container(
+                        //   height: 50,
+                        //   width: size.width,
+                        //   decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(30),
+                        //     color: Colors.white,
+                        //   ),
+                        //   child: Center(
+                        //     child: Text(
+                        //       "Cricket",
+                        //       style: TextStyle(
+                        //         color: Color.fromARGB(255, 15, 136, 236),
+                        //         fontSize: 20,
+                        //         fontWeight: FontWeight.bold,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: MediaQuery.of(context).size.height * 0.04,
+                        // ),
+                        // Container(
+                        //   height: 50,
+                        //   width: size.width,
+                        //   decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(30),
+                        //     color: Colors.white,
+                        //   ),
+                        //   child: Center(
+                        //     child: Text(
+                        //       "Table - Tennis",
+                        //       style: TextStyle(
+                        //         color: Color.fromARGB(255, 15, 136, 236),
+                        //         fontSize: 20,
+                        //         fontWeight: FontWeight.bold,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

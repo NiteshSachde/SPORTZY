@@ -4,18 +4,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Home/homeScreen.dart';
 
-class Result extends StatefulWidget {
+class SinglesResult extends StatefulWidget {
   var winner, singlesDocRef;
-  Result({
+  SinglesResult({
     Key? mykey,
     required this.winner,
     this.singlesDocRef,
   }) : super(key: mykey);
   @override
-  State<Result> createState() => _ResultState();
+  State<SinglesResult> createState() => _SinglesResultState();
 }
 
-class _ResultState extends State<Result> {
+class _SinglesResultState extends State<SinglesResult> {
   // bool isPlaying = true;
   // final controller = ConfettiController();
   @override
@@ -93,7 +93,7 @@ class _ResultState extends State<Result> {
                           height: MediaQuery.of(context).size.height * 0.1,
                         ),
                         Text(
-                          "Congratulations ${widget.winner} For Winning This Match!",
+                          "Congratulations ${widget.winner} For Winning This Match !",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.black,

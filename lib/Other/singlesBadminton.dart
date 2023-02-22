@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Home/homeScreen.dart';
 
@@ -390,6 +390,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       'team_B_set': 0,
       'set_number': 1,
     });
+    Fluttertoast.showToast(msg: "Match Added To Your Profile");
     // print(docRef.id);
     // Navigator.of(context).push(MaterialPageRoute(
     //     builder: (BuildContext context) => SingleScoreScreen(

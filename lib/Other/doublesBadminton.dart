@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sportzy/Home/homeScreen.dart';
+import 'package:intl/intl.dart';
 
 class DoublesBadminton extends StatefulWidget {
   const DoublesBadminton({Key? key}) : super(key: key);
@@ -428,6 +429,9 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       String t1p2, String t2p1, String t2p2) async {
     final _auth = FirebaseAuth.instance;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    var now = DateTime.now();
+
+    var date = (DateFormat.yMMMMd().format(now));
     DocumentReference documentReference = FirebaseFirestore.instance
         .collection('sport')
         .doc('badminton')
@@ -447,6 +451,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       'team_A_player2': t1p2,
       'team_B_player2': t2p2,
       'createdBy': _auth.currentUser!.uid,
+      'date': date.toString(),
     });
     await firebaseFirestore
         .collection('sport')
@@ -466,7 +471,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       'team_B_set': 0,
       'set_number': 1,
     });
-        Fluttertoast.showToast(msg: "Match Added To Your Profile");
+    Fluttertoast.showToast(msg: "Match Added To Your Profile");
 
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
       builder: (ctx) {

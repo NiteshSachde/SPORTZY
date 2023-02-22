@@ -65,6 +65,14 @@ class _LiveScreenState extends State<LiveScreen> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.01,
                             ),
+                            Text(
+                              "Match Date : ${matchDocs[index][FireStoreFields.date]}",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.005,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
@@ -414,6 +422,14 @@ class _LiveScreenState extends State<LiveScreen> {
                             ),
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.01,
+                            ),
+                            Text(
+                              "Match Date : ${matchDocs2[index][FireStoreFields.date]}",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.005,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,

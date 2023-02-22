@@ -353,6 +353,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
     var team_B_set_1_points = snapshot['team_B_set_1_points'];
     var team_B_set_2_points = snapshot['team_B_set_2_points'];
     var team_B_set_3_points = snapshot['team_B_set_3_points'];
+    var date = snapshot['date'];
     var winner_team;
     if (team_A_set == 2) {
       winner_team = widget.t1;
@@ -377,6 +378,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
       'team_B_set_2_points': team_B_set_2_points,
       'team_B_set_3_points': team_B_set_3_points,
       'winner_team': winner_team,
+      'date': date,
     });
   }
 

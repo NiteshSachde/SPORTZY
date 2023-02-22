@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Home/homeScreen.dart';
+import 'package:intl/intl.dart';
 
 class SinglesBadminton extends StatefulWidget {
   const SinglesBadminton({Key? key}) : super(key: key);
@@ -349,7 +350,9 @@ class _SinglesBadminton extends State<SinglesBadminton> {
     // calling our firestore
 
     // sending these values
+    var now = DateTime.now();
 
+    var date = (DateFormat.yMMMMd().format(now));
     final _auth = FirebaseAuth.instance;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
@@ -370,6 +373,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       'team_A_player': p1,
       'team_B_player': p2,
       'createdBy': _auth.currentUser!.uid,
+      'date': date.toString(),
     });
     print(documentReference);
     await firebaseFirestore

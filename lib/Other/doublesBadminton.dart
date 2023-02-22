@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sportzy/Home/homeScreen.dart';
 
 class DoublesBadminton extends StatefulWidget {
@@ -465,6 +466,8 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       'team_B_set': 0,
       'set_number': 1,
     });
+        Fluttertoast.showToast(msg: "Match Added To Your Profile");
+
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
       builder: (ctx) {
         return HomeScreen();

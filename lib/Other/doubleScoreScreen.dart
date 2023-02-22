@@ -392,7 +392,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
     var team_B_name = snapshot['team_B_name'];
     var team_A_player1 = snapshot['team_A_player1'];
     var team_B_player1 = snapshot['team_B_player1'];
-    var team_A_player2 = snapshot['team_A_player1'];
+    var team_A_player2 = snapshot['team_A_player2'];
     var team_B_player2 = snapshot['team_B_player2'];
     var team_A_set = snapshot['team_A_set'];
 

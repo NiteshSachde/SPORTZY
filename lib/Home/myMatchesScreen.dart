@@ -182,7 +182,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                                                             ['team_A_player2'],
                                                         p3: snapshot2.data!
                                                                 .docs[index]
-                                                            ['team_B_player2'],
+                                                            ['team_B_player1'],
                                                         p4: snapshot2.data!
                                                                 .docs[index]
                                                             ['team_B_player2'],

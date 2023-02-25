@@ -3,6 +3,8 @@ import 'package:sportzy/Home/dashboardScreen.dart';
 import 'package:sportzy/Home/Tabs/matchScreen.dart';
 import 'package:sportzy/Home/profileScreen.dart';
 
+import 'Tabs/optionScreen.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   @override
@@ -12,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Widget> _screen = <Widget>[
     DashboardScreen(),
-    MatchScreen(),
+    OptionScreen(),
     ProfileScreen(),
   ];
 

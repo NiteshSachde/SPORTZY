@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:sportzy/Home/Tabs/matchScreen.dart';
-import 'package:sportzy/Other/TT/StandaloneScreenTT.dart';
-import 'package:sportzy/Other/standaloneScreen.dart';
-import 'package:sportzy/Other/tournamentScreen.dart';
+import 'package:sportzy/Home/Tabs/matchScreenTT.dart';
+import 'matchScreen.dart';
 
-import '../Other/TT/TTStandaloneScreen.dart';
-import 'Tabs/matchScreenTT.dart';
-
-class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({super.key});
+class OptionScreen extends StatefulWidget {
+  const OptionScreen({super.key});
   @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
+  State<OptionScreen> createState() => _OptionScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
+class _OptionScreenState extends State<OptionScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -40,12 +35,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
-                "Sport Selection",
+                "Select Sport To View Matches",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 34,
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
             SizedBox(
@@ -90,11 +86,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               ),
                             ),
                           ),
-                          onTap: () {
+                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (BuildContext context) {
-                                  return StandaloneScreen();
+                                  return MatchScreen();
                                 },
                               ),
                             );
@@ -126,51 +122,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (BuildContext context) {
-                                  return StandaloneScreenTT();
+                                  return MatchScreenTT();
                                 },
                               ),
                             );
                           },
                         ),
-                        // Container(
-                        //   height: 50,
-                        //   width: size.width,
-                        //   decoration: BoxDecoration(
-                        //     borderRadius: BorderRadius.circular(30),
-                        //     color: Colors.white,
-                        //   ),
-                        //   child: Center(
-                        //     child: Text(
-                        //       "Cricket",
-                        //       style: TextStyle(
-                        //         color: Color.fromARGB(255, 15, 136, 236),
-                        //         fontSize: 20,
-                        //         fontWeight: FontWeight.bold,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   height: MediaQuery.of(context).size.height * 0.04,
-                        // ),
-                        // Container(
-                        //   height: 50,
-                        //   width: size.width,
-                        //   decoration: BoxDecoration(
-                        //     borderRadius: BorderRadius.circular(30),
-                        //     color: Colors.white,
-                        //   ),
-                        //   child: Center(
-                        //     child: Text(
-                        //       "Table - Tennis",
-                        //       style: TextStyle(
-                        //         color: Color.fromARGB(255, 15, 136, 236),
-                        //         fontSize: 20,
-                        //         fontWeight: FontWeight.bold,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),

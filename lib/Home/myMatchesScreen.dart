@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sportzy/Other/TT/doubleScoreScreenTT.dart';
 import 'package:sportzy/Other/doubleScoreScreen.dart';
 import 'package:sportzy/Other/singleScoreScreen.dart';
+
+import '../Other/TT/singleScoreScreenTT.dart';
 
 class MyMatchesScreen extends StatefulWidget {
   const MyMatchesScreen({super.key});
@@ -40,7 +43,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                   Tab(
                     height: 50,
                     child: Text(
-                      "Standalone-Match",
+                      "Badminton",
                       style: TextStyle(
                         color: Colors.black,
                       ),
@@ -49,7 +52,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                   Tab(
                     height: 50,
                     child: Text(
-                      "Tournament",
+                      "TT",
                       style: TextStyle(
                         color: Colors.black,
                       ),
@@ -224,13 +227,168 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                         );
                       },
                     ),
-                    Center(
-                      child: Text(
-                        "Tournament",
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
+                    StreamBuilder(
+                      stream: _isSingle
+                          ? FirebaseFirestore.instance
+                              .collection('sport')
+                              .doc('TT')
+                              .collection('singles')
+                              .where("createdBy",
+                                  isEqualTo: _auth.currentUser!.uid)
+                              .snapshots()
+                          : FirebaseFirestore.instance
+                              .collection('sport')
+                              .doc('TT')
+                              .collection('doubles')
+                              .where("createdBy",
+                                  isEqualTo: _auth.currentUser!.uid)
+                              .snapshots(),
+                      builder: (ctx2, snapshot2) {
+                        if (snapshot2.connectionState ==
+                            ConnectionState.waiting) {
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return Expanded(
+                          child: ListView.builder(
+                            itemCount: snapshot2.data!.docs.length,
+                            itemBuilder: (ctx, index) {
+                              return _isSingle
+                                  ? Container(
+                                      margin: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color:
+                                            Color.fromARGB(255, 47, 153, 240),
+                                      ),
+                                      child: ListTile(
+                                        title: Text(
+                                          snapshot2.data!.docs[index]
+                                              ['match_name'],
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        onTap: () {
+                                          Navigator.of(context).pushReplacement(
+                                              MaterialPageRoute(
+                                                  builder: (BuildContext
+                                                          context) =>
+                                                      SingleScoreScreenTT(
+                                                        match_name: snapshot2
+                                                                .data!
+                                                                .docs[index]
+                                                            ['match_name'],
+                                                        p1: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_player'],
+                                                        p2: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_player'],
+                                                        t1: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_name'],
+                                                        t2: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_name'],
+                                                        singlesDocRef: snapshot2
+                                                            .data!
+                                                            .docs[index]
+                                                            .id,
+                                                        pointTA: snapshot2.data!
+                                                                .docs[index]
+                                                            ['point_team_A'],
+                                                        pointTB: snapshot2.data!
+                                                                .docs[index]
+                                                            ['point_team_B'],
+                                                        setTA: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_set'],
+                                                        setTB: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_set'],
+                                                        setNum: snapshot2.data!
+                                                                .docs[index]
+                                                            ['set_number'],
+                                                      )));
+                                        },
+                                      ),
+                                    )
+                                  : Container(
+                                      margin: EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color:
+                                            Color.fromARGB(255, 47, 153, 240),
+                                      ),
+                                      child: ListTile(
+                                        title: Text(
+                                          snapshot2.data!.docs[index]
+                                              ['match_name'],
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        onTap: () {
+                                          Navigator.of(context).pushReplacement(
+                                              MaterialPageRoute(
+                                                  builder: (BuildContext
+                                                          context) =>
+                                                      DoubleScoreScreenTT(
+                                                        p1: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_player1'],
+                                                        p2: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_player2'],
+                                                        p3: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_player1'],
+                                                        p4: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_player2'],
+                                                        t1: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_name'],
+                                                        t2: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_name'],
+                                                        doublesDocRef: snapshot2
+                                                            .data!
+                                                            .docs[index]
+                                                            .id,
+                                                        match_name: snapshot2
+                                                                .data!
+                                                                .docs[index]
+                                                            ['match_name'],
+                                                        pointTA: snapshot2.data!
+                                                                .docs[index]
+                                                            ['point_team_A'],
+                                                        pointTB: snapshot2.data!
+                                                                .docs[index]
+                                                            ['point_team_B'],
+                                                        setNum: snapshot2.data!
+                                                                .docs[index]
+                                                            ['set_number'],
+                                                        setTA: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_A_set'],
+                                                        setTB: snapshot2.data!
+                                                                .docs[index]
+                                                            ['team_B_set'],
+                                                      )));
+                                        },
+                                      ),
+                                    );
+                            },
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),

@@ -3,7 +3,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Other/TT/singlesResultTT.dart';
-import 'package:sportzy/Other/singlesResult.dart';
 
 class SingleScoreScreenTT extends StatefulWidget {
   var p1,
@@ -16,7 +15,8 @@ class SingleScoreScreenTT extends StatefulWidget {
       setTA,
       setTB,
       setNum,
-      match_name;
+      match_name,
+      mode;
 
   SingleScoreScreenTT({
     Key? mykey,
@@ -31,6 +31,7 @@ class SingleScoreScreenTT extends StatefulWidget {
     required this.setTB,
     required this.setNum,
     required this.singlesDocRef,
+    required this.mode,
   }) : super(key: mykey);
 
   @override
@@ -145,7 +146,7 @@ class _SingleScoreScreenTT extends State<SingleScoreScreenTT> {
                     setState(() {
                       widget.pointTA++;
 
-                      if (widget.pointTA == 21) {
+                      if (widget.pointTA == widget.mode) {
                         if (widget.setNum == 1) {
                           set_1_points();
                         } else if (widget.setNum == 2) {
@@ -199,7 +200,7 @@ class _SingleScoreScreenTT extends State<SingleScoreScreenTT> {
                     setState(() {
                       widget.pointTB++;
 
-                      if (widget.pointTB == 21) {
+                      if (widget.pointTB == widget.mode) {
                         if (widget.setNum == 1) {
                           set_1_points();
                         } else if (widget.setNum == 2) {
@@ -497,7 +498,13 @@ class _SingleScoreScreenTT extends State<SingleScoreScreenTT> {
     // sending these values
 
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
+    Navigator.pushAndRemoveUntil(
+        (context),
+        MaterialPageRoute(
+            builder: (context) => SinglesResultTT(
+                winner: widget.t1.toString(),
+                singlesDocRef: widget.singlesDocRef)),
+        (route) => false);
     await firebaseFirestore
         .collection('sport')
         .doc('TT')
@@ -506,11 +513,6 @@ class _SingleScoreScreenTT extends State<SingleScoreScreenTT> {
         .update({
       'winner_team ': widget.t1.toString(),
     });
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (BuildContext context) => SinglesResultTT(
-              winner: widget.t1.toString(),
-              singlesDocRef: widget.singlesDocRef,
-            )));
   }
 
   winningTeam_B() async {
@@ -519,7 +521,13 @@ class _SingleScoreScreenTT extends State<SingleScoreScreenTT> {
     // sending these values
 
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
+    Navigator.pushAndRemoveUntil(
+        (context),
+        MaterialPageRoute(
+            builder: (context) => SinglesResultTT(
+                winner: widget.t2.toString(),
+                singlesDocRef: widget.singlesDocRef)),
+        (route) => false);
     await firebaseFirestore
         .collection('sport')
         .doc('TT')
@@ -528,10 +536,5 @@ class _SingleScoreScreenTT extends State<SingleScoreScreenTT> {
         .update({
       'winner_team ': widget.t2.toString(),
     });
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (BuildContext context) => SinglesResultTT(
-              winner: widget.t2.toString(),
-              singlesDocRef: widget.singlesDocRef,
-            )));
   }
 }

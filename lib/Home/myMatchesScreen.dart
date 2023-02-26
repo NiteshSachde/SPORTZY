@@ -52,7 +52,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                   Tab(
                     height: 50,
                     child: Text(
-                      "TT",
+                      "Table Tennis",
                       style: TextStyle(
                         color: Colors.black,
                       ),
@@ -150,6 +150,9 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                                                         setNum: snapshot2.data!
                                                                 .docs[index]
                                                             ['set_number'],
+                                                        mode: snapshot2.data!
+                                                                .docs[index]
+                                                            ['mode'],
                                                       )));
                                         },
                                       ),
@@ -218,6 +221,9 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                                                         setTB: snapshot2.data!
                                                                 .docs[index]
                                                             ['team_B_set'],
+                                                        mode: snapshot2.data!
+                                                                .docs[index]
+                                                            ['mode'],
                                                       )));
                                         },
                                       ),
@@ -313,6 +319,9 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                                                         setNum: snapshot2.data!
                                                                 .docs[index]
                                                             ['set_number'],
+                                                        mode: snapshot2.data!
+                                                                .docs[index]
+                                                            ['mode'],
                                                       )));
                                         },
                                       ),
@@ -381,6 +390,9 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                                                         setTB: snapshot2.data!
                                                                 .docs[index]
                                                             ['team_B_set'],
+                                                        mode: snapshot2.data!
+                                                                .docs[index]
+                                                            ['mode'],
                                                       )));
                                         },
                                       ),

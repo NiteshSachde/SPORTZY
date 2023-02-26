@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sportzy/Home/dashboardScreen.dart';
-import 'package:sportzy/Home/Tabs/matchScreen.dart';
 import 'package:sportzy/Home/profileScreen.dart';
 
 import 'Tabs/optionScreen.dart';

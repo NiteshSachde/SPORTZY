@@ -35,7 +35,7 @@ class _OptionScreenState extends State<OptionScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
-                "Select Sport To View Matches",
+                "View Matches",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 34,
@@ -48,29 +48,33 @@ class _OptionScreenState extends State<OptionScreen> {
               height: MediaQuery.of(context).size.height * 0.05,
             ),
             Expanded(
-              child: SingleChildScrollView(
-                physics: NeverScrollableScrollPhysics(),
-                child: Container(
-                  height: size.height,
-                  width: size.width,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50),
-                    ),
+              child: Container(
+                height: size.height,
+                width: size.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    topRight: Radius.circular(50),
                   ),
-                  child: Container(
-                    margin: EdgeInsets.only(left: 25, right: 25),
+                ),
+                child: Container(
+                  margin: EdgeInsets.only(left: 25, right: 25),
+                  child: SingleChildScrollView(
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.17,
+                          height: MediaQuery.of(context).size.height * 0.06,
+                        ),
+                        Image.asset(
+                          'assets/images/Badminton.png',
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          height: MediaQuery.of(context).size.height * 0.2,
                         ),
                         GestureDetector(
                           child: Container(
-                            height: 50,
-                            width: size.width,
+                            height: MediaQuery.of(context).size.height * 0.07,
+                            width: MediaQuery.of(context).size.width * 0.7,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: Color.fromARGB(255, 15, 136, 236),
@@ -86,7 +90,7 @@ class _OptionScreenState extends State<OptionScreen> {
                               ),
                             ),
                           ),
-                           onTap: () {
+                          onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (BuildContext context) {
@@ -99,10 +103,15 @@ class _OptionScreenState extends State<OptionScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04,
                         ),
+                        Image.asset(
+                          'assets/images/Table_Tennis.png',
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          height: MediaQuery.of(context).size.height * 0.2,
+                        ),
                         GestureDetector(
                           child: Container(
-                            height: 50,
-                            width: size.width,
+                            height: MediaQuery.of(context).size.height * 0.07,
+                            width: MediaQuery.of(context).size.width * 0.7,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: Color.fromARGB(255, 15, 136, 236),

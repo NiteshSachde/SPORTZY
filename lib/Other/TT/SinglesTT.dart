@@ -19,6 +19,15 @@ class _SinglesTT extends State<SinglesTT> {
   final TextEditingController m = new TextEditingController();
   final TextEditingController t1 = new TextEditingController();
   final TextEditingController t2 = new TextEditingController();
+  var _points;
+  @override
+  void initState() {
+    setState(() {
+      _points = 11;
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -321,7 +330,51 @@ class _SinglesTT extends State<SinglesTT> {
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.06,
+                                              0.02,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          "Mode : ",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Radio(
+                                          value: 11,
+                                          groupValue: _points,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              _points = value!;
+                                            });
+                                          },
+                                        ),
+                                        Text(
+                                          "11 Points",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Radio(
+                                          value: 21,
+                                          groupValue: _points,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              _points = value!;
+                                            });
+                                          },
+                                        ),
+                                        Text(
+                                          "21 Points",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.04,
                                     ),
                                     SignupButton,
                                     SizedBox(
@@ -374,6 +427,7 @@ class _SinglesTT extends State<SinglesTT> {
       'team_B_player': p2,
       'createdBy': _auth.currentUser!.uid,
       'date': date.toString(),
+      'mode': _points,
     });
     print(documentReference);
     await firebaseFirestore

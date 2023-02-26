@@ -19,7 +19,8 @@ class doubleScoreScreen extends StatefulWidget {
       setTA,
       setTB,
       setNum,
-      match_name;
+      match_name,
+      mode;
   doubleScoreScreen({
     Key? mykey,
     required this.p1,
@@ -35,6 +36,7 @@ class doubleScoreScreen extends StatefulWidget {
     required this.setNum,
     required this.setTA,
     required this.setTB,
+    required this.mode,
   }) : super(key: mykey);
   @override
   State<doubleScoreScreen> createState() => _doubleScoreScreenState();
@@ -196,7 +198,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   onTap: () {
                     setState(() {
                       widget.pointTA++;
-                      if (widget.pointTA == 21) {
+                      if (widget.pointTA == widget.mode) {
                         if (widget.setNum == 1) {
                           set_1_points();
                         } else if (widget.setNum == 2) {
@@ -250,7 +252,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                   onTap: () {
                     setState(() {
                       widget.pointTB++;
-                      if (widget.pointTB == 21) {
+                      if (widget.pointTB == widget.mode) {
                         if (widget.setNum == 1) {
                           set_1_points();
                         } else if (widget.setNum == 2) {
@@ -511,6 +513,14 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
 
   winningTeam_A() async {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    Navigator.pushAndRemoveUntil(
+        (context),
+        MaterialPageRoute(
+            builder: (context) => DoublesResult(
+                  winner: widget.t1.toString(),
+                  doublesDocRef: widget.doublesDocRef,
+                )),
+        (route) => false);
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
@@ -519,18 +529,18 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .update({
       'winner_team ': widget.t1.toString(),
     });
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (BuildContext context) => DoublesResult(
-          winner: widget.t1.toString(),
-          doublesDocRef: widget.doublesDocRef,
-        ),
-      ),
-    );
   }
 
   winningTeam_B() async {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    Navigator.pushAndRemoveUntil(
+        (context),
+        MaterialPageRoute(
+            builder: (context) => DoublesResult(
+                  winner: widget.t2.toString(),
+                  doublesDocRef: widget.doublesDocRef,
+                )),
+        (route) => false);
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
@@ -539,13 +549,5 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
         .update({
       'winner_team ': widget.t2.toString(),
     });
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (BuildContext context) => DoublesResult(
-          winner: widget.t2.toString(),
-          doublesDocRef: widget.doublesDocRef,
-        ),
-      ),
-    );
   }
 }

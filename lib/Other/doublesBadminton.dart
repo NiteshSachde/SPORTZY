@@ -20,6 +20,13 @@ class _DoublesBadminton extends State<DoublesBadminton> {
   final TextEditingController m = new TextEditingController();
   final TextEditingController t1 = new TextEditingController();
   final TextEditingController t2 = new TextEditingController();
+  var _points;
+  void initState() {
+    setState(() {
+      _points = 21;
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -319,7 +326,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
                                   ),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
-                                        0.03,
+                                        0.015,
                                   ),
                                   mField,
                                   SizedBox(
@@ -401,7 +408,49 @@ class _DoublesBadminton extends State<DoublesBadminton> {
                                   t2p2Field,
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
-                                        0.06,
+                                        0.02,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text(
+                                        "Mode : ",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Radio(
+                                        value: 11,
+                                        groupValue: _points,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            _points = value!;
+                                          });
+                                        },
+                                      ),
+                                      Text(
+                                        "11 Points",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Radio(
+                                        value: 21,
+                                        groupValue: _points,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            _points = value!;
+                                          });
+                                        },
+                                      ),
+                                      Text(
+                                        "21 Points",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.04,
                                   ),
                                   SignupButton,
                                   SizedBox(
@@ -452,6 +501,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
       'team_B_player2': t2p2,
       'createdBy': _auth.currentUser!.uid,
       'date': date.toString(),
+      'mode': _points,
     });
     await firebaseFirestore
         .collection('sport')

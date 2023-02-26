@@ -320,6 +320,7 @@ class _SignupScreenState extends State<SignupScreen> {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
           .then((value) => {postDetailsToFirestore()})
+          // ignore: body_might_complete_normally_catch_error
           .catchError((e) {
         Fluttertoast.showToast(msg: e!.message);
       });

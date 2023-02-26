@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sportzy/Signup/Login/verifyEmail.dart';
-import 'package:sportzy/Home/homeScreen.dart';
+import 'package:sportzy/Home/Tabs/homeScreen.dart';
 import 'ForgotPaswordPage.dart';
 import 'SignupScreen.dart';
 

@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:sportzy/Signup/Login/loginScreen.dart';
-import 'package:sportzy/Home/homeScreen.dart';
+import 'package:sportzy/Home/Tabs/homeScreen.dart';
 
 class VerifyEmail extends StatefulWidget {
   const VerifyEmail({super.key});

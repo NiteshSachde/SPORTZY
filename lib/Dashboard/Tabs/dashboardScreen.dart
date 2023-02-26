@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:sportzy/Home/TT/matchScreenTT.dart';
-import '../Badminton/matchScreen.dart';
 
-class OptionScreen extends StatefulWidget {
-  const OptionScreen({super.key});
+import 'package:sportzy/Dashboard/TT/StandaloneScreenTT.dart';
+import 'package:sportzy/Dashboard/Badminton/standaloneScreen.dart';
+
+class DashboardScreen extends StatefulWidget {
+  const DashboardScreen({super.key});
   @override
-  State<OptionScreen> createState() => _OptionScreenState();
+  State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _OptionScreenState extends State<OptionScreen> {
+class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -35,13 +36,12 @@ class _OptionScreenState extends State<OptionScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
-                "View Matches",
+                "Create Matches",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 34,
                   fontWeight: FontWeight.bold,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
             SizedBox(
@@ -94,7 +94,7 @@ class _OptionScreenState extends State<OptionScreen> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (BuildContext context) {
-                                  return MatchScreen();
+                                  return StandaloneScreen();
                                 },
                               ),
                             );
@@ -131,12 +131,51 @@ class _OptionScreenState extends State<OptionScreen> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (BuildContext context) {
-                                  return MatchScreenTT();
+                                  return StandaloneScreenTT();
                                 },
                               ),
                             );
                           },
                         ),
+                        // Container(
+                        //   height: 50,
+                        //   width: size.width,
+                        //   decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(30),
+                        //     color: Colors.white,
+                        //   ),
+                        //   child: Center(
+                        //     child: Text(
+                        //       "Cricket",
+                        //       style: TextStyle(
+                        //         color: Color.fromARGB(255, 15, 136, 236),
+                        //         fontSize: 20,
+                        //         fontWeight: FontWeight.bold,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: MediaQuery.of(context).size.height * 0.04,
+                        // ),
+                        // Container(
+                        //   height: 50,
+                        //   width: size.width,
+                        //   decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(30),
+                        //     color: Colors.white,
+                        //   ),
+                        //   child: Center(
+                        //     child: Text(
+                        //       "Table - Tennis",
+                        //       style: TextStyle(
+                        //         color: Color.fromARGB(255, 15, 136, 236),
+                        //         fontSize: 20,
+                        //         fontWeight: FontWeight.bold,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

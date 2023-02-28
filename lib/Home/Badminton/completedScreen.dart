@@ -16,7 +16,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
     return Scaffold(
       body: _isSingle
           ? SizedBox(
-              height: MediaQuery.of(context).size.height * 0.8,
+              height: double.infinity,
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('sport')
@@ -339,7 +339,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
               ),
             )
           : SizedBox(
-              height: MediaQuery.of(context).size.height * 0.8,
+              height: double.infinity,
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('sport')

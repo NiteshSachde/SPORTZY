@@ -16,7 +16,8 @@ class SingleScoreScreenTT extends StatefulWidget {
       setTB,
       setNum,
       match_name,
-      mode;
+      mode,
+      createdBy;
 
   SingleScoreScreenTT({
     Key? mykey,
@@ -32,6 +33,7 @@ class SingleScoreScreenTT extends StatefulWidget {
     required this.setNum,
     required this.singlesDocRef,
     required this.mode,
+    required this.createdBy,
   }) : super(key: mykey);
 
   @override
@@ -381,6 +383,7 @@ class _SingleScoreScreenTT extends State<SingleScoreScreenTT> {
       'team_B_set_3_points': team_B_set_3_points,
       'winner_team': winner_team,
       'date': date,
+      'createdBy': widget.createdBy,
     });
   }
 

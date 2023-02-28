@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sportzy/Profile/myMatchesScreen.dart';
+import 'package:sportzy/Profile/myLiveMatchesScreen.dart';
 import 'package:sportzy/Signup/Login/loginScreen.dart';
+
+import 'myCompletedMatchesScreen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -126,18 +128,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05),
+                          height: MediaQuery.of(context).size.height * 0.03),
                       GestureDetector(
                         child: Container(
                           height: MediaQuery.of(context).size.height * 0.07,
-                          width: MediaQuery.of(context).size.width * 0.6,
+                          width: MediaQuery.of(context).size.width * 0.7,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             color: Color.fromARGB(255, 15, 136, 236),
                           ),
                           child: Center(
                             child: Text(
-                              "My Matches",
+                              "My Live Matches",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -149,18 +151,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => MyMatchesScreen(),
+                              builder: (context) => MyLiveMatchesScreen(),
                             ),
                           );
                         },
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.04,
+                        height: MediaQuery.of(context).size.height * 0.03,
                       ),
                       GestureDetector(
                         child: Container(
                           height: MediaQuery.of(context).size.height * 0.07,
-                          width: MediaQuery.of(context).size.width * 0.6,
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Color.fromARGB(255, 15, 136, 236),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "My Completed Matches",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => MyCompletedMatchesScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.03,
+                      ),
+                      GestureDetector(
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.07,
+                          width: MediaQuery.of(context).size.width * 0.7,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             color: Color.fromARGB(255, 15, 136, 236),

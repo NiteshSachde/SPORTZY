@@ -16,7 +16,7 @@ class _LiveScreenTTState extends State<LiveScreenTT> {
     return Scaffold(
       body: _isSingle
           ? SizedBox(
-              height: MediaQuery.of(context).size.height * 0.8,
+              height: double.infinity,
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('sport')
@@ -374,7 +374,7 @@ class _LiveScreenTTState extends State<LiveScreenTT> {
               ),
             )
           : SizedBox(
-              height: MediaQuery.of(context).size.height * 0.8,
+              height: double.infinity,
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('sport')

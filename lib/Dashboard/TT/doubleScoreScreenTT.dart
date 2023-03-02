@@ -20,7 +20,8 @@ class DoubleScoreScreenTT extends StatefulWidget {
       setTB,
       setNum,
       match_name,
-      mode;
+      mode,
+      createdBy;
   DoubleScoreScreenTT({
     Key? mykey,
     required this.p1,
@@ -37,6 +38,7 @@ class DoubleScoreScreenTT extends StatefulWidget {
     required this.setTA,
     required this.setTB,
     required this.mode,
+    required this.createdBy,
   }) : super(key: mykey);
   @override
   State<DoubleScoreScreenTT> createState() => _DoubleScoreScreenTTState();
@@ -432,6 +434,7 @@ class _DoubleScoreScreenTTState extends State<DoubleScoreScreenTT> {
       'team_B_set_3_points': team_B_set_3_points,
       'winner_team': winner_team,
       'date': date,
+      'createdBy': widget.createdBy,
     });
   }
 

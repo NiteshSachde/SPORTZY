@@ -11,20 +11,13 @@ class CompletedScreen extends StatefulWidget {
 class _CompletedScreenState extends State<CompletedScreen> {
   bool _isSingle = true;
 
-  void _showDatePicker() {
-    showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2023),
-        lastDate: DateTime.now());
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _isSingle
           ? SizedBox(
-              height: MediaQuery.of(context).size.height * 0.8,
+              height: double.infinity,
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('sport')
@@ -392,7 +385,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
               ),
             )
           : SizedBox(
-              height: MediaQuery.of(context).size.height * 0.8,
+              height: double.infinity,
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('sport')

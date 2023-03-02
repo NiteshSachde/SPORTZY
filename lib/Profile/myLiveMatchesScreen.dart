@@ -7,13 +7,13 @@ import 'package:sportzy/Dashboard/Badminton/singleScoreScreen.dart';
 
 import '../Dashboard/TT/singleScoreScreenTT.dart';
 
-class MyMatchesScreen extends StatefulWidget {
-  const MyMatchesScreen({super.key});
+class MyLiveMatchesScreen extends StatefulWidget {
+  const MyLiveMatchesScreen({super.key});
   @override
-  State<MyMatchesScreen> createState() => _MyMatchesScreenState();
+  State<MyLiveMatchesScreen> createState() => _MyLiveMatchesScreenState();
 }
 
-class _MyMatchesScreenState extends State<MyMatchesScreen>
+class _MyLiveMatchesScreenState extends State<MyLiveMatchesScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
   final _auth = FirebaseAuth.instance;
@@ -153,6 +153,10 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                                                         mode: snapshot2.data!
                                                                 .docs[index]
                                                             ['mode'],
+                                                        createdBy: snapshot2
+                                                                .data!
+                                                                .docs[index]
+                                                            ['createdBy'],
                                                       )));
                                         },
                                       ),
@@ -224,6 +228,10 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                                                         mode: snapshot2.data!
                                                                 .docs[index]
                                                             ['mode'],
+                                                        createdBy: snapshot2
+                                                                .data!
+                                                                .docs[index]
+                                                            ['createdBy'],
                                                       )));
                                         },
                                       ),
@@ -322,6 +330,10 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                                                         mode: snapshot2.data!
                                                                 .docs[index]
                                                             ['mode'],
+                                                        createdBy: snapshot2
+                                                                .data!
+                                                                .docs[index]
+                                                            ['createdBy'],
                                                       )));
                                         },
                                       ),
@@ -393,6 +405,10 @@ class _MyMatchesScreenState extends State<MyMatchesScreen>
                                                         mode: snapshot2.data!
                                                                 .docs[index]
                                                             ['mode'],
+                                                        createdBy: snapshot2
+                                                                .data!
+                                                                .docs[index]
+                                                            ['createdBy'],
                                                       )));
                                         },
                                       ),

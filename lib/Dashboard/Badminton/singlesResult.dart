@@ -58,13 +58,12 @@ class _SinglesResultState extends State<SinglesResult> {
                 ),
               ),
             ),
-            
+
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
 
             Expanded(
-              
               child: SingleChildScrollView(
                 physics: NeverScrollableScrollPhysics(),
                 child: Container(
@@ -77,13 +76,12 @@ class _SinglesResultState extends State<SinglesResult> {
                       topRight: Radius.circular(50),
                     ),
                   ),
-                  
                   child: Container(
                     margin: EdgeInsets.only(left: 25, right: 25),
                     child: Column(
                       children: <Widget>[
-                                                            Lottie.network('https://assets7.lottiefiles.com/packages/lf20_xldzoar8.json'),
-
+                        Lottie.network(
+                            'https://assets7.lottiefiles.com/packages/lf20_xldzoar8.json'),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01,
                         ),

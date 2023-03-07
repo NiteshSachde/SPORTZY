@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sportzy/Home/Tabs/homeScreen.dart';
 
 class DoublesResult extends StatefulWidget {
@@ -77,8 +78,10 @@ class _DoublesResultState extends State<DoublesResult> {
                     margin: EdgeInsets.only(left: 25, right: 25),
                     child: Column(
                       children: <Widget>[
+                                                            Lottie.network('https://assets7.lottiefiles.com/packages/lf20_xldzoar8.json'),
+
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.01,
                         ),
                         Text(
                           "${widget.winner}",
@@ -90,7 +93,7 @@ class _DoublesResultState extends State<DoublesResult> {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.1,
+                          height: MediaQuery.of(context).size.height * 0.05,
                         ),
                         Text(
                           "Congratulations ${widget.winner} For Winning This Match !",
@@ -102,7 +105,7 @@ class _DoublesResultState extends State<DoublesResult> {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.17,
+                          height: MediaQuery.of(context).size.height * 0.05,
                         ),
                         GestureDetector(
                           child: Container(

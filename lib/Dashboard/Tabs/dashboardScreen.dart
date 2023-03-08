@@ -117,9 +117,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: MediaQuery.of(context).size.height * 0.2,
                         ),
-                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.01,
-                        ),
+                         
                         GestureDetector(
                           child: Container(
                             height: MediaQuery.of(context).size.height * 0.07,

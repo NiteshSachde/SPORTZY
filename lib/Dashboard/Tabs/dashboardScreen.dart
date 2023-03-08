@@ -72,12 +72,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02,
+                          height: MediaQuery.of(context).size.height * 0.1,
                         ),
                         Image.asset(
                           'assets/images/victor-badminton.gif',
                           width: MediaQuery.of(context).size.width * 0.5,
-                         height: MediaQuery.of(context).size.height * 0.2,
+                         height: MediaQuery.of(context).size.height * 0.1,
+                        ),
+                         SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.015,
                         ),
                         // Lottie.asset(
                         //   'assets/images/132324-badminton-birdie-icon-lottie-json-animation.json'
@@ -114,19 +117,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             );
                           },
                         ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
-                        ),
-                         Image.asset(
-                          'assets/images/kstr-kochstrasse.gif',
-                          width: MediaQuery.of(context).size.width * 0.5,
-                         height: MediaQuery.of(context).size.height * 0.2,
-                        ),
-                        // Lottie.asset(
-                        //     'assets/images/94700-bouncing-balls.json',
+                        
+                        
+                        //  Image.asset(
+                        //   'assets/images/kstr-kochstrasse.gif',
                         //   width: MediaQuery.of(context).size.width * 0.5,
-                        //   height: MediaQuery.of(context).size.height * 0.2,
+                        //  height: MediaQuery.of(context).size.height * 0.2,
                         // ),
+                        Lottie.asset(
+                            //'assets/images/94700-bouncing-balls.json',
+                          'assets/images/18433-ping-pong.json',
+                          width: MediaQuery.of(context).size.width * 1,
+                          height: MediaQuery.of(context).size.height * 0.25,
+                        ),
                          
                         GestureDetector(
                           child: Container(

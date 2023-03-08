@@ -113,7 +113,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           height: MediaQuery.of(context).size.height * 0.04,
                         ),
                         Lottie.asset(
-                            'assets/images/95710-play-loader.json',
+                            'assets/images/94700-bouncing-balls.json',
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: MediaQuery.of(context).size.height * 0.2,
                         ),

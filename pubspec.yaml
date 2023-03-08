@@ -90,6 +90,7 @@ flutter:
     - assets/images/64420-sports-animation-icon.json
     - assets/images/47749-sportbank-ping-pong.json
     - assets/images/95710-play-loader.json
+    - assets/images/94700-bouncing-balls.json
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

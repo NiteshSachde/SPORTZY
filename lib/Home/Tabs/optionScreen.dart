@@ -73,11 +73,16 @@ class _OptionScreenState extends State<OptionScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                       Lottie.asset(
-                            'assets/images/64420-sports-animation-icon.json',
+                        Image.asset(
+                          'assets/images/badminton-smash.gif',
                           width: MediaQuery.of(context).size.width * 0.5,
-                          height: MediaQuery.of(context).size.height * 0.2,
+                         height: MediaQuery.of(context).size.height * 0.2,
                         ),
+                      //  Lottie.asset(
+                      //       'assets/images/64420-sports-animation-icon.json',
+                      //     width: MediaQuery.of(context).size.width * 0.5,
+                      //     height: MediaQuery.of(context).size.height * 0.2,
+                      //   ),
                         GestureDetector(
                           child: Container(
                             height: MediaQuery.of(context).size.height * 0.07,

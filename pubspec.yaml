@@ -91,6 +91,9 @@ flutter:
     - assets/images/47749-sportbank-ping-pong.json
     - assets/images/95710-play-loader.json
     - assets/images/94700-bouncing-balls.json
+    - assets/images/badminton-smash.gif
+    - assets/images/victor-badminton.gif
+    - assets/images/kstr-kochstrasse.gif
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

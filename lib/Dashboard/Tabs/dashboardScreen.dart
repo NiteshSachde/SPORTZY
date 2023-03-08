@@ -74,12 +74,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                        Lottie.asset(
-                          'assets/images/132324-badminton-birdie-icon-lottie-json-animation.json'
-                            ,
+                        Image.asset(
+                          'assets/images/victor-badminton.gif',
                           width: MediaQuery.of(context).size.width * 0.5,
-                          height: MediaQuery.of(context).size.height * 0.2,
+                         height: MediaQuery.of(context).size.height * 0.2,
                         ),
+                        // Lottie.asset(
+                        //   'assets/images/132324-badminton-birdie-icon-lottie-json-animation.json'
+                        //     ,
+                        //   width: MediaQuery.of(context).size.width * 0.5,
+                        //   height: MediaQuery.of(context).size.height * 0.2,
+                        // ),
                         GestureDetector(
                           child: Container(
                             height: MediaQuery.of(context).size.height * 0.07,
@@ -112,11 +117,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04,
                         ),
-                        Lottie.asset(
-                            'assets/images/94700-bouncing-balls.json',
+                         Image.asset(
+                          'assets/images/kstr-kochstrasse.gif',
                           width: MediaQuery.of(context).size.width * 0.5,
-                          height: MediaQuery.of(context).size.height * 0.2,
+                         height: MediaQuery.of(context).size.height * 0.2,
                         ),
+                        // Lottie.asset(
+                        //     'assets/images/94700-bouncing-balls.json',
+                        //   width: MediaQuery.of(context).size.width * 0.5,
+                        //   height: MediaQuery.of(context).size.height * 0.2,
+                        // ),
                          
                         GestureDetector(
                           child: Container(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import 'package:sportzy/Dashboard/TT/StandaloneScreenTT.dart';
 import 'package:sportzy/Dashboard/Badminton/standaloneScreen.dart';
@@ -30,9 +31,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.11,
+           SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
             ),
+             Lottie.asset(
+                            'assets/images/112180-paper-notebook-writing-animation.json',
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          height: MediaQuery.of(context).size.height * 0.14,
+                        ),
+            
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
@@ -42,10 +49,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   fontSize: 34,
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
+              height: MediaQuery.of(context).size.height * 0.02,
             ),
             Expanded(
               child: Container(
@@ -64,10 +72,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.06,
+                          height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                        Image.asset(
-                          'assets/images/Badminton.png',
+                        Lottie.asset(
+                          'assets/images/132324-badminton-birdie-icon-lottie-json-animation.json'
+                            ,
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: MediaQuery.of(context).size.height * 0.2,
                         ),
@@ -103,10 +112,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04,
                         ),
-                        Image.asset(
-                          'assets/images/Table_Tennis.png',
+                        Lottie.asset(
+                            'assets/images/95710-play-loader.json',
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: MediaQuery.of(context).size.height * 0.2,
+                        ),
+                         SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01,
                         ),
                         GestureDetector(
                           child: Container(

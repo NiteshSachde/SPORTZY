@@ -80,7 +80,16 @@ flutter:
     - assets/images/Badminton.png
     - assets/images/Table_Tennis.png
     - assets/images/Account.png
-
+    - assets/images/21334-storyboarding.json
+    - assets/images/129328-sport-fans-watching-match-on-tv.json
+    - assets/images/132324-badminton-birdie-icon-lottie-json-animation.json
+    - assets/images/70664-olympics-table-tennis.json
+    - assets/images/112180-paper-notebook-writing-animation.json
+    - assets/images/77323-profile-lock.json
+    - assets/images/35726-my-profile-icon.json
+    - assets/images/64420-sports-animation-icon.json
+    - assets/images/47749-sportbank-ping-pong.json
+    - assets/images/95710-play-loader.json
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

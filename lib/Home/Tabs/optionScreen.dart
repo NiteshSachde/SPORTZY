@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sportzy/Home/TT/matchScreenTT.dart';
 import '../Badminton/matchScreen.dart';
 
@@ -29,13 +30,19 @@ class _OptionScreenState extends State<OptionScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.11,
+             SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
             ),
+             Lottie.asset(
+                            'assets/images/129328-sport-fans-watching-match-on-tv.json',
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          height: MediaQuery.of(context).size.height * 0.14,
+                        ),
+            
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
-                "View Matches",
+                "View Live Matches",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 34,
@@ -45,7 +52,7 @@ class _OptionScreenState extends State<OptionScreen> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
+              height: MediaQuery.of(context).size.height * 0.02,
             ),
             Expanded(
               child: Container(
@@ -64,10 +71,10 @@ class _OptionScreenState extends State<OptionScreen> {
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.06,
+                          height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                        Image.asset(
-                          'assets/images/Badminton.png',
+                       Lottie.asset(
+                            'assets/images/64420-sports-animation-icon.json',
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: MediaQuery.of(context).size.height * 0.2,
                         ),
@@ -103,8 +110,8 @@ class _OptionScreenState extends State<OptionScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04,
                         ),
-                        Image.asset(
-                          'assets/images/Table_Tennis.png',
+                       Lottie.asset(
+                            'assets/images/70664-olympics-table-tennis.json',
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: MediaQuery.of(context).size.height * 0.2,
                         ),

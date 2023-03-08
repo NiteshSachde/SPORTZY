@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sportzy/Profile/myLiveMatchesScreen.dart';
 import 'package:sportzy/Signup/Login/loginScreen.dart';
 
@@ -44,7 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.11,
+              height: MediaQuery.of(context).size.height * 0.08,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
@@ -58,7 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
+              height: MediaQuery.of(context).size.height * 0.04,
             ),
             Expanded(
               child: Container(
@@ -75,10 +76,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   margin: EdgeInsets.only(left: 25, right: 25),
                   child: Column(
                     children: <Widget>[
-                      Image.asset(
-                        'assets/images/Account.png',
-                        width: MediaQuery.of(context).size.width * 0.5,
-                      ),
+                      Lottie.asset(
+                            'assets/images/77323-profile-lock.json',
+                          
+                          height: MediaQuery.of(context).size.height * 0.3,
+                        ),
                       StreamBuilder(
                         stream: FirebaseFirestore.instance
                             .collection('users')

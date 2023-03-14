@@ -14,7 +14,7 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   final _auth = FirebaseAuth.instance;
-  // form key
+
   final _formKey = GlobalKey<FormState>();
   var _pobscureText;
   var _cpobscureText;

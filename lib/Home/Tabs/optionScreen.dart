@@ -30,15 +30,14 @@ class _OptionScreenState extends State<OptionScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-             SizedBox(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-             Lottie.asset(
-                            'assets/images/129328-sport-fans-watching-match-on-tv.json',
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          height: MediaQuery.of(context).size.height * 0.14,
-                        ),
-            
+            Lottie.asset(
+              'assets/images/129328-sport-fans-watching-match-on-tv.json',
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.14,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
@@ -78,13 +77,8 @@ class _OptionScreenState extends State<OptionScreen> {
                           //'assets/images/animated-badminton-image-0041.gif',
                           'assets/images/animated-badminton-image-0029.gif',
                           width: MediaQuery.of(context).size.width * 0.5,
-                         height: MediaQuery.of(context).size.height * 0.2,
+                          height: MediaQuery.of(context).size.height * 0.2,
                         ),
-                      //  Lottie.asset(
-                      //       'assets/images/64420-sports-animation-icon.json',
-                      //     width: MediaQuery.of(context).size.width * 0.5,
-                      //     height: MediaQuery.of(context).size.height * 0.2,
-                      //   ),
                         GestureDetector(
                           child: Container(
                             height: MediaQuery.of(context).size.height * 0.07,
@@ -117,8 +111,8 @@ class _OptionScreenState extends State<OptionScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04,
                         ),
-                       Lottie.asset(
-                            'assets/images/70664-olympics-table-tennis.json',
+                        Lottie.asset(
+                          'assets/images/70664-olympics-table-tennis.json',
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: MediaQuery.of(context).size.height * 0.2,
                         ),

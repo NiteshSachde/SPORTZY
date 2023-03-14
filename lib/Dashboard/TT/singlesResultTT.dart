@@ -17,14 +17,7 @@ class SinglesResultTT extends StatefulWidget {
 }
 
 class _SinglesResultTTState extends State<SinglesResultTT> {
-  // bool isPlaying = true;
-  // final controller = ConfettiController();
   @override
-  // void initState() {
-  //   super.initState();
-  //   controller.play();
-  // }
-
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -78,8 +71,8 @@ class _SinglesResultTTState extends State<SinglesResultTT> {
                     margin: EdgeInsets.only(left: 25, right: 25),
                     child: Column(
                       children: <Widget>[
-                                                            Lottie.network('https://assets7.lottiefiles.com/packages/lf20_xldzoar8.json'),
-
+                        Lottie.network(
+                            'https://assets7.lottiefiles.com/packages/lf20_xldzoar8.json'),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01,
                         ),
@@ -144,10 +137,6 @@ class _SinglesResultTTState extends State<SinglesResultTT> {
                 ),
               ),
             ),
-            // ConfettiWidget(
-            //   confettiController: controller,
-            //   shouldLoop: true,
-            // ),
           ],
         ),
       ),

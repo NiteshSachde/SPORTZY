@@ -225,9 +225,6 @@ class _SinglesTT extends State<SinglesTT> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02,
                           ),
-                          // SizedBox(
-                          //   width: MediaQuery.of(context).size.width * 0.2,
-                          // ),
                           Container(
                             child: Form(
                                 key: _formKey,
@@ -449,16 +446,7 @@ class _SinglesTT extends State<SinglesTT> {
       'set_number': 1,
     });
     Fluttertoast.showToast(msg: "Match Added To Your Profile");
-    // print(docRef.id);
-    // Navigator.of(context).push(MaterialPageRoute(
-    //     builder: (BuildContext context) => SingleScoreScreen(
-    //           p1: p1,
-    //           p2: p2,
-    //           t1: t1,
-    //           t2: t2,
-    //           // docRef: docRef.id.toString(),
-    //           singlesDocRef: documentReference.id.toString(),
-    //         )));
+
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
       builder: (ctx) {
         return HomeScreen();

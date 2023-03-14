@@ -31,15 +31,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-           SizedBox(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-             Lottie.asset(
-                            'assets/images/112180-paper-notebook-writing-animation.json',
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          height: MediaQuery.of(context).size.height * 0.14,
-                        ),
-            
+            Lottie.asset(
+              'assets/images/112180-paper-notebook-writing-animation.json',
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.14,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
               child: Text(
@@ -77,9 +76,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         Image.asset(
                           'assets/images/victor-badminton.gif',
                           width: MediaQuery.of(context).size.width * 0.5,
-                         height: MediaQuery.of(context).size.height * 0.1,
+                          height: MediaQuery.of(context).size.height * 0.1,
                         ),
-                         SizedBox(
+                        SizedBox(
                           height: MediaQuery.of(context).size.height * 0.015,
                         ),
                         // Lottie.asset(
@@ -117,20 +116,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             );
                           },
                         ),
-                        
-                        
-                        //  Image.asset(
-                        //   'assets/images/kstr-kochstrasse.gif',
-                        //   width: MediaQuery.of(context).size.width * 0.5,
-                        //  height: MediaQuery.of(context).size.height * 0.2,
-                        // ),
+
                         Lottie.asset(
-                            //'assets/images/94700-bouncing-balls.json',
                           'assets/images/18433-ping-pong.json',
                           width: MediaQuery.of(context).size.width * 1,
                           height: MediaQuery.of(context).size.height * 0.25,
                         ),
-                         
+
                         GestureDetector(
                           child: Container(
                             height: MediaQuery.of(context).size.height * 0.07,
@@ -160,45 +152,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             );
                           },
                         ),
-                        // Container(
-                        //   height: 50,
-                        //   width: size.width,
-                        //   decoration: BoxDecoration(
-                        //     borderRadius: BorderRadius.circular(30),
-                        //     color: Colors.white,
-                        //   ),
-                        //   child: Center(
-                        //     child: Text(
-                        //       "Cricket",
-                        //       style: TextStyle(
-                        //         color: Color.fromARGB(255, 15, 136, 236),
-                        //         fontSize: 20,
-                        //         fontWeight: FontWeight.bold,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   height: MediaQuery.of(context).size.height * 0.04,
-                        // ),
-                        // Container(
-                        //   height: 50,
-                        //   width: size.width,
-                        //   decoration: BoxDecoration(
-                        //     borderRadius: BorderRadius.circular(30),
-                        //     color: Colors.white,
-                        //   ),
-                        //   child: Center(
-                        //     child: Text(
-                        //       "Table - Tennis",
-                        //       style: TextStyle(
-                        //         color: Color.fromARGB(255, 15, 136, 236),
-                        //         fontSize: 20,
-                        //         fontWeight: FontWeight.bold,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),

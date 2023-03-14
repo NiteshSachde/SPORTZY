@@ -529,19 +529,5 @@ class _DoublesTT extends State<DoublesTT> {
         return HomeScreen();
       },
     ), (route) => false);
-    // print(documentReference);
-    // Navigator.of(context).push(
-    //   MaterialPageRoute(
-    //     builder: (BuildContext context) => doubleScoreScreen(
-    //       p1: t1p1,
-    //       p2: t1p2,
-    //       p3: t2p1,
-    //       p4: t2p2,
-    //       t1: t1,
-    //       t2: t2,
-    //       doublesDocRef: documentReference.id.toString(),
-    //     ),
-    //   ),
-    // );
   }
 }

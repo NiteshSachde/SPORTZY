@@ -17,14 +17,7 @@ class SinglesResult extends StatefulWidget {
 }
 
 class _SinglesResultState extends State<SinglesResult> {
-  // bool isPlaying = true;
-  // final controller = ConfettiController();
   @override
-  // void initState() {
-  //   super.initState();
-  //   controller.play();
-  // }
-
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -58,11 +51,9 @@ class _SinglesResultState extends State<SinglesResult> {
                 ),
               ),
             ),
-
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-
             Expanded(
               child: SingleChildScrollView(
                 physics: NeverScrollableScrollPhysics(),
@@ -146,10 +137,6 @@ class _SinglesResultState extends State<SinglesResult> {
                 ),
               ),
             ),
-            // ConfettiWidget(
-            //   confettiController: controller,
-            //   shouldLoop: true,
-            // ),
           ],
         ),
       ),

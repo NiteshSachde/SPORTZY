@@ -2,6 +2,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:quickalert/quickalert.dart';
+import 'package:sportzy/Home/Tabs/homeScreen.dart';
 
 import 'doublesResult.dart';
 
@@ -293,38 +295,47 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.15,
                 ),
-                Center(
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.arrow_drop_down,
-                      size: 65,
-                    ),
-                    onPressed: _decrementCountP1,
-                    color: Color.fromARGB(255, 15, 136, 236),
-                  ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                ),
+                GestureDetector(
+                  child: Container(
+                      height: MediaQuery.of(context).size.height * 0.08,
+                      child: Center(
+                        child: Icon(
+                          Icons.arrow_drop_down,
+                          size: 65,
+                          color: Color.fromARGB(255, 15, 136, 236),
+                        ),
+                      ),
+                      color: Colors.transparent),
+                  onTap: () {
+                    _decrementCountP1();
+                  },
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.15,
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.001,
+                  width: MediaQuery.of(context).size.width * 0.09,
                 ),
                 Text(
-                  "Set " + "${widget.setNum}",
+                  "SET " + "${widget.setNum}",
                   style: TextStyle(fontSize: 26),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.05,
+                  width: MediaQuery.of(context).size.width * 0.06,
                 ),
-                Center(
-                  child: IconButton(
-                    icon: Icon(
+                GestureDetector(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.08,
+                    child: Icon(
                       Icons.arrow_drop_down,
                       size: 65,
+                      color: Color.fromARGB(255, 15, 136, 236),
                     ),
-                    color: Color.fromARGB(255, 15, 136, 236),
-                    onPressed: _decrementCountP2,
+                    color: Colors.transparent,
                   ),
+                  onTap: () {
+                    _decrementCountP2();
+                  },
                 ),
               ],
             ),
@@ -348,7 +359,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                       ("${widget.setTA}"),
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -369,13 +380,61 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                       ("${widget.setTB}"),
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.12,
+            ),
+            GestureDetector(
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.4,
+                height: MediaQuery.of(context).size.height * 0.05,
+                color: Colors.transparent,
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                      size: 30,
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.02,
+                    ),
+                    Text(
+                      "Cancel Match",
+                      style: TextStyle(color: Colors.red, fontSize: 16),
+                    )
+                  ],
+                ),
+              ),
+              onTap: () {
+                QuickAlert.show(
+                  context: context,
+                  type: QuickAlertType.confirm,
+                  title: 'Cancel Match',
+                  text: 'Really want to cancel match ?',
+                  onConfirmBtnTap: () async {
+                    FirebaseFirestore firebaseFirestore =
+                        FirebaseFirestore.instance;
+                    await firebaseFirestore
+                        .collection('sport')
+                        .doc('badminton')
+                        .collection('doubles')
+                        .doc(widget.doublesDocRef)
+                        .delete();
+                    Navigator.pushAndRemoveUntil(
+                        (context),
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                        (route) => false);
+                  },
+                );
+              },
             ),
           ],
         ),

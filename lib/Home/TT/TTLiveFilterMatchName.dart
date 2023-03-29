@@ -2,20 +2,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Others/firestoreFields.dart';
 
-class LiveFilterMatchName extends StatefulWidget {
-  const LiveFilterMatchName({super.key});
+class TTLiveFilterMatchName extends StatefulWidget {
+  const TTLiveFilterMatchName({super.key});
   @override
-  State<LiveFilterMatchName> createState() => _LiveFilterMatchNameState();
+  State<TTLiveFilterMatchName> createState() => _TTLiveFilterMatchNameState();
 }
 
-class _LiveFilterMatchNameState extends State<LiveFilterMatchName> {
+class _TTLiveFilterMatchNameState extends State<TTLiveFilterMatchName> {
   bool _isSingle = true;
   List searchResult = [];
   List searchResult2 = [];
   void searchFromFirebaseSingles(String query) async {
     final result = await FirebaseFirestore.instance
         .collection('sport')
-        .doc('badminton')
+        .doc('TT')
         .collection('singles')
         .where('match_array', arrayContains: query)
         .get();
@@ -28,7 +28,7 @@ class _LiveFilterMatchNameState extends State<LiveFilterMatchName> {
   void searchFromFirebaseDoubles(String query) async {
     final result = await FirebaseFirestore.instance
         .collection('sport')
-        .doc('badminton')
+        .doc('TT')
         .collection('doubles')
         .where('match_array', arrayContains: query)
         .get();
@@ -66,7 +66,7 @@ class _LiveFilterMatchNameState extends State<LiveFilterMatchName> {
                     StreamBuilder(
                       stream: FirebaseFirestore.instance
                           .collection('sport')
-                          .doc('badminton')
+                          .doc('TT')
                           .collection('singles')
                           .snapshots(),
                       builder: (ctx, snapshot) {
@@ -457,7 +457,7 @@ class _LiveFilterMatchNameState extends State<LiveFilterMatchName> {
                     StreamBuilder(
                       stream: FirebaseFirestore.instance
                           .collection('sport')
-                          .doc('badminton')
+                          .doc('TT')
                           .collection('doubles')
                           .snapshots(),
                       builder: (ctx2, snapshot2) {

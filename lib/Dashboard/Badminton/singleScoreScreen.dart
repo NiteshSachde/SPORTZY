@@ -415,6 +415,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
     var team_B_set_3_points = snapshot['team_B_set_3_points'];
     var date = snapshot['date'];
     var winner_team;
+    var match_array = snapshot['match_array'];
     if (team_A_set == 2) {
       winner_team = widget.t1;
     } else {
@@ -427,6 +428,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
         .collection('completed_singles')
         .add({
       'match_name': match_name,
+      'match_array': match_array,
       'team_A_name': team_A_name,
       'team_B_name': team_B_name,
       'team_A_player': team_A_player,

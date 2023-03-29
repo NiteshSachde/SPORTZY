@@ -476,6 +476,20 @@ class _DoublesBadminton extends State<DoublesBadminton> {
 
   postMatchDetailsToFirestore(String m, String t1, String t2, String t1p1,
       String t1p2, String t2p1, String t2p2) async {
+    String match = m.toLowerCase();
+    List<String> listnumber = match.split("");
+    List<String> output = []; // int -> String
+    for (int i = 0; i < listnumber.length; i++) {
+      if (i != listnumber.length - 1) {
+        output.add(listnumber[i]); //
+      }
+      List<String> temp = [listnumber[i]];
+      for (int j = i + 1; j < listnumber.length; j++) {
+        temp.add(listnumber[j]); //
+        output.add((temp.join()));
+      }
+    }
+    print(output.toString());
     final _auth = FirebaseAuth.instance;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     var now = DateTime.now();
@@ -493,6 +507,7 @@ class _DoublesBadminton extends State<DoublesBadminton> {
         .doc(documentReference.id)
         .set({
       'match_name': m,
+      'match_array': FieldValue.arrayUnion(output),
       'team_A_name': t1,
       'team_B_name': t2,
       'team_A_player1': t1p1,

@@ -406,7 +406,20 @@ class _SinglesBadminton extends State<SinglesBadminton> {
 
     // sending these values
     var now = DateTime.now();
-
+    String match = m.toLowerCase();
+    List<String> listnumber = match.split("");
+    List<String> output = []; // int -> String
+    for (int i = 0; i < listnumber.length; i++) {
+      if (i != listnumber.length - 1) {
+        output.add(listnumber[i]); //
+      }
+      List<String> temp = [listnumber[i]];
+      for (int j = i + 1; j < listnumber.length; j++) {
+        temp.add(listnumber[j]); //
+        output.add((temp.join()));
+      }
+    }
+    print(output.toString());
     var date = (DateFormat.yMMMMd().format(now));
     final _auth = FirebaseAuth.instance;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
@@ -423,6 +436,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
         .doc(documentReference.id)
         .set({
       'match_name': m,
+      'match_array': FieldValue.arrayUnion(output),
       'team_A_name': t1,
       'team_B_name': t2,
       'team_A_player': p1,

@@ -404,7 +404,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                         children: [
                           Icon(
                             Icons.share,
-                            color: Color.fromARGB(255, 15, 136, 236),
+                            color: Color.fromARGB(255, 0, 0, 0),
                             size: 30,
                           ),
                           SizedBox(
@@ -413,7 +413,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                           Text(
                             "Share",
                             style: TextStyle(
-                                color: Color.fromARGB(255, 15, 136, 236),
+                                color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 16),
                           )
                         ],

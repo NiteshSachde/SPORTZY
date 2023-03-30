@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.remove_red_eye),
-            label: 'Live',
+            label: 'Watch',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box),

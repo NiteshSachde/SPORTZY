@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:sportzy/Profile/myCanceledMatchesScreen.dart';
 import 'package:sportzy/Profile/myLiveMatchesScreen.dart';
 import 'package:sportzy/Signup/Login/loginScreen.dart';
@@ -240,7 +241,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                         ),
-                        onTap: () => logOut(context),
+                        onTap: () {
+                          QuickAlert.show(
+                            context: context,
+                            type: QuickAlertType.confirm,
+                            title: 'Logout',
+                            text: 'Are you sure ?',
+                            confirmBtnText: 'Logout',
+                            onConfirmBtnTap: () {
+                              logOut(context);
+                            },
+                          );
+                        },
                       ),
                     ],
                   ),

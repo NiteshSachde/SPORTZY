@@ -2,13 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Others/firestoreFields.dart';
 
-class LiveFilterMatchName extends StatefulWidget {
-  const LiveFilterMatchName({super.key});
+class CompletedFilterLocation extends StatefulWidget {
+  const CompletedFilterLocation({super.key});
   @override
-  State<LiveFilterMatchName> createState() => _LiveFilterMatchNameState();
+  State<CompletedFilterLocation> createState() =>
+      _CompletedFilterLocationState();
 }
 
-class _LiveFilterMatchNameState extends State<LiveFilterMatchName> {
+class _CompletedFilterLocationState extends State<CompletedFilterLocation> {
   bool _isSingle = true;
   List searchResult = [];
   List searchResult2 = [];
@@ -16,8 +17,8 @@ class _LiveFilterMatchNameState extends State<LiveFilterMatchName> {
     final result = await FirebaseFirestore.instance
         .collection('sport')
         .doc('badminton')
-        .collection('singles')
-        .where('match_array', arrayContains: query)
+        .collection('completed_singles')
+        .where('location_array', arrayContains: query)
         .get();
 
     setState(() {
@@ -29,8 +30,8 @@ class _LiveFilterMatchNameState extends State<LiveFilterMatchName> {
     final result = await FirebaseFirestore.instance
         .collection('sport')
         .doc('badminton')
-        .collection('doubles')
-        .where('match_array', arrayContains: query)
+        .collection('completed_doubles')
+        .where('location_array', arrayContains: query)
         .get();
 
     setState(() {
@@ -67,7 +68,7 @@ class _LiveFilterMatchNameState extends State<LiveFilterMatchName> {
                       stream: FirebaseFirestore.instance
                           .collection('sport')
                           .doc('badminton')
-                          .collection('singles')
+                          .collection('completed_singles')
                           .snapshots(),
                       builder: (ctx, snapshot) {
                         if (snapshot.connectionState ==
@@ -467,7 +468,7 @@ class _LiveFilterMatchNameState extends State<LiveFilterMatchName> {
                       stream: FirebaseFirestore.instance
                           .collection('sport')
                           .doc('badminton')
-                          .collection('doubles')
+                          .collection('completed_doubles')
                           .snapshots(),
                       builder: (ctx2, snapshot2) {
                         if (snapshot2.connectionState ==

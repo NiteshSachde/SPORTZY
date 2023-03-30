@@ -416,6 +416,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
     var date = snapshot['date'];
     var winner_team;
     var match_array = snapshot['match_array'];
+    var location = snapshot['location'];
     if (team_A_set == 2) {
       winner_team = widget.t1;
     } else {
@@ -442,6 +443,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
       'winner_team': winner_team,
       'date': date,
       'createdBy': widget.createdBy,
+      'location': location,
     });
   }
 

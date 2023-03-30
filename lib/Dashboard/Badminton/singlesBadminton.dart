@@ -354,7 +354,7 @@ class _SinglesBadminton extends State<SinglesBadminton> {
                                               0.02,
                                     ),
                                     p2Field,
-                                     SizedBox(
+                                    SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.04,
@@ -469,6 +469,22 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       }
     }
     print(output.toString());
+
+    //Splitting for location
+    String location = l.toLowerCase();
+    List<String> listnum = location.split("");
+    List<String> result = []; // int -> String
+    for (int i = 0; i < listnum.length; i++) {
+      if (i != listnum.length - 1) {
+        result.add(listnum[i]); //
+      }
+      List<String> temp = [listnum[i]];
+      for (int j = i + 1; j < listnum.length; j++) {
+        temp.add(listnum[j]); //
+        result.add((temp.join()));
+      }
+    }
+    print(result.toString());
     var date = (DateFormat.yMMMMd().format(now));
     final _auth = FirebaseAuth.instance;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
@@ -490,11 +506,11 @@ class _SinglesBadminton extends State<SinglesBadminton> {
       'team_B_name': t2,
       'team_A_player': p1,
       'team_B_player': p2,
-      'Location': l,
+      'location': l,
+      'location_array': FieldValue.arrayUnion(result),
       'createdBy': _auth.currentUser!.uid,
       'date': date.toString(),
       'mode': _points,
-     
     });
     print(documentReference);
     await firebaseFirestore

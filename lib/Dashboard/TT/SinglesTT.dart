@@ -153,7 +153,7 @@ class _SinglesTT extends State<SinglesTT> {
           hintText: "Player Name",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
     );
-     final lField = TextFormField(
+    final lField = TextFormField(
       autofocus: false,
       controller: l,
       keyboardType: TextInputType.text,
@@ -461,6 +461,22 @@ class _SinglesTT extends State<SinglesTT> {
       }
     }
     print(output.toString());
+
+    //Splitting for location
+    String location = l.toLowerCase();
+    List<String> listnum = location.split("");
+    List<String> result = []; // int -> String
+    for (int i = 0; i < listnum.length; i++) {
+      if (i != listnum.length - 1) {
+        result.add(listnum[i]); //
+      }
+      List<String> temp = [listnum[i]];
+      for (int j = i + 1; j < listnum.length; j++) {
+        temp.add(listnum[j]); //
+        result.add((temp.join()));
+      }
+    }
+    print(result.toString());
     // calling our firestore
 
     // sending these values
@@ -487,7 +503,8 @@ class _SinglesTT extends State<SinglesTT> {
       'team_B_name': t2,
       'team_A_player': p1,
       'team_B_player': p2,
-      'Location': l,
+      'location': l,
+      'location_array': FieldValue.arrayUnion(result),
       'createdBy': _auth.currentUser!.uid,
       'date': date.toString(),
       'mode': _points,

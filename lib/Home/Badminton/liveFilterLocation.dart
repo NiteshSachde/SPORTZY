@@ -2,13 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sportzy/Others/firestoreFields.dart';
 
-class LiveFilterMatchName extends StatefulWidget {
-  const LiveFilterMatchName({super.key});
+class LiveFilterLocation extends StatefulWidget {
+  const LiveFilterLocation({super.key});
   @override
-  State<LiveFilterMatchName> createState() => _LiveFilterMatchNameState();
+  State<LiveFilterLocation> createState() => _LiveFilterLocationState();
 }
 
-class _LiveFilterMatchNameState extends State<LiveFilterMatchName> {
+class _LiveFilterLocationState extends State<LiveFilterLocation> {
   bool _isSingle = true;
   List searchResult = [];
   List searchResult2 = [];
@@ -17,7 +17,7 @@ class _LiveFilterMatchNameState extends State<LiveFilterMatchName> {
         .collection('sport')
         .doc('badminton')
         .collection('singles')
-        .where('match_array', arrayContains: query)
+        .where('location_array', arrayContains: query)
         .get();
 
     setState(() {
@@ -30,7 +30,7 @@ class _LiveFilterMatchNameState extends State<LiveFilterMatchName> {
         .collection('sport')
         .doc('badminton')
         .collection('doubles')
-        .where('match_array', arrayContains: query)
+        .where('location_array', arrayContains: query)
         .get();
 
     setState(() {

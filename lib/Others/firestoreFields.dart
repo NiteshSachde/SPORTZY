@@ -20,4 +20,5 @@ class FireStoreFields {
   static const String team_B_player2 = "team_B_player2";
   static const String winner_team = "winner_team";
   static const String date = "date";
+  static const String location = "location";
 }

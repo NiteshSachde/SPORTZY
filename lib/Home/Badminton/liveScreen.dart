@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:sportzy/Home/Badminton/liveFilterMatchName.dart';
 import 'package:sportzy/Others/firestoreFields.dart';
 
+import 'liveFilterLocation.dart';
+
 class LiveScreen extends StatefulWidget {
   const LiveScreen({super.key});
   @override
@@ -36,18 +38,18 @@ class _LiveScreenState extends State<LiveScreen> {
                                 borderRadius: BorderRadius.circular(25),
                               ),
                               child: Text(
-                                'Search by venue',
+                                'Search by location',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16),
                               )),
                           onTap: () {
-                            // Navigator.of(context).push(MaterialPageRoute(
-                            //     builder: (BuildContext context) =>
-                            //         LiveFilterMatchName()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    LiveFilterLocation()));
                           },
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.05,
+                          width: MediaQuery.of(context).size.width * 0.01,
                         ),
                         GestureDetector(
                           child: Container(
@@ -126,6 +128,14 @@ class _LiveScreenState extends State<LiveScreen> {
                                 ),
                                 Text(
                                   "Match Date : ${matchDocs[index][FireStoreFields.date]}",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.005,
+                                ),
+                                Text(
+                                  "Location : ${matchDocs[index][FireStoreFields.location]}",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(
@@ -461,18 +471,18 @@ class _LiveScreenState extends State<LiveScreen> {
                                 borderRadius: BorderRadius.circular(25),
                               ),
                               child: Text(
-                                'Search by venue',
+                                'Search by location',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16),
                               )),
                           onTap: () {
-                            // Navigator.of(context).push(MaterialPageRoute(
-                            //     builder: (BuildContext context) =>
-                            //         LiveFilterMatchName()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    LiveFilterLocation()));
                           },
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.05,
+                          width: MediaQuery.of(context).size.width * 0.01,
                         ),
                         GestureDetector(
                           child: Container(
@@ -552,6 +562,14 @@ class _LiveScreenState extends State<LiveScreen> {
                                 ),
                                 Text(
                                   "Match Date : ${matchDocs2[index][FireStoreFields.date]}",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.005,
+                                ),
+                                Text(
+                                  "Location : ${matchDocs2[index][FireStoreFields.location]}",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(

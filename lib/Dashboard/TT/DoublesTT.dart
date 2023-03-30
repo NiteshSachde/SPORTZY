@@ -223,7 +223,7 @@ class _DoublesTT extends State<DoublesTT> {
         ),
       ),
     );
-     final lField = TextFormField(
+    final lField = TextFormField(
       autofocus: false,
       controller: l,
       keyboardType: TextInputType.text,
@@ -434,30 +434,28 @@ class _DoublesTT extends State<DoublesTT> {
                                         0.02,
                                   ),
                                   t2p2Field,
-                                   SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.04,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Location",
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 24,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.04,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "Location",
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
                                         ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.02,
-                                    ),
-                                    lField,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.02,
+                                  ),
+                                  lField,
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.02,
@@ -542,6 +540,22 @@ class _DoublesTT extends State<DoublesTT> {
       }
     }
     print(output.toString());
+
+    //Splitting for location
+    String location = l.toLowerCase();
+    List<String> listnum = location.split("");
+    List<String> result = []; // int -> String
+    for (int i = 0; i < listnum.length; i++) {
+      if (i != listnum.length - 1) {
+        result.add(listnum[i]); //
+      }
+      List<String> temp = [listnum[i]];
+      for (int j = i + 1; j < listnum.length; j++) {
+        temp.add(listnum[j]); //
+        result.add((temp.join()));
+      }
+    }
+    print(result.toString());
     final _auth = FirebaseAuth.instance;
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     var now = DateTime.now();
@@ -566,7 +580,8 @@ class _DoublesTT extends State<DoublesTT> {
       'team_B_player1': t2p1,
       'team_A_player2': t1p2,
       'team_B_player2': t2p2,
-      'Location': l,
+      'location': l,
+      'location_array': FieldValue.arrayUnion(result),
       'createdBy': _auth.currentUser!.uid,
       'date': date.toString(),
       'mode': _points,

@@ -122,6 +122,15 @@ class _CompletedFilterMatchNameState extends State<CompletedFilterMatchName> {
                                     height: MediaQuery.of(context).size.height *
                                         0.005,
                                   ),
+                                  Text(
+                                    "Location : ${searchResult[index][FireStoreFields.location]}",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.005,
+                                  ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
@@ -506,6 +515,15 @@ class _CompletedFilterMatchNameState extends State<CompletedFilterMatchName> {
                                   ),
                                   Text(
                                     "Match Date : ${searchResult2[index][FireStoreFields.date]}",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.005,
+                                  ),
+                                  Text(
+                                    "Location : ${searchResult2[index][FireStoreFields.location]}",
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),

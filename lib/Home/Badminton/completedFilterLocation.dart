@@ -103,12 +103,7 @@ class _CompletedFilterLocationState extends State<CompletedFilterLocation> {
                                     ),
                                     child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                        SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.35,
-                                ),
-                                      
+                                   children: [
                                       Text(
                                         "${searchResult[index][FireStoreFields.match_name]}",
                                         style: TextStyle(
@@ -117,10 +112,11 @@ class _CompletedFilterLocationState extends State<CompletedFilterLocation> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                       SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.28,
-                                ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
                                       GestureDetector(
                                         child: Container(
                                           child: Icon(Icons.share,
@@ -529,11 +525,6 @@ class _CompletedFilterLocationState extends State<CompletedFilterLocation> {
                                     child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                        SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.35,
-                                ),
-                                      
                                       Text(
                                         "${searchResult2[index][FireStoreFields.match_name]}",
                                         style: TextStyle(
@@ -542,10 +533,11 @@ class _CompletedFilterLocationState extends State<CompletedFilterLocation> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                       SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.28,
-                                ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
                                       GestureDetector(
                                         child: Container(
                                           child: Icon(Icons.share,

@@ -121,12 +121,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
                                       ),
                                        child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                        SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.35,
-                                ),
-                                      
+                                   children: [
                                       Text(
                                         "${matchDocs[index][FireStoreFields.match_name]}",
                                         style: TextStyle(
@@ -135,10 +130,11 @@ class _CompletedScreenState extends State<CompletedScreen> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                       SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.28,
-                                ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
                                       GestureDetector(
                                         child: Container(
                                           child: Icon(Icons.share,
@@ -562,11 +558,6 @@ class _CompletedScreenState extends State<CompletedScreen> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                        SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.35,
-                                ),
-                                      
                                       Text(
                                         "${matchDocs2[index][FireStoreFields.match_name]}",
                                         style: TextStyle(
@@ -575,10 +566,11 @@ class _CompletedScreenState extends State<CompletedScreen> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                       SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.28,
-                                ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
                                       GestureDetector(
                                         child: Container(
                                           child: Icon(Icons.share,

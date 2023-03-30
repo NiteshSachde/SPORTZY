@@ -117,11 +117,6 @@ class _LiveScreenTTState extends State<LiveScreenTT> {
                                  child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                        SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.35,
-                                ),
-                                      
                                       Text(
                                         "${matchDocs[index][FireStoreFields.match_name]}",
                                         style: TextStyle(
@@ -130,10 +125,11 @@ class _LiveScreenTTState extends State<LiveScreenTT> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                       SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.28,
-                                ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
                                       GestureDetector(
                                         child: Container(
                                           child: Icon(Icons.share,
@@ -576,11 +572,6 @@ class _LiveScreenTTState extends State<LiveScreenTT> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                        SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.35,
-                                ),
-                                      
                                       Text(
                                         "${matchDocs2[index][FireStoreFields.match_name]}",
                                         style: TextStyle(
@@ -589,10 +580,11 @@ class _LiveScreenTTState extends State<LiveScreenTT> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                       SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.28,
-                                ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
                                       GestureDetector(
                                         child: Container(
                                           child: Icon(Icons.share,

@@ -1747,8 +1747,7 @@ class _MyCanceledMatchesScreenState extends State<MyCanceledMatchesScreen>
                                             style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
-                                              color: Color.fromARGB(
-                                                  255, 47, 153, 240),
+                                              color: Colors.red,
                                             ),
                                           ),
                                         ],

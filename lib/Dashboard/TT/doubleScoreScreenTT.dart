@@ -504,8 +504,10 @@ class _DoubleScoreScreenTTState extends State<DoubleScoreScreenTT> {
     var match_name = snapshot['match_name'];
     var team_A_name = snapshot['team_A_name'];
     var team_B_name = snapshot['team_B_name'];
-    var team_A_player = snapshot['team_A_player'];
-    var team_B_player = snapshot['team_B_player'];
+    var team_A_player1 = snapshot['team_A_player1'];
+    var team_B_player1 = snapshot['team_B_player1'];
+    var team_A_player2 = snapshot['team_A_player2'];
+    var team_B_player2 = snapshot['team_B_player2'];
     var team_A_set_1_points = snapshot['team_A_set_1_points'];
     var team_A_set_2_points = snapshot['team_A_set_2_points'];
     var team_A_set_3_points = snapshot['team_A_set_3_points'];
@@ -522,8 +524,10 @@ class _DoubleScoreScreenTTState extends State<DoubleScoreScreenTT> {
       'match_name': match_name,
       'team_A_name': team_A_name,
       'team_B_name': team_B_name,
-      'team_A_player': team_A_player,
-      'team_B_player': team_B_player,
+      'team_A_player1': team_A_player1,
+      'team_B_player1': team_B_player1,
+      'team_A_player2': team_A_player2,
+      'team_B_player2': team_B_player2,
       'team_A_set_1_points': team_A_set_1_points,
       'team_A_set_2_points': team_A_set_2_points,
       'team_A_set_3_points': team_A_set_3_points,

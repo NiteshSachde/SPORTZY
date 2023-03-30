@@ -420,6 +420,7 @@ class _DoubleScoreScreenTTState extends State<DoubleScoreScreenTT> {
                   title: 'Cancel Match',
                   text: 'Really want to cancel match ?',
                   onConfirmBtnTap: () async {
+                    await canceledMatchDetails();
                     FirebaseFirestore firebaseFirestore =
                         FirebaseFirestore.instance;
                     await firebaseFirestore
@@ -440,6 +441,49 @@ class _DoubleScoreScreenTTState extends State<DoubleScoreScreenTT> {
         ),
       ),
     );
+  }
+
+  canceledMatchDetails() async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    var snapshot = await firebaseFirestore
+        .collection('sport')
+        .doc('TT')
+        .collection('doubles')
+        .doc(widget.doublesDocRef)
+        .get();
+    var match_name = snapshot['match_name'];
+    var team_A_name = snapshot['team_A_name'];
+    var team_B_name = snapshot['team_B_name'];
+    var team_A_player = snapshot['team_A_player'];
+    var team_B_player = snapshot['team_B_player'];
+    var team_A_set_1_points = snapshot['team_A_set_1_points'];
+    var team_A_set_2_points = snapshot['team_A_set_2_points'];
+    var team_A_set_3_points = snapshot['team_A_set_3_points'];
+    var team_B_set_1_points = snapshot['team_B_set_1_points'];
+    var team_B_set_2_points = snapshot['team_B_set_2_points'];
+    var team_B_set_3_points = snapshot['team_B_set_3_points'];
+    var date = snapshot['date'];
+    var location = snapshot['location'];
+    await firebaseFirestore
+        .collection('sport')
+        .doc('TT')
+        .collection('canceled_doubles')
+        .add({
+      'match_name': match_name,
+      'team_A_name': team_A_name,
+      'team_B_name': team_B_name,
+      'team_A_player': team_A_player,
+      'team_B_player': team_B_player,
+      'team_A_set_1_points': team_A_set_1_points,
+      'team_A_set_2_points': team_A_set_2_points,
+      'team_A_set_3_points': team_A_set_3_points,
+      'team_B_set_1_points': team_B_set_1_points,
+      'team_B_set_2_points': team_B_set_2_points,
+      'team_B_set_3_points': team_B_set_3_points,
+      'date': date,
+      'createdBy': widget.createdBy,
+      'location': location,
+    });
   }
 
   completeMatchDetails() async {

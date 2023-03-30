@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sportzy/Profile/myCanceledMatchesScreen.dart';
 import 'package:sportzy/Profile/myLiveMatchesScreen.dart';
 import 'package:sportzy/Signup/Login/loginScreen.dart';
 
@@ -45,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.08,
+              height: MediaQuery.of(context).size.height * 0.05,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 25),
@@ -59,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.04,
+              height: MediaQuery.of(context).size.height * 0.02,
             ),
             Expanded(
               child: Container(
@@ -77,10 +78,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Column(
                     children: <Widget>[
                       Lottie.asset(
-                            'assets/images/77323-profile-lock.json',
-                          
-                          height: MediaQuery.of(context).size.height * 0.3,
-                        ),
+                        'assets/images/77323-profile-lock.json',
+                        height: MediaQuery.of(context).size.height * 0.3,
+                      ),
                       StreamBuilder(
                         stream: FirebaseFirestore.instance
                             .collection('users')
@@ -159,7 +159,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.03,
+                        height: MediaQuery.of(context).size.height * 0.015,
                       ),
                       GestureDetector(
                         child: Container(
@@ -189,7 +189,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.03,
+                        height: MediaQuery.of(context).size.height * 0.015,
+                      ),
+                      GestureDetector(
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.07,
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Color.fromARGB(255, 15, 136, 236),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "My Canceled Matches",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => MyCanceledMatchesScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.015,
                       ),
                       GestureDetector(
                         child: Container(

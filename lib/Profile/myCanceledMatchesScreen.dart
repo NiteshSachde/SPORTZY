@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 import '../Others/firestoreFields.dart';
 
-class MyCompletedMatchesScreen extends StatefulWidget {
-  const MyCompletedMatchesScreen({super.key});
+class MyCanceledMatchesScreen extends StatefulWidget {
+  const MyCanceledMatchesScreen({super.key});
   @override
-  State<MyCompletedMatchesScreen> createState() =>
-      _MyCompletedMatchesScreenState();
+  State<MyCanceledMatchesScreen> createState() =>
+      _MyCanceledMatchesScreenState();
 }
 
-class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
+class _MyCanceledMatchesScreenState extends State<MyCanceledMatchesScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
   final _auth = FirebaseAuth.instance;
@@ -67,14 +67,14 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                           ? FirebaseFirestore.instance
                               .collection('sport')
                               .doc('badminton')
-                              .collection('completed_singles')
+                              .collection('canceled_singles')
                               .where("createdBy",
                                   isEqualTo: _auth.currentUser!.uid)
                               .snapshots()
                           : FirebaseFirestore.instance
                               .collection('sport')
                               .doc('badminton')
-                              .collection('completed_doubles')
+                              .collection('canceled_doubles')
                               .where("createdBy",
                                   isEqualTo: _auth.currentUser!.uid)
                               .snapshots(),
@@ -470,13 +470,12 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                                                 0.01,
                                           ),
                                           Text(
-                                            "${matchDocs[index][FireStoreFields.winner_team]} won the match !",
+                                            "Match has been canceled !!",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
-                                              color: Color.fromARGB(
-                                                  255, 47, 153, 240),
+                                              color: Colors.red,
                                             ),
                                           ),
                                         ],
@@ -522,6 +521,17 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                                           ),
                                           Text(
                                             "Match Date : ${matchDocs[index][FireStoreFields.date]}",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.005,
+                                          ),
+                                          Text(
+                                            "Location : ${matchDocs[index][FireStoreFields.location]}",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -884,13 +894,12 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                                                 0.01,
                                           ),
                                           Text(
-                                            "${matchDocs[index][FireStoreFields.winner_team]} won the match !",
+                                            "Match has been canceled !!",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
-                                              color: Color.fromARGB(
-                                                  255, 47, 153, 240),
+                                              color: Colors.red,
                                             ),
                                           ),
                                         ],
@@ -906,14 +915,14 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                           ? FirebaseFirestore.instance
                               .collection('sport')
                               .doc('TT')
-                              .collection('completed_singles')
+                              .collection('canceled_singles')
                               .where("createdBy",
                                   isEqualTo: _auth.currentUser!.uid)
                               .snapshots()
                           : FirebaseFirestore.instance
                               .collection('sport')
                               .doc('TT')
-                              .collection('completed_doubles')
+                              .collection('canceled_doubles')
                               .where("createdBy",
                                   isEqualTo: _auth.currentUser!.uid)
                               .snapshots(),
@@ -970,6 +979,17 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                                           ),
                                           Text(
                                             "Match Date : ${matchDocs[index][FireStoreFields.date]}",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.005,
+                                          ),
+                                          Text(
+                                            "Location : ${matchDocs[index][FireStoreFields.location]}",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -1298,13 +1318,12 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                                                 0.01,
                                           ),
                                           Text(
-                                            "${matchDocs[index][FireStoreFields.winner_team]} won the match !",
+                                            "Match has been canceled !!",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
-                                              color: Color.fromARGB(
-                                                  255, 47, 153, 240),
+                                              color: Colors.red,
                                             ),
                                           ),
                                         ],
@@ -1350,6 +1369,17 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                                           ),
                                           Text(
                                             "Match Date : ${matchDocs[index][FireStoreFields.date]}",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.005,
+                                          ),
+                                          Text(
+                                            "Location : ${matchDocs[index][FireStoreFields.location]}",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -1712,7 +1742,7 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                                                 0.01,
                                           ),
                                           Text(
-                                            "${matchDocs[index][FireStoreFields.winner_team]} won the match !",
+                                            "Match has been canceled !!",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 20,

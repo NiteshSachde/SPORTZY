@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../Others/firestoreFields.dart';
 
@@ -114,13 +115,39 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                                               borderRadius:
                                                   BorderRadius.circular(30),
                                             ),
-                                            child: Text(
-                                              "${matchDocs[index][FireStoreFields.match_name]}",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  "${matchDocs[index][FireStoreFields.match_name]}",
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.02,
+                                                ),
+                                                GestureDetector(
+                                                  child: Container(
+                                                    child: Icon(
+                                                      Icons.share,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  onTap: () async {
+                                                    var sharedetails =
+                                                        "Sportzy: Hey! New Match Is Being Played Between ${matchDocs[index][FireStoreFields.team_A_name]} V/S ${matchDocs[index][FireStoreFields.team_B_name]} Just Search Match Name \"${matchDocs[index][FireStoreFields.match_name]}\" On Sportzy Application.";
+                                                    await Share.share(
+                                                        sharedetails);
+                                                  },
+                                                )
+                                              ],
                                             ),
                                           ),
                                           SizedBox(
@@ -505,13 +532,39 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                                               borderRadius:
                                                   BorderRadius.circular(30),
                                             ),
-                                            child: Text(
-                                              "${matchDocs[index][FireStoreFields.match_name]}",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  "${matchDocs[index][FireStoreFields.match_name]}",
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.02,
+                                                ),
+                                                GestureDetector(
+                                                  child: Container(
+                                                    child: Icon(
+                                                      Icons.share,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  onTap: () async {
+                                                    var sharedetails =
+                                                        "Sportzy: Hey! New Match Is Being Played Between ${matchDocs[index][FireStoreFields.team_A_name]} V/S ${matchDocs[index][FireStoreFields.team_B_name]} Just Search Match Name \"${matchDocs[index][FireStoreFields.match_name]}\" On Sportzy Application.";
+                                                    await Share.share(
+                                                        sharedetails);
+                                                  },
+                                                )
+                                              ],
                                             ),
                                           ),
                                           SizedBox(
@@ -953,13 +1006,39 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                                               borderRadius:
                                                   BorderRadius.circular(30),
                                             ),
-                                            child: Text(
-                                              "${matchDocs[index][FireStoreFields.match_name]}",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  "${matchDocs[index][FireStoreFields.match_name]}",
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.02,
+                                                ),
+                                                GestureDetector(
+                                                  child: Container(
+                                                    child: Icon(
+                                                      Icons.share,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  onTap: () async {
+                                                    var sharedetails =
+                                                        "Sportzy: Hey! New Match Is Being Played Between ${matchDocs[index][FireStoreFields.team_A_name]} V/S ${matchDocs[index][FireStoreFields.team_B_name]} Just Search Match Name \"${matchDocs[index][FireStoreFields.match_name]}\" On Sportzy Application.";
+                                                    await Share.share(
+                                                        sharedetails);
+                                                  },
+                                                )
+                                              ],
                                             ),
                                           ),
                                           SizedBox(
@@ -1333,13 +1412,39 @@ class _MyCompletedMatchesScreenState extends State<MyCompletedMatchesScreen>
                                               borderRadius:
                                                   BorderRadius.circular(30),
                                             ),
-                                            child: Text(
-                                              "${matchDocs[index][FireStoreFields.match_name]}",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  "${matchDocs[index][FireStoreFields.match_name]}",
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.02,
+                                                ),
+                                                GestureDetector(
+                                                  child: Container(
+                                                    child: Icon(
+                                                      Icons.share,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  onTap: () async {
+                                                    var sharedetails =
+                                                        "Sportzy: Hey! New Match Is Being Played Between ${matchDocs[index][FireStoreFields.team_A_name]} V/S ${matchDocs[index][FireStoreFields.team_B_name]} Just Search Match Name \"${matchDocs[index][FireStoreFields.match_name]}\" On Sportzy Application.";
+                                                    await Share.share(
+                                                        sharedetails);
+                                                  },
+                                                )
+                                              ],
                                             ),
                                           ),
                                           SizedBox(

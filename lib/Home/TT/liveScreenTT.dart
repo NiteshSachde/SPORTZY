@@ -114,7 +114,7 @@ class _LiveScreenTTState extends State<LiveScreenTT> {
                                     color: Color.fromARGB(255, 47, 153, 240),
                                     borderRadius: BorderRadius.circular(30),
                                   ),
-                                 child: Row(
+                                  child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
@@ -132,13 +132,15 @@ class _LiveScreenTTState extends State<LiveScreenTT> {
                                       ),
                                       GestureDetector(
                                         child: Container(
-                                          child: Icon(Icons.share,
-                                          color: Colors.white,),
+                                          child: Icon(
+                                            Icons.share,
+                                            color: Colors.white,
+                                          ),
                                         ),
-                                        onTap: ()async {
-                                         var sharedetails =
-                        "Sportzy: Hey! New Match Is Being Played Between ${matchDocs[index][FireStoreFields.team_A_name]} V/S ${matchDocs[index][FireStoreFields.team_A_name]} Just Search Match Name \"${matchDocs[index][FireStoreFields.match_name]}\" On Sportzy Application.";
-                    await Share.share(sharedetails);
+                                        onTap: () async {
+                                          var sharedetails =
+                                              "Sportzy: Hey! New Match Is Being Played Between ${matchDocs[index][FireStoreFields.team_A_name]} V/S ${matchDocs[index][FireStoreFields.team_B_name]} Just Search Match Name \"${matchDocs[index][FireStoreFields.match_name]}\" On Sportzy Application.";
+                                          await Share.share(sharedetails);
                                         },
                                       )
                                     ],
@@ -587,13 +589,15 @@ class _LiveScreenTTState extends State<LiveScreenTT> {
                                       ),
                                       GestureDetector(
                                         child: Container(
-                                          child: Icon(Icons.share,
-                                          color: Colors.white,),
+                                          child: Icon(
+                                            Icons.share,
+                                            color: Colors.white,
+                                          ),
                                         ),
-                                        onTap: ()async {
-                                         var sharedetails =
-                        "Sportzy: Hey! New Match Is Being Played Between ${matchDocs2[index][FireStoreFields.team_A_name]} V/S ${matchDocs2[index][FireStoreFields.team_A_name]} Just Search Match Name \"${matchDocs2[index][FireStoreFields.match_name]}\" On Sportzy Application.";
-                    await Share.share(sharedetails);
+                                        onTap: () async {
+                                          var sharedetails =
+                                              "Sportzy: Hey! New Match Is Being Played Between ${matchDocs2[index][FireStoreFields.team_A_name]} V/S ${matchDocs2[index][FireStoreFields.team_B_name]} Just Search Match Name \"${matchDocs2[index][FireStoreFields.match_name]}\" On Sportzy Application.";
+                                          await Share.share(sharedetails);
                                         },
                                       )
                                     ],

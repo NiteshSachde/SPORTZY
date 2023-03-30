@@ -139,7 +139,7 @@ class _LiveScreenState extends State<LiveScreen> {
                                         ),
                                         onTap: () async {
                                           var sharedetails =
-                                              "Sportzy: Hey! New Match Is Being Played Between ${matchDocs[index][FireStoreFields.team_A_name]} V/S ${matchDocs[index][FireStoreFields.team_A_name]} Just Search Match Name \"${matchDocs[index][FireStoreFields.match_name]}\" On Sportzy Application.";
+                                              "Sportzy: Hey! New Match Is Being Played Between ${matchDocs[index][FireStoreFields.team_A_name]} V/S ${matchDocs[index][FireStoreFields.team_B_name]} Just Search Match Name \"${matchDocs[index][FireStoreFields.match_name]}\" On Sportzy Application.";
                                           await Share.share(sharedetails);
                                         },
                                       )
@@ -573,7 +573,7 @@ class _LiveScreenState extends State<LiveScreen> {
                                   ),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                   children: [
+                                    children: [
                                       Text(
                                         "${matchDocs2[index][FireStoreFields.match_name]}",
                                         style: TextStyle(
@@ -596,7 +596,7 @@ class _LiveScreenState extends State<LiveScreen> {
                                         ),
                                         onTap: () async {
                                           var sharedetails =
-                                              "Sportzy: Hey! New Match Is Being Played Between ${matchDocs2[index][FireStoreFields.team_A_name]} V/S ${matchDocs2[index][FireStoreFields.team_A_name]} Just Search Match Name \"${matchDocs2[index][FireStoreFields.match_name]}\" On Sportzy Application.";
+                                              "Sportzy: Hey! New Match Is Being Played Between ${matchDocs2[index][FireStoreFields.team_A_name]} V/S ${matchDocs2[index][FireStoreFields.team_B_name]} Just Search Match Name \"${matchDocs2[index][FireStoreFields.match_name]}\" On Sportzy Application.";
                                           await Share.share(sharedetails);
                                         },
                                       )

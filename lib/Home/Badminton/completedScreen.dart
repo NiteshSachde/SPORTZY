@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:sportzy/Home/Badminton/completedFilterLocation.dart';
 import 'package:sportzy/Others/firestoreFields.dart';
 
@@ -118,7 +119,15 @@ class _CompletedScreenState extends State<CompletedScreen> {
                                             Color.fromARGB(255, 47, 153, 240),
                                         borderRadius: BorderRadius.circular(30),
                                       ),
-                                      child: Text(
+                                       child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                        SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.35,
+                                ),
+                                      
+                                      Text(
                                         "${matchDocs[index][FireStoreFields.match_name]}",
                                         style: TextStyle(
                                           color: Colors.white,
@@ -126,12 +135,28 @@ class _CompletedScreenState extends State<CompletedScreen> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.01,
-                                    ),
+                                       SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.28,
+                                ),
+                                      GestureDetector(
+                                        child: Container(
+                                          child: Icon(Icons.share,
+                                          color: Colors.white,),
+                                        ),
+                                        onTap: ()async {
+                                         var sharedetails =
+                        "Sportzy: Hey! New Match Is Being Played Between ${matchDocs[index][FireStoreFields.team_A_name]} V/S ${matchDocs[index][FireStoreFields.team_A_name]} Just Search Match Name \"${matchDocs[index][FireStoreFields.match_name]}\" On Sportzy Application.";
+                    await Share.share(sharedetails);
+                                        },
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.01,
+                                ),
                                     Text(
                                       "Match Date : ${matchDocs[index][FireStoreFields.date]}",
                                       style: TextStyle(
@@ -534,13 +559,38 @@ class _CompletedScreenState extends State<CompletedScreen> {
                                     color: Color.fromARGB(255, 47, 153, 240),
                                     borderRadius: BorderRadius.circular(30),
                                   ),
-                                  child: Text(
-                                    "${matchDocs2[index][FireStoreFields.match_name]}",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                        SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.35,
+                                ),
+                                      
+                                      Text(
+                                        "${matchDocs2[index][FireStoreFields.match_name]}",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                       SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.28,
+                                ),
+                                      GestureDetector(
+                                        child: Container(
+                                          child: Icon(Icons.share,
+                                          color: Colors.white,),
+                                        ),
+                                        onTap: ()async {
+                                         var sharedetails =
+                        "Sportzy: Hey! New Match Is Being Played Between ${matchDocs2[index][FireStoreFields.team_A_name]} V/S ${matchDocs2[index][FireStoreFields.team_A_name]} Just Search Match Name \"${matchDocs2[index][FireStoreFields.match_name]}\" On Sportzy Application.";
+                    await Share.share(sharedetails);
+                                        },
+                                      )
+                                    ],
                                   ),
                                 ),
                                 SizedBox(

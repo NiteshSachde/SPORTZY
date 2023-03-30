@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:sportzy/Others/firestoreFields.dart';
 
 class TTLiveFilterLocation extends StatefulWidget {
@@ -99,15 +100,40 @@ class _TTLiveFilterLocationState extends State<TTLiveFilterLocation> {
                                       color: Color.fromARGB(255, 47, 153, 240),
                                       borderRadius: BorderRadius.circular(30),
                                     ),
-                                    child: Text(
-                                      "${searchResult[index][FireStoreFields.match_name]}",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
+                                    child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                        SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.35,
+                                ),
+                                      
+                                      Text(
+                                        "${searchResult[index][FireStoreFields.match_name]}",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
+                                       SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.28,
+                                ),
+                                      GestureDetector(
+                                        child: Container(
+                                          child: Icon(Icons.share,
+                                          color: Colors.white,),
+                                        ),
+                                        onTap: ()async {
+                                         var sharedetails =
+                        "Sportzy: Hey! New Match Is Being Played Between ${searchResult[index][FireStoreFields.team_A_name]} V/S ${searchResult[index][FireStoreFields.team_A_name]} Just Search Match Name \"${searchResult[index][FireStoreFields.match_name]}\" On Sportzy Application.";
+                    await Share.share(sharedetails);
+                                        },
+                                      )
+                                    ],
                                   ),
+                                ),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.01,
@@ -499,15 +525,40 @@ class _TTLiveFilterLocationState extends State<TTLiveFilterLocation> {
                                       color: Color.fromARGB(255, 47, 153, 240),
                                       borderRadius: BorderRadius.circular(30),
                                     ),
-                                    child: Text(
-                                      "${searchResult2[index][FireStoreFields.match_name]}",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
+                                   child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                        SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.35,
+                                ),
+                                      
+                                      Text(
+                                        "${searchResult2[index][FireStoreFields.match_name]}",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
+                                       SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.28,
+                                ),
+                                      GestureDetector(
+                                        child: Container(
+                                          child: Icon(Icons.share,
+                                          color: Colors.white,),
+                                        ),
+                                        onTap: ()async {
+                                         var sharedetails =
+                        "Sportzy: Hey! New Match Is Being Played Between ${searchResult2[index][FireStoreFields.team_A_name]} V/S ${searchResult2[index][FireStoreFields.team_A_name]} Just Search Match Name \"${searchResult2[index][FireStoreFields.match_name]}\" On Sportzy Application.";
+                    await Share.share(sharedetails);
+                                        },
+                                      )
+                                    ],
                                   ),
+                                ),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.01,

@@ -454,7 +454,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                         children: [
                           Icon(
                             Icons.share,
-                            color: Color.fromARGB(255, 15, 136, 236),
+                            color: Color.fromARGB(255, 0, 0, 0),
                             size: 30,
                           ),
                           SizedBox(
@@ -463,7 +463,7 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
                           Text(
                             "Share",
                             style: TextStyle(
-                                color: Color.fromARGB(255, 15, 136, 236),
+                                color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 16),
                           )
                         ],

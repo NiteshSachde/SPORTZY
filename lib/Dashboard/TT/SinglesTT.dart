@@ -19,6 +19,8 @@ class _SinglesTT extends State<SinglesTT> {
   final TextEditingController m = new TextEditingController();
   final TextEditingController t1 = new TextEditingController();
   final TextEditingController t2 = new TextEditingController();
+  final TextEditingController l = new TextEditingController();
+
   var _points;
   @override
   void initState() {
@@ -144,11 +146,35 @@ class _SinglesTT extends State<SinglesTT> {
       onSaved: (value) {
         p2.text = value!;
       },
-      textInputAction: TextInputAction.done,
+      textInputAction: TextInputAction.next,
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.person),
           contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
           hintText: "Player Name",
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+    );
+     final lField = TextFormField(
+      autofocus: false,
+      controller: l,
+      keyboardType: TextInputType.text,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{2,12}$');
+        if (value!.isEmpty) {
+          return ("Location cannot be empty !");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Minimum 2 and Maximum 12 characters");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        l.text = value!;
+      },
+      textInputAction: TextInputAction.done,
+      decoration: InputDecoration(
+          prefixIcon: Icon(Icons.location_on),
+          contentPadding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+          hintText: "Location",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
     );
     final SignupButton = Material(
@@ -161,7 +187,7 @@ class _SinglesTT extends State<SinglesTT> {
         onPressed: (() {
           if (_formKey.currentState!.validate()) {
             postMatchDetailsToFirestore(m.text.trim(), t1.text.trim(),
-                t2.text.trim(), p1.text.trim(), p2.text.trim());
+                t2.text.trim(), p1.text.trim(), p2.text.trim(), l.text.trim());
           }
         }),
         child: Text(
@@ -327,6 +353,30 @@ class _SinglesTT extends State<SinglesTT> {
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
+                                              0.04,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "Location",
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02,
+                                    ),
+                                    lField,
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
                                               0.02,
                                     ),
                                     Row(
@@ -396,7 +446,7 @@ class _SinglesTT extends State<SinglesTT> {
   }
 
   postMatchDetailsToFirestore(
-      String m, String t1, String t2, String p1, String p2) async {
+      String m, String t1, String t2, String p1, String p2, String l) async {
     String match = m.toLowerCase();
     List<String> listnumber = match.split("");
     List<String> output = []; // int -> String
@@ -437,6 +487,7 @@ class _SinglesTT extends State<SinglesTT> {
       'team_B_name': t2,
       'team_A_player': p1,
       'team_B_player': p2,
+      'Location': l,
       'createdBy': _auth.currentUser!.uid,
       'date': date.toString(),
       'mode': _points,

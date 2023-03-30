@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:quickalert/quickalert.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:sportzy/Home/Tabs/homeScreen.dart';
 
 import 'doublesResult.dart';
@@ -391,51 +392,100 @@ class _doubleScoreScreenState extends State<doubleScoreScreen> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.12,
             ),
-            GestureDetector(
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.4,
-                height: MediaQuery.of(context).size.height * 0.05,
-                color: Colors.transparent,
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.delete,
-                      color: Colors.red,
-                      size: 30,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    color: Colors.transparent,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                          size: 30,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.02,
+                        ),
+                        Text(
+                          "Cancel Match",
+                          style: TextStyle(color: Colors.red, fontSize: 16),
+                        )
+                      ],
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.02,
-                    ),
-                    Text(
-                      "Cancel Match",
-                      style: TextStyle(color: Colors.red, fontSize: 16),
-                    )
-                  ],
+                  ),
+                  onTap: () {
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.confirm,
+                      title: 'Cancel Match',
+                      text: 'Really want to cancel match ?',
+                      onConfirmBtnTap: () async {
+                        await canceledMatchDetails();
+                        FirebaseFirestore firebaseFirestore =
+                            FirebaseFirestore.instance;
+                        await firebaseFirestore
+                            .collection('sport')
+                            .doc('badminton')
+                            .collection('doubles')
+                            .doc(widget.doublesDocRef)
+                            .delete();
+                        Navigator.pushAndRemoveUntil(
+                            (context),
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()),
+                            (route) => false);
+                      },
+                    );
+                  },
                 ),
-              ),
-              onTap: () {
-                QuickAlert.show(
-                  context: context,
-                  type: QuickAlertType.confirm,
-                  title: 'Cancel Match',
-                  text: 'Really want to cancel match ?',
-                  onConfirmBtnTap: () async {
-                    await canceledMatchDetails();
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.1,
+                ),
+                GestureDetector(
+                  child: Container(
+                      width: MediaQuery.of(context).size.width * 0.25,
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      color: Colors.transparent,
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.share,
+                            color: Color.fromARGB(255, 15, 136, 236),
+                            size: 30,
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.02,
+                          ),
+                          Text(
+                            "Share",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 15, 136, 236),
+                                fontSize: 16),
+                          )
+                        ],
+                      )),
+                  onTap: () async {
                     FirebaseFirestore firebaseFirestore =
                         FirebaseFirestore.instance;
-                    await firebaseFirestore
+                    var snapshot = await firebaseFirestore
                         .collection('sport')
                         .doc('badminton')
                         .collection('doubles')
                         .doc(widget.doublesDocRef)
-                        .delete();
-                    Navigator.pushAndRemoveUntil(
-                        (context),
-                        MaterialPageRoute(builder: (context) => HomeScreen()),
-                        (route) => false);
+                        .get();
+                    var match_name = snapshot['match_name'];
+                    var team_A_name = snapshot['team_A_name'];
+                    var team_B_name = snapshot['team_B_name'];
+                    var sharedetails =
+                        "Sportzy: Hey! New Match Is Being Played Between $team_A_name V/S $team_B_name Just Search Match Name \"$match_name\" On Sportzy Application.";
+                    await Share.share(sharedetails);
                   },
-                );
-              },
+                )
+              ],
             ),
           ],
         ),

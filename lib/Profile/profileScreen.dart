@@ -202,7 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           child: Center(
                             child: Text(
-                              "My cancelled Matches",
+                              "My Cancelled Matches",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,

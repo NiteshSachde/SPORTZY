@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:quickalert/quickalert.dart';
-import 'package:sportzy/Profile/myCanceledMatchesScreen.dart';
+import 'package:sportzy/Profile/myCancelledMatchesScreen.dart';
 import 'package:sportzy/Profile/myLiveMatchesScreen.dart';
 import 'package:sportzy/Signup/Login/loginScreen.dart';
 
@@ -202,7 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           child: Center(
                             child: Text(
-                              "My Canceled Matches",
+                              "My cancelled Matches",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -214,7 +214,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => MyCanceledMatchesScreen(),
+                              builder: (context) => MyCancelledMatchesScreen(),
                             ),
                           );
                         },

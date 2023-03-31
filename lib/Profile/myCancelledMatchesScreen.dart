@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 import '../Others/firestoreFields.dart';
 
-class MyCanceledMatchesScreen extends StatefulWidget {
-  const MyCanceledMatchesScreen({super.key});
+class MyCancelledMatchesScreen extends StatefulWidget {
+  const MyCancelledMatchesScreen({super.key});
   @override
-  State<MyCanceledMatchesScreen> createState() =>
-      _MyCanceledMatchesScreenState();
+  State<MyCancelledMatchesScreen> createState() =>
+      _MyCancelledMatchesScreenState();
 }
 
-class _MyCanceledMatchesScreenState extends State<MyCanceledMatchesScreen>
+class _MyCancelledMatchesScreenState extends State<MyCancelledMatchesScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
   final _auth = FirebaseAuth.instance;
@@ -67,14 +67,14 @@ class _MyCanceledMatchesScreenState extends State<MyCanceledMatchesScreen>
                           ? FirebaseFirestore.instance
                               .collection('sport')
                               .doc('badminton')
-                              .collection('canceled_singles')
+                              .collection('cancelled_singles')
                               .where("createdBy",
                                   isEqualTo: _auth.currentUser!.uid)
                               .snapshots()
                           : FirebaseFirestore.instance
                               .collection('sport')
                               .doc('badminton')
-                              .collection('canceled_doubles')
+                              .collection('cancelled_doubles')
                               .where("createdBy",
                                   isEqualTo: _auth.currentUser!.uid)
                               .snapshots(),
@@ -470,7 +470,7 @@ class _MyCanceledMatchesScreenState extends State<MyCanceledMatchesScreen>
                                                 0.01,
                                           ),
                                           Text(
-                                            "Match has been canceled !!",
+                                            "Match has been cancelled !!",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 20,
@@ -894,7 +894,7 @@ class _MyCanceledMatchesScreenState extends State<MyCanceledMatchesScreen>
                                                 0.01,
                                           ),
                                           Text(
-                                            "Match has been canceled !!",
+                                            "Match has been cancelled !!",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 20,
@@ -915,14 +915,14 @@ class _MyCanceledMatchesScreenState extends State<MyCanceledMatchesScreen>
                           ? FirebaseFirestore.instance
                               .collection('sport')
                               .doc('TT')
-                              .collection('canceled_singles')
+                              .collection('cancelled_singles')
                               .where("createdBy",
                                   isEqualTo: _auth.currentUser!.uid)
                               .snapshots()
                           : FirebaseFirestore.instance
                               .collection('sport')
                               .doc('TT')
-                              .collection('canceled_doubles')
+                              .collection('cancelled_doubles')
                               .where("createdBy",
                                   isEqualTo: _auth.currentUser!.uid)
                               .snapshots(),
@@ -1318,7 +1318,7 @@ class _MyCanceledMatchesScreenState extends State<MyCanceledMatchesScreen>
                                                 0.01,
                                           ),
                                           Text(
-                                            "Match has been canceled !!",
+                                            "Match has been cancelled !!",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 20,
@@ -1742,7 +1742,7 @@ class _MyCanceledMatchesScreenState extends State<MyCanceledMatchesScreen>
                                                 0.01,
                                           ),
                                           Text(
-                                            "Match has been canceled !!",
+                                            "Match has been cancelled !!",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 20,

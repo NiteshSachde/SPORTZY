@@ -424,7 +424,7 @@ class _DoubleScoreScreenTTState extends State<DoubleScoreScreenTT> {
                       title: 'Cancel Match',
                       text: 'Really want to cancel match ?',
                       onConfirmBtnTap: () async {
-                        await canceledMatchDetails();
+                        await cancelledMatchDetails();
                         FirebaseFirestore firebaseFirestore =
                             FirebaseFirestore.instance;
                         await firebaseFirestore
@@ -493,7 +493,7 @@ class _DoubleScoreScreenTTState extends State<DoubleScoreScreenTT> {
     );
   }
 
-  canceledMatchDetails() async {
+  cancelledMatchDetails() async {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     var snapshot = await firebaseFirestore
         .collection('sport')
@@ -519,7 +519,7 @@ class _DoubleScoreScreenTTState extends State<DoubleScoreScreenTT> {
     await firebaseFirestore
         .collection('sport')
         .doc('TT')
-        .collection('canceled_doubles')
+        .collection('cancelled_doubles')
         .add({
       'match_name': match_name,
       'team_A_name': team_A_name,

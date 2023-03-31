@@ -374,7 +374,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
                       title: 'Cancel Match',
                       text: 'Really want to cancel match ?',
                       onConfirmBtnTap: () async {
-                        await canceledMatchDetails();
+                        await cancelledMatchDetails();
                         FirebaseFirestore firebaseFirestore =
                             FirebaseFirestore.instance;
                         await firebaseFirestore
@@ -443,7 +443,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
     );
   }
 
-  canceledMatchDetails() async {
+  cancelledMatchDetails() async {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     var snapshot = await firebaseFirestore
         .collection('sport')
@@ -467,7 +467,7 @@ class _SingleScoreScreen extends State<SingleScoreScreen> {
     await firebaseFirestore
         .collection('sport')
         .doc('badminton')
-        .collection('canceled_singles')
+        .collection('cancelled_singles')
         .add({
       'match_name': match_name,
       'team_A_name': team_A_name,
